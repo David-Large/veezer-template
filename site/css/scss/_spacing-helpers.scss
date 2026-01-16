@@ -1,0 +1,124 @@
+@use "../../../site/vendor/bulma/sass/utilities/mixins";
+@use "../../../site/vendor/bulma/sass/helpers/spacing" as sp;
+
+
+// Add Breakpoint responsiveness to spacing helpers.
+// From: https://github.com/jgthms/bulma/issues/451
+
+@each $property, $shortcut in sp.$spacing-shortcuts {
+  @each $name, $value in sp.$spacing-values {
+    // Cardinal directions
+    @each $direction, $suffix in sp.$spacing-directions {
+      @include mixins.mobile {
+        .#{$shortcut}#{$suffix}-#{$name}-mobile {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+      @include mixins.tablet {
+        .#{$shortcut}#{$suffix}-#{$name}-tablet {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+      @include mixins.touch {
+        .#{$shortcut}#{$suffix}-#{$name}-touch {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+      @include mixins.desktop {
+        .#{$shortcut}#{$suffix}-#{$name}-desktop {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+      @include mixins.widescreen {
+        .#{$shortcut}#{$suffix}-#{$name}-widescreen {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+      @include mixins.fullhd {
+        .#{$shortcut}#{$suffix}-#{$name}-fullhd {
+          #{$property}-#{$direction}: $value !important;
+        }
+      }
+    }
+
+    // Horizontal axis
+    @if sp.$spacing-horizontal != null {
+      @include mixins.mobile {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-mobile {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+      @include mixins.tablet {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-tablet {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+      @include mixins.touch {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-touch {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+      @include mixins.desktop {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-desktop {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+      @include mixins.widescreen {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-widescreen {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+      @include mixins.fullhd {
+        .#{$shortcut}#{sp.$spacing-horizontal}-#{$name}-fullhd {
+          #{$property}-left: $value !important;
+          #{$property}-right: $value !important;
+        }
+      }
+    }
+
+    // Vertical axis
+    @if sp.$spacing-vertical != null {
+      @include mixins.mobile {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-mobile {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+      @include mixins.tablet {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-tablet {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+      @include mixins.touch {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-touch {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+      @include mixins.desktop {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-desktop {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+      @include mixins.widescreen {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-widescreen {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+      @include mixins.fullhd {
+        .#{$shortcut}#{sp.$spacing-vertical}-#{$name}-fullhd {
+          #{$property}-top: $value !important;
+          #{$property}-bottom: $value !important;
+        }
+      }
+    }
+  }
+}

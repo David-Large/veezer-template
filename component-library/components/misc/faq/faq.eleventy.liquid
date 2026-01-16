@@ -1,0 +1,41 @@
+<section class="section faq-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+    
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column is-8-tablet is-offset-2">
+              
+                <div class="faq-wrapper" style="border-color: {{ border_color }};">
+                  
+                    {% for item in FAQ %}
+                          
+                        <div class="faq-panel content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="{{ forloop.index | times: 0.04 }}">
+                              
+                            <h4 class="faq-trigger" aria-expanded="{% if forloop.index == 1 %}true{% else %}false{% endif %}">
+                                {{ item.title }}
+                            </h4>
+                                
+                            <div class="faq-content" aria-hidden="{% if forloop.index == 1 %}false{% else %}true{% endif %}">
+                                <div>
+                                    {{ item.main_column | markdownify }}
+                                </div>
+                            </div>
+                            
+                            <span class="faq-dot" style="border-color: {{ border_color }}; background-color: {{ border_color }};"></span>
+                              
+                        </div>
+                          
+                    {% endfor %}
+                    
+                </div>  
+            
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

@@ -1,0 +1,55 @@
+<section class="section tabs-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-uuid="{{ id }}" data-block-index="{{ block_index }}" data-pagefind-ignore>
+  
+    <div class="first-of-type-section-spacer"></div>
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column {% if full_container_width != true %}is-8-tablet is-offset-2{% endif %}">
+              
+                <div class="content {% if content_alignment %}has-text-{{ content_alignment }}{% endif %}">
+                    
+                    <div class="tab-button-group">
+                      
+                        {%- for tab in tabs %}
+                            <button class="button  single-line gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left" data-filter="{{ tab.title | slugify }}" data-gsap-delay="{{ forloop.index | times: 0.075 | plus: 0.1 }}">{{ tab.title }}</button>
+                        {%- endfor %}
+                    
+                    </div>
+                    
+                </div>
+    
+            </div>
+        
+        </div>
+        
+        <div class="tab-items-wrapper gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom">
+          
+        <div class="tab-cover-mask vb-theme-{{ component_palette }}"></div>
+        
+            {% for tab in tabs %}
+            
+                <div class="tab-item" data-filter="{{ tab.title | slugify }}" >
+              
+                    <div class="columns">
+                      
+                        <div class="column {% if full_container_width != true %}is-8-tablet is-offset-2{% endif %}">
+                          
+                            <div class="content">
+                                {{ tab.main_column | markdownify }}
+                            </div>
+                               
+                        </div>
+                      
+                    </div>
+                
+                </div>
+            
+            {% endfor %}
+        
+        </div>
+    
+    </div>
+  
+</section>

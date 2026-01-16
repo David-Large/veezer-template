@@ -1,0 +1,161 @@
+.cms-editor-active {
+  
+  .flip-card-component {
+  
+    .flip-card-front {
+      opacity: 1;
+      scale: 1;
+    }
+    
+  }
+}
+
+/* Taken from: https://www.smashingmagazine.com/2020/02/magic-flip-cards-common-sizing-problem/
+Here: https://codepen.io/smashingmag/pen/xxGKLZO */
+
+:root { --flip-time: 0.8s; }
+
+.flip-card-component {
+  
+  .flip {
+  
+    &-cards {
+      flex-wrap: wrap;
+    }
+    
+    &-cards h3 {
+      /* Large font text seems to push out the size of the coumns so they become uneven.
+      Add this where run the risk of this happening, but best to probably avoid larger fonts. */
+      word-break: break-all;
+    }
+
+    &-card.column {
+      padding: 1.5rem; // Double normal column spacing.
+    }
+    
+    &-card {
+      perspective: 100rem;
+      display: flex;
+      z-index: 0;
+      cursor: pointer;
+    }
+    
+    &-card-body {
+      display: flex;
+      flex: 1;
+      transform-style: preserve-3d;
+      transition: var(--flip-time) transform;
+    }
+    
+    &-card-front,
+    &-card-back {
+      @extend .flip-card-shadow;
+      display: flex;
+      flex-direction: column;
+      backface-visibility: hidden;
+      min-width: 100%;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      background-color: #fff;
+      /* IMPORTANT NOTE: Don't apply padding diretly to the flip-cards (front or back). Seems to upset the sizing and gap of the
+      cards at certain widths of the container. Looks fine until you have a play with resizing the browser. You also can't apply
+      padding to any child elements inside the flip cards. So a way I found to overcome is to apply a percentage width
+      to the '.content' (child) div. Can also safely apply top and bottom padding. */
+    }
+    
+    &-card-front {
+      /* GSAP animation works on opacity and scale */
+      opacity: 0;
+      scale: 0.9;
+      position: relative;
+      /* Push button to the bottom of card. */
+      justify-content: flex-end;
+      z-index: 1;
+    }
+    
+    &-card-front img {
+      position: absolute;
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+      height: 100%;
+    }
+    
+    &-card-front .content {
+      z-index: 2;
+      width: 80%;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    &-card-back .content {
+      width: 80%;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      /* Back up measure to allow scroll (and hide overflow) if have aspect ratio present via admin
+      (compared with leaving at natural height for rthese divs). Only set on back for now as have background image
+      on front card anyway - no overflow risk. */
+      overflow: auto;
+    }
+    
+    &-card-back .content h3,
+    &-card-back .content p {
+      color: #333;
+    }
+    
+    &-card-front .content .card-button,
+    &-card-back .content .card-button {
+      background-color: rgba(0,0,0,0.5);
+      color: #ddd;
+      border: solid 1px #888;
+      padding-top: calc(0.5em - 1px);
+      padding-bottom: calc(0.5em - 1px);
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+      text-align: center;
+      max-width: 100%;
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+    
+    &-card-back .content .card-button {
+      background-color: #fff;
+      color: #333;
+      border: solid 1px #333;
+      padding-left: 1em;
+      padding-right: 1em;
+      margin-top: 2em;
+    }
+    
+    &-card-back {
+      transform: rotateY(-180deg) translate(100%, 0);  // To Flip X axis use translate(-100%,0) with rotateX
+    }
+    
+    &-card-rotate {
+      transform: rotateY(-180deg);
+    }
+    
+    &-card-shadow {
+      box-shadow: 0 -1px 1px rgba(0,0,0,0.04), 
+                  0 2px 2px rgba(0,0,0,0.04), 
+                  0 4px 4px rgba(0,0,0,0.04), 
+                  0 8px 8px rgba(0,0,0,0.04),
+                  0 16px 16px rgba(0,0,0,0.04); 
+    }
+  
+  }
+  
+}
+
+@media only screen and (max-width: 768px) {
+  
+  /* Keep the cards from being too big when display in single column on small screen. Also centered. */
+  .flip-card-component .flip-card-body {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+}

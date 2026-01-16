@@ -1,0 +1,58 @@
+<footer class="footer section use-gsap">
+
+    <div class="container">
+              
+        <div class="columns is-multiline is-mobile">
+            
+            <div class="column is-12-mobile is-narrow-tablet">
+        
+                <div class="logo-and-icons-wrapper gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left" data-gsap-delay="0">
+                    
+                    <div class="footer-logo">
+
+                        <a href="/">
+                            {%- assign logo_width = site.site_logo | prepend: "site" | image-width %}
+                            {%- assign logo_height = site.site_logo | prepend: "site" | image-height %}
+                            <img src="{{ site.site_logo }}" alt="{{ site.site_title }}" width="{{ logo_width }}" height="{{ logo_height }}" />
+                        </a>
+
+                    </div>
+
+                    <div class="social-icons">
+
+                        {% for item in contact.social %}
+                            <a href="{{ item.link }}" title="{{ item.title }}" target="_blank">{%- bookshop_include "icons" icon_name: item.title %}</a>
+                        {% endfor %}
+                       
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            {% for item in footer.sections %}
+            <div class="column is-narrow-mobile is-narrow">
+                
+                <div class="footer-nav-wrapper">
+
+                    <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-in-from-right" data-gsap-delay="0" data-gsap-duration="0.5">
+                        <h3>{{ item.title }}</h3>
+                        <ul class="is-unstyled">
+                        {% for link in item.links %}
+                            <li>
+                                <a href="{{ link.link }}"{% if link.open_in_new_tab %} target="_blank"{% endif %}>{{ link.text }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    
+                </div>
+                            
+            </div>
+            {% endfor %}
+                
+        </div>
+  
+    </div>
+
+</footer>

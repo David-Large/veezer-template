@@ -1,0 +1,39 @@
+{%- comment %} 
+    Determine Focal Point values for the transformation URL of imagekit.
+    Currently NOT USED (use object-fit instead). To use as a parameter: e.g. 'fo-bottom_right'.
+{% endcomment %}
+{%- if rs_focal_point %}
+    {%- case rs_focal_point %}
+        {%- when "center top" %}
+            {%- assign fo_value = "top" %}
+        {%- when "center center" %}
+            {%- assign fo_value = "center" %}
+        {%- when "center bottom" %}
+            {%- assign fo_value = "bottom" %}
+        {%- when "left top" %}
+            {%- assign fo_value = "top_left" %}
+        {%- when "left center" %}
+            {%- assign fo_value = "left" %}
+        {%- when "left bottom" %}
+            {%- assign fo_value = "bottom_left" %}
+        {%- when "right top" %}
+            {%- assign fo_value = "top_right" %}
+        {%- when "right center" %}
+            {%- assign fo_value = "right" %}
+        {%- when "right bottom" %}
+            {%- assign fo_value = "bottom_right" %}
+    {%- endcase %}
+{%- endif %}
+<img {% if rs_lazy != false %}loading="lazy"{% endif %} alt="{{ rs_title }}" title="{{ rs_title }}" width="{{ rs_width }}" height="{{ rs_height }}" style="{% if rs_focal_point %}object-position: {{ rs_focal_point }};{% endif %}" {% if rs_class %}class="{{ rs_class }}"{% endif %} {% if rs_custom_attribute_text %}{{ rs_custom_attribute_text }}{% endif %}
+    src="{{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_height }},w-{{ rs_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %}"
+    srcset="{{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_very_small_height }},w-{{ rs_very_small_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %} 500w,
+            {{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_small_height }},w-{{ rs_small_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %} 768w,
+            {{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_medium_height }},w-{{ rs_medium_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %} 1023w,
+            {{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_large_height }},w-{{ rs_large_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %} 1407w{%- if rs_width > 1407 %},
+            {%- comment %} ++++++ Include the original image (if larger than the 'large' width} {% endcomment %}
+            {{ site.imagekit_url }}{{ rs_image }}?tr=h-{{ rs_height }},w-{{ rs_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}{% if fo_value %},fo-{{ fo_value }}{% endif %} {{ rs_width }}w{% endif %}"
+    sizes="(max-width: 768px) 150vw, {% if rs_multi_column_max_image_width %}{{ rs_multi_column_max_image_width }}{% else %}100vw{% endif %}" />
+{%- comment %} 
+    Note the 150vw for very small screen sizes. Below 768px width with Bulma.css, columns are full-screen width 
+    if used 100vw as the trigger they would end up showing as a enlarged small image (e.g. if screen width was say 760px) and look poor.
+{% endcomment %}

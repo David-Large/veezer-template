@@ -1,0 +1,226 @@
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+@use "site/css/variables" as va;
+
+
+.cms-editor-active .youtube-component .video-overlay img.cover {
+    opacity: 1;
+}
+.cms-editor-active .youtube-component .play-button-wrapper {
+    opacity: 1;
+}
+
+.youtube-component {
+
+    position: relative;
+
+    &.full-screen {
+      padding: 0 !important;
+      max-width: 1920px; /* Ensure not crazy big if screen is zoomed out past HD level */
+      margin: 0 auto !important;
+    }
+  
+    /* Not using the fade-in/out on the video overlay, instead using on the images within it so can work them independently. */
+    /* e.g. the background image is displayed first and only later the video player is created and ready does the play icon fade in. */
+    .video-overlay {
+      position: absolute;
+      display: flex;
+      z-index: 17;
+      inset: 0;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    .video-overlay img.cover {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s linear;
+    }
+    .video-overlay img.cover.fade-in {
+      opacity: 1;
+    }
+    
+    .video-loading-message {
+      position: absolute;
+      opacity: 0;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: opacity 1s linear;
+    }
+    
+    .video-loading-message.pulsate-text {
+      animation: pulsate-text 2s ease-out;
+      animation-iteration-count: infinite; 
+      opacity: 0.3;
+    }
+    
+    @keyframes pulsate-text {
+        0% { 
+            opacity: 0.3;
+            scale: 1;
+        }
+        50% { 
+            opacity: 1.0;
+            scale: 1.05;
+        }
+        100% { 
+            opacity: 0.3;
+            scale: 1;
+        }
+    }
+    
+    /* Pulsing Play button based on: https://codepen.io/Bantina/pen/wmGOXy */
+    
+    .play-button-wrapper {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.5s linear;
+    }
+    .play-button-wrapper.fade-in {
+      opacity: 1;
+    }
+    
+  	.play-button-wrapper.one-moment::after {
+      position: absolute;
+      top: 100px;
+      left: -10px;
+      width: 200px;
+      content: "ONE MOMENT...";
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    
+    .play-button {
+  	  background: va.$button-background-color;
+      cursor: pointer;
+  	  width: 80px;
+  	  height: 80px;
+  	  position: relative;
+  	  -webkit-border-radius: 50%;
+  	  -moz-border-radius: 50%;
+  	  border-radius: 50%;
+  	  z-index: 100;
+  	}
+  	.button-circles {
+  	  position: absolute;
+  	  left: 0;
+  	  top: 0;
+  	}
+  	.button-circle {
+  	  position: absolute;
+  	  background: rgba(55, 126, 240, 0.1);
+  	  background: rgba(va.$button-background-color, 0.3);
+  	  width: 80px;
+  	  height: 80px;
+  	  -webkit-border-radius: 50%;
+  	  -moz-border-radius: 50%;
+  	  border-radius: 50%;
+  	}
+  	.c-1 {
+  	  -webkit-animation: 2000ms scaleToggleOne infinite;
+  	  animation: 2000ms scaleToggleOne infinite;
+  	}
+  	.c-2 {
+  	  -webkit-animation: 2000ms scaleToggleOne infinite;
+  	  -webkit-animation-delay: 300ms;
+  	  animation: 2000ms scaleToggleOne infinite;
+  	  animation-delay: 300ms;
+  	}
+  	.c-3 {
+  	  -webkit-animation: 2000ms scaleToggleOne infinite;
+  	  -webkit-animation-delay: 600ms;
+  	  animation: 2000ms scaleToggleOne infinite;
+  	  animation-delay: 600ms;
+  	}
+  	
+  	@-webkit-keyframes scaleToggleOne {
+  	  0% {
+  	    -webkit-transform:scale(1);
+  	    transform:scale(1);
+  	  }
+  
+  	  50%{
+  	    -webkit-transform:scale(1.5);
+  	    transform:scale(1.5);
+  	  }
+  	  100%{
+  	    -webkit-transform:scale(1);
+  	    transform:scale(1);
+  	  }
+  	}
+  	
+  	@keyframes scaleToggleOne {
+  	  0% {
+  	    -webkit-transform:scale(1);
+  	    transform:scale(1);
+  	  }
+  
+  	  50%{
+  	    -webkit-transform:scale(1.5);
+  	    transform:scale(1.5);
+  	  }
+  	  100%{
+  	    -webkit-transform:scale(1);
+  	    transform:scale(1);
+  	  }
+  	}
+  	
+  	.play-button .paused {
+      position: absolute;
+    	width: 0;
+  		height: 0;
+  		top: 20px;
+      left: 30px;
+      border: 20px solid transparent;
+      border-left: 30px solid va.$button-color;
+  	  border-right: 0;
+  	}
+  	
+  	
+  	/* --- Use padding approach for the responsive aspect ratio --- */
+  	
+  	.responsive-video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .responsive-video-wrapper iframe {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    
+    @media screen and (min-width: iv.$desktop) {
+      
+      .play-button-wrapper.one-moment::after {
+        top: 130px;
+      }
+      .play-button {
+    	  width: 100px;
+    	  height: 100px;
+    	}
+    	.button-circle {
+    	  width: 100px;
+    	  height: 100px;
+    	}
+      .play-button .paused {
+    		top: 25px;
+        left: 38px;
+        border: 25px solid transparent;
+        border-left: 36px solid va.$button-color;
+  	  }
+    
+    }
+    
+}
+
+
+  

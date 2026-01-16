@@ -1,0 +1,57 @@
+<section class="section slider-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+    
+    <span class="editor-content">Please note: The slider will not work in the admin mode, only on the live site.</span>
+          
+    <div class="slider-outer" data-total-slides="{{ slides.size }}" data-auto-interval="{{ auto_change_speed }}">
+              
+        <div class="slider-middle">
+        
+            <div class="slider-inner{% if transition == "slide" %} slider-slide-on {% endif %}">
+            
+                  {% for slide in slides %}
+                  <div class="slider-slide">
+                    
+                      <div class="container">
+                      
+                          <div class="columns">
+                            
+                              <div class="is-8-desktop is-offset-2-desktop column">
+                                    <div class="content has-text-centered">
+                                        <p class="{% if forloop.first %}gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.1">
+                                            {%- if slide.slider_image %}{% assign current_image = slide.slider_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                                            {%- assign clip_path_class = "clip-path " | append: slide.clip_path_style %}     
+                                            {% bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_quality: "70" rs_title: slide.title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: "1" rs_class: clip_path_class %}
+                                        </p>
+                                        <h3 class="{% if forloop.first %}gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.3">{{ slide.title }}</h3>
+                                        <h4 class="{% if forloop.first %}gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.5">{{ slide.sub_title }}</h4>
+                                        <p class="{% if forloop.first %}gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.7">{{ slide.description }}</p>
+                                    </div>
+                              </div>
+                            
+                          </div>
+                        
+                      </div>
+                    
+                  </div>
+                  {% endfor %}
+              
+            </div>
+          
+        </div>
+        
+        <!-- Next and previous buttons -->
+        <span class="slider-prev{% if navigation.hide_prev_next_buttons == true %} is-hidden{% endif %}{% if navigation.hide_page_indicator == true %} page-indicator-hidden{% endif %} gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left">&#10094;</span>
+        <span class="slider-next{% if navigation.hide_prev_next_buttons == true %} is-hidden{% endif %}{% if navigation.hide_page_indicator == true %} page-indicator-hidden{% endif %} gsap-element-wrapper" data-gsap-animation-name="slide-in-from-right">&#10095;</span>
+                
+        <!-- Nav dots -->
+        <div class="slider-nav-container{% if navigation.hide_page_indicator == true %} is-hidden{% endif %} gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom"  data-gsap-delay="1">
+            {% for slide in slides %}
+              <span class="slider-nav-dot" data-dot-index="{{ forloop.index0 }}"></span>
+            {% endfor %}
+        </div>
+              
+    </div>
+        
+</section>

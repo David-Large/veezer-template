@@ -1,0 +1,52 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Team Alt
+  description: Display team using GSAP timeline animation.
+  icon: groups
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  team_member:
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_structures:
+  team_member:
+    values:
+      - label: Team Member
+        text_key: name
+        subtext_key: title
+        image_key: team_image
+        icon: person
+        value:
+          component_palette: lightest
+          name: Name...
+          title: Title...
+          description: Description...
+          team_image:
+          clip_path_style: none
+        _inputs:
+          description:
+            type: markdown
+            label: Description
+          clip_path_style:
+            type: select
+            comment: "CSS clipping path (shape mask) to apply to image."
+            options:
+              allow_empty: false
+              values:
+                "none": "None (rectangle/square)"
+                "circle": "Circle"
+                "triangle": "Triangle"
+                "rhombus": "Rhombus"
+                "pentagon": "Pentagon"
+                "hexagon": "Hexagon"
+                "octagon": "Octagon"
+                "trapezoid": "Trapezoid"

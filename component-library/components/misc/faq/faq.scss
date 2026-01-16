@@ -1,0 +1,76 @@
+/* Keep all FAQ items open in editor. */
+.cms-editor-active .faq-content {
+  grid-template-rows: 1fr !important;
+}
+
+.faq {
+  
+  &-component h1 {
+    text-transform: uppercase;
+  }
+  
+  &-wrapper {
+    border-left: solid 3px;
+    margin-left: 10px;
+  }
+
+  &-panel {
+    position: relative;
+    padding-left: 3rem;
+  }
+  
+  &-dot {
+    position: absolute;
+    left: -12px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid;
+  }
+  
+  &-trigger {
+    position: relative;
+    cursor: pointer;
+    padding-right: 50px;
+    margin-bottom: 20px
+  }
+  
+  &-trigger::before,
+  &-trigger::after {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: currentcolor;
+    transition: transform 500ms;
+  }
+  
+  &-trigger::after {
+    rotate: 90deg;
+  }
+  
+  &-trigger[aria-expanded="true"]::before,
+  &-trigger[aria-expanded="true"]::after {
+    transform: rotate(45deg);
+  }
+  
+  &-content {
+    display: grid;
+    grid-template-rows: 0fr; /* Initial collapsed state */
+    transition: grid-template-rows 500ms;
+    cursor: default;
+  }
+  
+  &-content[aria-hidden="false"] {
+    grid-template-rows: 1fr; /* Expanded state */
+  }
+  
+  &-content > div {
+    overflow: hidden; /* Hide content when collapsed */
+  }
+  
+}

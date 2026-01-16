@@ -1,0 +1,85 @@
+{%- for member in team_member %}
+    
+    {%- if pattern == "image-left-alternating" %}
+        {%- capture reversed %}{% cycle 'odd', 'even' %}{% endcapture %}
+    {%- elsif pattern == "image-right-alternating" %}
+        {%- capture reversed %}{% cycle 'even', 'odd' %}{% endcapture %}
+    {%- elsif pattern == "image-left" %}
+        {% assign reversed = "odd" %}
+    {%- elsif pattern == "image-right" %}
+        {%- assign reversed = "even" %}
+    {%- endif %}
+
+    <section class="section team-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ member.component_palette }}" data-block-index="{{ block_index }}.{{ forloop.index }}">
+      
+        <div class="first-of-type-section-spacer"></div>
+      
+        <div class="container">
+              
+            {%- if member.team_image %}
+                
+                <div class="columns {% if reversed == "even" %}vb-reverse-column-order{% endif %}">
+                  
+                    <div class="column is-flex is-align-items-center is-justify-content-center pt-6 pb-6">
+                        
+                        <div class="content gsap-element-wrapper image-wrapper" data-gsap-animation-name="slide-in-from-left" data-gsap-delay="0.75">
+                            
+                            {% assign block_index_with_subsection = block_index | append: "." | append: forloop.index %}
+
+                            {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index_with_subsection %}{% endcapture %}
+                            {%- if set_flag contains "true" %}
+                                {%- assign lazy_load_flag = true %}
+                            {%- else %}
+                                {%- assign lazy_load_flag = false %}
+                            {%- endif %}
+
+                            {%- if member.team_image %}{% assign current_image = member.team_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                            {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: "70" rs_title: member.title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: crop %}
+                          
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="column is-7 is-flex is-align-items-center pt-6 pb-6 {% if reversed == "odd" %}pl-6-tablet{% else %}pr-6-tablet{% endif %}">
+                      
+                        <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-in-from-right" data-gsap-delay="0.4">
+                        
+                            <h2 class="team-name">{{ member.name }}</h2>
+                            <h3 class="team-title">{{ member.title }}</h3>
+                            <div class="team-description">
+                                {{ member.description | markdownify }}
+                            </div>
+                        
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+                
+            {%- else %}
+                
+                <div class="columns">
+                
+                    <div class="column is-10-tablet is-offset-1-tablet is-8-widescreen is-offset-2-widescreen pt-6 pb-6">
+                      
+                        <div class="content gsap-element-wrapper" data-gsap-delay="0.6">
+                        
+                            <h2 class="team-name">{{ member.name }}</h2>
+                            <h3 class="team-title">{{ member.title }}</h3>
+                            <div class="team-description">
+                                {{ member.description | markdownify }}
+                            </div>
+                        
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+                
+            {%- endif %}
+               
+        </div>
+      
+    </section>
+
+{%- endfor %}

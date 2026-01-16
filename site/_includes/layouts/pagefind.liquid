@@ -1,0 +1,42 @@
+<div class="modal" id="modal-search">
+  <div class="modal-background"></div>
+  
+    <div class="modal-card">
+    
+      <header class="modal-card-head">
+        <!-- <p class="modal-card-title">Modal title</p> -->
+        <button class="delete" aria-label="close"></button>
+      </header>
+      
+      <section class="modal-card-body">
+        
+        {%- if processEnv.environment == "production" %}
+
+          <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+          {%- comment %} Viv added css file below to override the defaults. {%- endcomment %}
+          <link href="/css/my-pagefind.css" rel="stylesheet">
+          <script src="/pagefind/pagefind-ui.js"></script>
+          
+          <div id="search"></div>
+          
+          <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+              new PagefindUI({ element: "#search", showSubResults: true });
+            });
+          </script>
+          {%- comment %} The /pagefind/pagefind-ui.css and /pagefind/pagefind-ui.js assets will be created by Pagefind when the site is indexed. {%- endcomment %}
+        
+        {%- else %}
+
+          <p>The PageFind search functionality is only available in the production environment to reduce console errors in development on localhost.</p>
+
+        {%- endif %}
+        
+      </section>
+      
+      <footer class="modal-card-foot">
+      </footer>
+      
+  </div>
+  
+</div>

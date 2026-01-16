@@ -1,0 +1,430 @@
+@use "../../../site/vendor/bulma/sass/utilities/mixins";
+@use "../../../site/vendor/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../site/css/variables" as va;
+
+
+.blog-summary {
+  
+
+  &.vb-theme-lightest {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--lightest-theme-background-color) 100%, black 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--lightest-theme-text-color) 100%, black 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--lightest-theme-background-color) 100%, black 10%);
+    }
+  }
+
+  &.vb-theme-lighter {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--lighter-theme-background-color) 100%, black 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--lighter-theme-text-color) 100%, black 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--lighter-theme-background-color) 100%, black 10%);
+    }
+  }
+
+  &.vb-theme-light {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--light-theme-text-color) 100%, black 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 10%);
+    }
+  }
+
+  &.vb-theme-dark {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 7%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--dark-theme-text-color) 100%, white 7%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 15%);
+    }
+  }
+  &.vb-theme-darker {
+   .card,
+    article {
+      background-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 7%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--darker-theme-text-color) 100%, white 7%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 15%);
+    }
+  }
+  &.vb-theme-darkest {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 7%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--darkest-theme-text-color) 100%, white 7%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 15%);
+    }
+  }
+
+  &.vb-theme-alternate-1 {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--alternate-1-theme-text-color) 100%, white 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-alternate-2 {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--alternate-2-theme-text-color) 100%, white 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-alternate-3 {
+    .card,
+    article {
+      background-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 4%);
+    }
+    .pagination-link,
+    .pagination-previous,
+    .pagination-next {
+      color: color-mix(in srgb, var(--alternate-3-theme-text-color) 100%, white 4%);
+    }
+    .pagination-link.is-current {
+      background-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 10%);
+    }
+  }
+
+  @include mixins.until(iv.$tablet) {
+  }
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  @include mixins.mobile {
+    // Styles applied below $tablet
+    article {
+      padding: 20px;
+    }
+    .image-square img {
+      width: 80%;
+    }
+    .image-portrait img {
+      width: 70%;
+    }
+  }
+  
+  @include mixins.tablet-only {
+    // Styles applied between $tablet and $desktop
+    article {
+      padding: 30px;
+    }
+    .blog-post-details {
+       padding: 0 20px;
+    }
+    .image-square img {
+      width: 75%;
+    }
+    .image-portrait img {
+      width: 70%;
+    }
+  }
+  
+  @include mixins.desktop {
+    // Styles applied above $desktop
+    article {
+      padding: 40px;
+    }
+    .blog-post-details {
+       padding: 0 30px;
+    }
+    .image-square img {
+      width: 75%;
+    }
+    .image-portrait img {
+      width: 60%;
+    }
+  }
+  
+  .blog-post-thumb a {
+    line-height: 0;
+    display: block;
+    text-align: center;
+  }
+
+  .pagination-list a {
+    border-radius: 0;
+    border: none;
+  }
+
+  /* Disable pointer events on the FA icons within the pagination links so JS code doesn't do a full page refresh. */
+  .pagination-next i,
+  .pagination-previous i {
+    pointer-events: none;
+  }
+  
+  h3.blog-post-title {
+    margin-top: 0.5em;
+  }
+  
+  /* Toggles for displaying blog summaries on main blog/tags page. Set via JS.
+  The default view is FLAT not GRID. */
+
+  #show-cards,
+  #hide-cards {
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+  
+  #show-cards.light,
+  #hide-cards.light {
+    opacity: 0.3;
+  }
+  
+  #blog-display-flat {
+    transition: opacity 0.4s;
+  }
+  #blog-display-flat.initial {
+    /* Hide both of the versions (flat and grid) initially to avoid any flicker between changing from flat to grid automatically
+    if that is the one that has been set in the SessionStorage. Show one or the other on initial load via javascript. */
+    opacity: 0;
+  }
+  #blog-display-grid {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+
+    .card {
+      box-shadow: none;
+      border-radius: 0;
+
+      img {
+        border-radius: 0;
+      }
+    }
+  }
+  #blog-display-flat.hide {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  #blog-display-grid.show {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .blog-tags {
+
+    .sub-link {
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+  }
+  
+}
+
+
+
+.blog-single {
+  
+  &.vb-theme-lightest {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--lightest-theme-text-color) 100%, black 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--lightest-theme-text-color) 50%, white 50%);
+    }
+  }
+
+  &.vb-theme-lighter {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--lighter-theme-text-color) 100%, black 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--lighter-theme-text-color) 50%, white 50%);
+    }
+  }
+
+  &.vb-theme-light {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--light-theme-text-color) 50%, white 50%);
+    }
+  }
+
+  &.vb-theme-dark {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 7%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--dark-theme-text-color) 75%, black 25%);
+    }
+  }
+  &.vb-theme-darker {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 7%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--darker-theme-text-color) 75%, black 25%);
+    }
+  }
+  &.vb-theme-darkest {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 7%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--darkest-theme-text-color) 75%, black 25%);
+    }
+  }
+
+  &.vb-theme-alternate-1 {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--alternate-1-theme-text-color) 75%, black 25%);
+    }
+  }
+  &.vb-theme-alternate-2 {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--alternate-2-theme-text-color) 75%, black 25%);
+    }
+  }
+  &.vb-theme-alternate-3 {
+    .blog-post-tags a {
+      background-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 4%);
+    }
+    .next-previous-post {
+      border-top-color: color-mix(in srgb, var(--alternate-3-theme-text-color) 75%, black 25%);
+    }
+  }
+
+  .inner-blog-details h1 {
+    padding-bottom: 0;
+  }
+
+  .inner-blog-details-meta {
+    margin-bottom: 2rem;
+  }
+
+  .content {
+
+    h2,h3,h4,h5,h6 {
+      margin-top: 2rem;
+    }
+  }
+
+  @include mixins.desktop {
+    // Styles applied above $desktop
+    .image-wrapper {
+      margin-left: -150px;
+      margin-right: -150px;
+      margin-bottom: 2em !important;
+    }
+
+  }
+  
+  .next-previous-post {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: solid 2px;
+  }
+  
+  /* --- Embedded gallery --- */
+  
+  section.gallery-component {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  section.gallery-component .container {
+    max-width: none;
+  }
+  section.gallery-component .first-of-type-section-spacer {
+    display: none;
+  }
+
+  /* --- Embedded video --- */
+  
+  section.embed-component {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  section.embed-component .container {
+    max-width: none;
+  }
+  section.embed-component .first-of-type-section-spacer {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  
+  main .blog-single .section.gallery-component:first-of-type {
+    padding-top: 4rem;
+  }
+}
+
+
+.blog-post-tags {
+  margin-bottom: 0.5rem;
+}
+.blog-post-tags a {
+  display: inline-block;
+  padding: 3px 10px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,42 @@
+---
+layout: base.liquid
+---
+
+<section class="section use-gsap">
+  
+    <div class="container">
+        
+        <div class="columns">
+                
+            <div class="column is-offset-1-tablet is-10-tablet is-offset-1-desktop is-10-desktop print-full-width" style="display: flex; flex-direction: column; justify-content: center;">
+        
+                <div class="content gsap-element-wrapper print-full-width" data-gsap-animation-name="slide-up-from-bottom">
+                    
+                    <h1>{{ title }}</h1>
+                    <p><em>The page last updated: {{ date | datePost }}</em></p>
+
+                    <div data-editable="text" data-prop="blurb">{{ blurb | markdownify }}</div>
+                  
+                    <ul class="page-summary-list">
+                        {%- for item in nav-docs.items %}
+
+                            {%- unless item.link == "/" or item.link == page.url %}
+                            <li>
+                                <a href="{{ item.link }}">
+                                   {{ item.text }}
+                                </a>
+                            </li>
+                            {%- endunless %}
+    
+                        {% endfor %}
+                    </ul>
+                       
+                </div>
+                
+            </div>    
+            
+        </div>
+      
+    </div>
+    
+</section>

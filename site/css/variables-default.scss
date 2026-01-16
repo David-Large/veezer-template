@@ -1,0 +1,180 @@
+// IMPORTANT: To make sure the fetch-theme.js can read and parse correctly to produce an updated copy of this based on user-set theme, need to make sure
+// have a space after the colon of the variable (before the values of the variable).
+
+// Looks like need to set the CSS variable for the changes to show up rather than the Sass variable.
+// Then just modify the Sass variable with the changed CSS variable.
+:root {
+  // Generic Variables
+  --bulma-body-line-height: 1.6;
+  // Derived Variables
+  --bulma-family-primary: "Nunito Sans", sans-serif;
+  --bulma-family-secondary: "Nunito Sans", sans-serif;
+  // Bulma Colours
+  --bulma-body-color: #333333;
+  --bulma-link: #666666;
+  // Don't have any override in the theme data file for this below. Don't need?
+  --bulma-body-background-color: #ffffff;
+}
+
+$family-primary: var(--bulma-family-primary);
+$family-secondary: var(--bulma-family-secondary);
+$body-background-color: var(--bulma-body-background-color);
+$body-line-height: var(--bulma-body-line-height);
+$body-color: var(--bulma-body-color);
+$link: var(--bulma-link);
+
+// VB Created
+$main-background-color: #f1f1f1;
+$family-navigation: "Nunito Sans", sans-serif;
+$heading-color: #333333;
+$button-background-color: #ff8a00;
+$button-color: #ffffff;
+
+// Some of these variables (colour) are overriden at build time via the fetch-theme-color.js files (in site/js folder).
+// Can opt to use or not if want to allow that facility in CMS.
+
+// --- NAVBAR COLOR THEME ---
+
+$navbar-background-color: #ffffff;
+$navbar-link-color: #222222;
+$navbar-active-link-color: #ffffff;
+$navbar-active-link-background-color: #ff8a00;
+$navbar-dropdown-background-color: #f5f5f5;
+
+// --- FOOTER COLOR THEME ---
+
+$footer-background-color: #e9e9e9;
+$footer-text-color: #222222;
+$footer-heading-color: #222222;
+$footer-button-background-color: #9aca3c;
+$footer-button-color: #ffffff;
+$footer-link-color: #222222;
+
+// --- COMPONENT COLOR THEMES ---
+
+// --- Lightest 
+$lightest-theme-background-color: #ffffff;
+$lightest-theme-text-color: #333333;
+$lightest-theme-heading-color: #333333;
+$lightest-theme-button-background-color: #ff8a00;
+$lightest-theme-button-color: #ffffff;
+$lightest-theme-link-color: #666666;
+$lightest-theme-table-header-background-color: #cccccc;
+$lightest-theme-table-row-odd-background-color: #ffffff;
+$lightest-theme-table-row-even-background-color: #ffffff;
+
+// --- lighter 
+$lighter-theme-background-color: #f7f7f7;
+$lighter-theme-text-color: #333333;
+$lighter-theme-heading-color: #333333;
+$lighter-theme-button-background-color: #ff8a00;
+$lighter-theme-button-color: #ffffff;
+$lighter-theme-link-color: #666666;
+$lighter-theme-table-header-background-color: #cccccc;
+$lighter-theme-table-row-odd-background-color: #ffffff;
+$lighter-theme-table-row-even-background-color: #ffffff;
+
+// --- Light
+$light-theme-background-color: #eeeeee;
+$light-theme-text-color: #333333;
+$light-theme-heading-color: #333333;
+$light-theme-button-background-color: #ff8a00;
+$light-theme-button-color: #ffffff;
+$light-theme-link-color: #333333;
+$light-theme-table-header-background-color: #cccccc;
+$light-theme-table-row-odd-background-color: #ffffff;
+$light-theme-table-row-even-background-color: #ffffff;
+
+// --- dark 
+$dark-theme-background-color: #999999;
+$dark-theme-text-color: #ffffff;
+$dark-theme-heading-color:#ffffff;
+$dark-theme-button-background-color: #ff8a00;
+$dark-theme-button-color: #ffffff;
+$dark-theme-link-color: #dddddd;
+$dark-theme-table-header-background-color: #cccccc;
+$dark-theme-table-row-odd-background-color: #ffffff;
+$dark-theme-table-row-even-background-color: #ffffff;
+
+// --- darker 
+$darker-theme-background-color: #555555;
+$darker-theme-text-color: #ffffff;
+$darker-theme-heading-color: #ffffff;
+$darker-theme-button-background-color: #ff8a00;
+$darker-theme-button-color: #ffffff;
+$darker-theme-link-color: #dddddd;
+$darker-theme-table-header-background-color: #cccccc;
+$darker-theme-table-row-odd-background-color: #ffffff;
+$darker-theme-table-row-even-background-color: #ffffff;
+
+// --- Darkest
+$darkest-theme-background-color: #111111;
+$darkest-theme-text-color: #ffffff;
+$darkest-theme-heading-color: #ffffff;
+$darkest-theme-button-background-color: #ff8a00;
+$darkest-theme-button-color: #ffffff;
+$darkest-theme-link-color: #dddddd;
+$darkest-theme-table-header-background-color: #cccccc;
+$darkest-theme-table-row-odd-background-color: #ffffff;
+$darkest-theme-table-row-even-background-color: #ffffff;
+
+// --- Alternate 1
+$alternate-1-theme-background-color: #111111;
+$alternate-1-theme-text-color: #ffffff;
+$alternate-1-theme-heading-color: #ffffff;
+$alternate-1-theme-button-background-color: #ff8a00;
+$alternate-1-theme-button-color: #ffffff;
+$alternate-1-theme-link-color: #dddddd;
+$alternate-1-theme-table-header-background-color: #dfdfdf;
+$alternate-1-theme-table-row-odd-background-color: #ffffff;
+$alternate-1-theme-table-row-even-background-color: #f3f3f3;
+
+// --- Alternate 2
+$alternate-2-theme-background-color: #111111;
+$alternate-2-theme-text-color: #ffffff;
+$alternate-2-theme-heading-color: #ffffff;
+$alternate-2-theme-button-background-color: #ff8a00;
+$alternate-2-theme-button-color: #ffffff;
+$alternate-2-theme-link-color: #dddddd;
+$alternate-2-theme-table-header-background-color: #dfdfdf;
+$alternate-2-theme-table-row-odd-background-color: #ffffff;
+$alternate-2-theme-table-row-even-background-color: #f3f3f3;
+
+// --- Alternate 3
+$alternate-3-theme-background-color: #111111;
+$alternate-3-theme-text-color: #ffffff;
+$alternate-3-theme-heading-color: #ffffff;
+$alternate-3-theme-button-background-color: #ff8a00;
+$alternate-3-theme-button-color: #ffffff;
+$alternate-3-theme-link-color: #dddddd;
+$alternate-3-theme-table-header-background-color: #dfdfdf;
+$alternate-3-theme-table-row-odd-background-color: #ffffff;
+$alternate-3-theme-table-row-even-background-color: #f3f3f3;
+
+// --- Page Preloader
+$page-preloader-color: #ff8a00;
+
+// --- Set CSS variables for theme colors to be used in component scss files.
+// --- Used where want to automatically adjust background colours of elements
+// --- on top of the main background colour (e.g. with color-mix in Team Alt component).
+:root {
+  --lightest-theme-background-color: #{$lightest-theme-background-color};
+  --lighter-theme-background-color: #{$lighter-theme-background-color};
+  --light-theme-background-color: #{$light-theme-background-color};
+  --dark-theme-background-color: #{$dark-theme-background-color};
+  --darker-theme-background-color: #{$darker-theme-background-color};
+  --darkest-theme-background-color: #{$darkest-theme-background-color};
+  --alternate-1-theme-background-color: #{$alternate-1-theme-background-color};
+  --alternate-2-theme-background-color: #{$alternate-2-theme-background-color};
+  --alternate-3-theme-background-color: #{$alternate-3-theme-background-color};
+
+  --lightest-theme-text-color: #{$lightest-theme-text-color};
+  --lighter-theme-text-color: #{$lighter-theme-text-color};
+  --light-theme-text-color: #{$light-theme-text-color};
+  --dark-theme-text-color: #{$dark-theme-text-color};
+  --darker-theme-text-color: #{$darker-theme-text-color};
+  --darkest-theme-text-color: #{$darkest-theme-text-color};
+  --alternate-1-theme-text-color: #{$alternate-1-theme-text-color};
+  --alternate-2-theme-text-color: #{$alternate-2-theme-text-color};
+  --alternate-3-theme-text-color: #{$alternate-3-theme-text-color};
+}

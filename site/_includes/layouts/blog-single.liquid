@@ -1,0 +1,83 @@
+---
+layout: base.liquid
+---
+
+{%- comment %} Get the palette colour selected in the 'blog' page. {% endcomment %}
+{%- assign page_array = collections.all %}
+{%- for item in page_array %}
+    {%- if item.data._schema == "blog" %}
+        {%- assign blog_palette = item.data.component_palette %}
+        {%- assign show_tags = item.data.show_tags %}
+    {%- endif %}
+{%- endfor %}
+
+{%- bookshop "navigation/breadcrumbs" is_blog_post: true title: title full_container_width: "false" content_alignment: "centered" component_palette: blog_palette content_padding_top: 5 content_padding_bottom: 0 %}
+
+<section class="section blog-single use-gsap vb-theme-{{ blog_palette }} pt-6">
+        
+    <div class="container">
+                 
+        <div class="columns">
+                  
+            <div class="column is-offset-2-desktop is-8-desktop">
+                                  
+                <div class="content print-full-width">
+                        
+                    <article class="blog-single">
+                            
+                        <div class="inner-blog-details gsap-element-wrapper has-text-centered" data-gsap-animation-name="slide-down-from-top" data-gsap-delay="0.2">
+                          
+                            <h1>{{ title }}</h1>
+                            
+                            {%- if show_tags == true %}
+                                <div class="blog-post-tags">
+                                {%- for tag in tags %}
+                                    {% if tag != "blog" %}<a href="/tags/{{ tag | slugify}}/"> {{ tag }} </a>{% endif %}
+                                {%- endfor %}
+                                </div>
+                            {%- endif %}
+                            
+                            <div class="inner-blog-details-meta">
+                                <p>{{ date | datePost }}{%- if author %} &nbsp; | &nbsp; {{ author }}{%- endif %}</p>
+                            </div>
+                            
+                            <p class="gsap-element-wrapper image-wrapper" data-gsap-animation-name="slide-down-from-top">
+                                {%- if blog_feature_image %}{% assign current_image = blog_feature_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                                {% bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_quality: "70" rs_title: title rs_multi_column_max_image_width: "75vw" %}
+                            </p>
+
+                        </div>
+                            
+                        <div class="gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.2">
+                            {{ content }}
+                        </div>
+                        
+                        {%- if photos %}
+                          {%- bookshop "gallery/gallery" photos: photos component_palette: blog_palette content_padding_top: "2" content_padding_bottom: "2" %}
+                        {% endif %}
+                        
+                        {%- if embed_code %}
+                          {% bookshop "embed/embed" embed_code: embed_code component_palette: blog_palette content_padding_top: "2" content_padding_bottom: "2" %}
+                        {% endif %}
+                          
+                    </article>
+                    
+                    <div class="next-previous-post gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.4">
+                        {% assign previousPost = collections.blog | getPreviousCollectionItem %}
+                        {% assign nextPost = collections.blog | getNextCollectionItem %}
+                        
+                        {% if nextPost %}<p>{%- bookshop_include "icons" icon_name: "Arrow Right" %} &nbsp; <strong>Next Post:</strong> <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></p>{% endif %}
+                        {% if previousPost %}<p>{%- bookshop_include "icons" icon_name: "Arrow Left" %} &nbsp; <strong>Previous Post:</strong> <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></p>{% endif %}
+                    </div>
+                    
+                </div>
+                      
+            </div>
+            
+        </div>
+           
+    </div>
+                      
+</section>
+
+{% bookshop "blog/latest-posts" number_posts: 3 title: "Latest Posts" component_palette: "light" content_padding_top: 5 content_padding_bottom: 5 %}

@@ -1,0 +1,61 @@
+<section class="section breadcrumbs-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}" data-pagefind-ignore>
+  
+    <div class="first-of-type-section-spacer"></div>
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column {% if full_container_width != true %}is-8-tablet is-offset-2{% endif %}">
+              
+                <div class="content">
+                  
+                    <nav class="breadcrumb {% if content_alignment %}is-{{ content_alignment }}{% endif %}" aria-label="breadcrumbs">
+                      
+                        <ul class="gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left">
+
+                            {% if is_blog_post %}
+                                <li>
+                                    <a class="button" href="/blog/" aria-current="page">Blog</a>
+                                </li>
+                                
+                                <li class="is-active">
+                                    <a href="#" aria-current="page">{{ title }}</a>
+                                </li>
+                            {% else %}
+               
+                                {%- for item in nav.items %}
+                            
+                                    {%- if item.sub_navigation %}
+                                
+                                        {%- if item.sub_navigation_group_title == navigation_group and item.sub_navigation_group_title != "" and item.sub_navigation_group_title != nil %}
+                            
+                                            <li>
+                                                <a class="button" href="{{ item.link }}" aria-current="page">{{ item.text }}</a>
+                                            </li>
+                                            
+                                            <li class="is-active">
+                                                <a href="#" aria-current="page">{{ title }}</a>
+                                            </li>
+                                                
+                                        {%- endif %}
+                                
+                                    {%- endif %}
+                                
+                                {%- endfor %}
+
+                            {% endif %}
+                            
+                        </ul>
+                    
+                    </nav>
+                
+                </div>
+    
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

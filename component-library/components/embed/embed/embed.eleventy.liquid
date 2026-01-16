@@ -1,0 +1,25 @@
+<section class="section embed-component section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+      
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column">
+              
+                {%- for embed in embed_code %}
+                <div class="content">
+                    <div class="embed-wrapper{% if embed.embed_aspect_ratio != 'none' %} {{ embed.embed_aspect_ratio }}{% endif %}">
+                        {{ embed.code_block }}
+                    </div>
+                </div>
+                {%- endfor %}
+              
+            </div>
+        
+        </div>
+    
+    </div>
+      
+</section>

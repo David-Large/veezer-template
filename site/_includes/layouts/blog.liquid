@@ -1,0 +1,112 @@
+---
+layout: base.liquid
+---
+
+{%- bookshop "basic/header" title: "News" title_size: "h1" full_container_width: "false" content_alignment: "centered" component_palette: component_palette content_padding_top: 5 content_padding_bottom: 0 %}
+
+<section class="section blog-summary vb-theme-{{ component_palette }} pt-0">
+    
+    <div class="container">
+              
+        <div class="columns pb-4">
+                
+            <div class="column is-8-desktop is-offset-2 use-gsap">
+                                
+                <div class="content gsap-element-wrapper print-full-width" data-gsap-animation-name="slide-down-from-top">
+          
+                    <div class="blog-tags has-text-centered">
+                        {%- if show_layout_selector == true %}
+                            <div>
+                                <span style="inline-block" id="show-cards">
+                                    {%- bookshop_include "icons" icon_name: "Table" %}
+                                </span>
+                                <span style="inline-block" id="hide-cards">
+                                    {%- bookshop_include "icons" icon_name: "List" %}
+                                </span>
+                            </div>
+                        {%- endif %}
+                        {%- if show_tags == true %}
+                            <a href="/blog/" class="button single-line {% if page.url == '/blog/' %} selected{% endif %}">ALL</a>
+                            {% assign sorted_tags = blog-tags | sort: "title" %}
+                            {%- for tag in sorted_tags %}
+                                {% assign tag_slug = tag.title | slugify %}
+                                <a href="/tags/{{ tag_slug }}/" class="button single-line {% if page.url contains tag_slug %} selected{% endif %}">{{ tag.title }}</a>
+                            {%- endfor %}
+                        {%- endif %}
+                    </div>
+                        
+                </div>
+                    
+            </div> 
+                          
+        </div>
+        
+        <!-- NOTE: Need the overflow hidden to catch any overflow between the longest of the 'blog-display-flat' and the 'blog-display-grid'
+        The relative positioning helps keep jumps from happening when changing between the two views. -->
+        <div style="overflow: hidden; position: relative;">
+        
+            <div id="blog-display-flat" {% if show_layout_selector == true %}class="initial"{% endif %}>
+                
+                {% for blog in blog %}
+                    
+                    {% include "./layouts/blog-post-summary" blog: blog %}
+                        
+                {% endfor %}
+                
+            </div>
+            
+            <div id="blog-display-grid">
+              
+                <div class="masonry-container">
+                  
+                    {% for blog in blog %}
+
+                        {% include "./layouts/blog-post-summary-masonry" blog: blog %}
+                        
+                    {% endfor %}
+                      
+                </div>
+            
+            </div>
+        
+        </div>
+          
+        <div class="columns use-gsap">
+              
+            <div class="column gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom">
+
+                {% assign variable = pagination.hrefs | size %}
+                {% if variable > 1 %}
+                    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                        <ul class="pagination-list">
+                        {% if pagination.href.previous %}
+                            <li>
+                                <a class="pagination-previous" href="{{ pagination.href.previous }}">
+                                    {%- bookshop_include "icons" icon_name: "Arrow Left" %}
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% for pageEntry in pagination.hrefs %}
+                            <li>
+                              <a class="pagination-link {% if page.url == pageEntry %}is-current{% endif %}" href="{{ pageEntry }}">{{ forloop.index }}
+                              </a>
+                            </li>
+                        {% endfor %}
+                        {% if pagination.href.next %}
+                            <li>
+                                <a class="pagination-next" href="{{ pagination.href.next }}">
+                                    {%- bookshop_include "icons" icon_name: "Arrow Right" %}
+                                </a>
+                            </li>
+                        {% endif %} 
+                        </ul>
+                    </nav>
+                {% endif %}
+                
+            </div>
+                         
+        </div>
+         
+    </div>
+                      
+</section>

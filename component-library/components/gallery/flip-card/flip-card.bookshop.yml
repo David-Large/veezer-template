@@ -1,0 +1,49 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Flip Card
+  description: Double-sided cards with toggled flip.
+  icon: flip
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  card_aspect_ratio: auto
+  cards:
+    - front:
+        flip_card_image: /uploads/flip-cards/placeholder.jpg
+        button_text: More...
+      back:
+        title: Title...
+        description: Description...
+        button_text: X
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  flip_card_image:
+    type: image
+    options:
+      width: 1000
+      height: 1000
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/flip-cards
+    label: Flip Card Image
+  card_aspect_ratio:
+    type: select
+    comment: "If set to 'original' the card heights in a row will be set by the card in that row with the most text content."
+    options:
+      allow_empty: false
+      values:
+        "auto": "Original"
+        "1": "Square"
+        "1.33": "Wide"
+        "0.75": "Tall"

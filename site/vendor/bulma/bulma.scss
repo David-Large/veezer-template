@@ -1,0 +1,9 @@
+// Your custom variables (before importing Bulma)
+@use "../../../site/css/variables";
+// Import Bulma
+@use "sass" with (
+  // Keep all the original values for spacing helpers like what you find here: https://bulma.io/documentation/helpers/spacing-helpers/
+  // But add a '-7' value which equates to 4rem.
+  // See to need to put this here. Doesn't work if put in scss/variables file.
+  $spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "7": 4rem, "auto": auto)
+);

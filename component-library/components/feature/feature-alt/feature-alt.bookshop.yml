@@ -1,0 +1,51 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Feature Alt
+  description: Feature image (no padding) with text.
+  icon: stars
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  title: Title...
+  description: Content...
+  img:
+    feature_image:
+    image_column_narrow: false
+    crop: "auto"
+    use_parallax: false
+  button:
+    link: /
+    text: Link Button
+    hide_button: false
+  reversed: false
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  description:
+    type: markdown
+  reversed:
+    type: checkbox
+    comment: "Reverse items from left to right"
+  use_parallax:
+    type: checkbox 
+    comment: "Enables a parallax scrolling effect on the hero image (disabled for mobile - below 1024px)."
+  crop:
+    type: select
+    comment: "Will be the ratio of the image shown on single column mobile view. In two-column larger view, will display image at this aspect ratio UNLESS there is more text in the adjacent text that pushes the column larger vertically. Using 'Auto' will display the image in full width of the column and full height of the image (single column mobile and larger views)."
+    options:
+      allow_empty: false
+      values:
+        "auto": "Original"
+        "1": "Square"
+        "1.33": "Wide"
+        "0.75": "Tall"
+  

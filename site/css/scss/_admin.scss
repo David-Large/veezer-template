@@ -1,0 +1,54 @@
+.editor-content {
+  display: none;
+}
+.cms-editor-active .editor-content {
+  display: block;
+  padding: 5px 10px;
+  background-color: cornsilk !important;
+  color: #000 !important
+}
+
+.cms-editor-active .hide-content-in-editor {
+  display: none !important;
+}
+
+#screen-size-indicator {  
+  
+  position: fixed;
+  z-index: 1005;
+  top: 0;
+  right: 0;
+  background: orange;
+  padding: 2px;
+  font-size: 0.9rem;
+  color: #fff;
+
+  @media screen and (max-width: 768px) {
+    .indicator-small {
+      display: inline-block;
+    }
+    .indicator-medium,
+    .indicator-large {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    .indicator-medium {
+      display: inline-block;
+    }
+    .indicator-small,
+    .indicator-large {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .indicator-large {
+      display: inline-block;
+    }
+    .indicator-small,
+    .indicator-medium {
+      display: none;
+    }
+  }
+
+}

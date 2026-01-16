@@ -1,0 +1,65 @@
+<header class="navigation-header">
+  
+  <div id="opaque-mask"></div>
+  
+  {%- for item in nav.items %}
+    	    
+    {%- if item.enable_dropdown and item.dropdown %}
+              
+      {%- for dropdown_item in item.dropdown %}
+                      
+        {%- if page.url == dropdown_item.dropdown_link %}
+            {%- if dropdown_item.transparent == true %}
+                {%- assign transparent = true %}
+            {%- endif %}
+        {%- endif %}
+                                 
+      {%- endfor %}
+                
+    {%- else %}
+              
+      {%- if page.url == item.link %}
+          {%- if item.transparent == true %}
+              {%- assign transparent = true %}
+          {%- endif %}
+      {%- endif %}
+      
+    {%- endif %}
+                        
+  {%- endfor %}
+		
+	<div class="navbar{% if transparent == true %} transparent{% endif %}" role="navigation" aria-label="main navigation" id="main-navigation-wrapper">
+	  
+	  <div class="navbar-brand">
+	    
+  	  <a class="navbar-item logo-holder" href="/" aria-label="Home">
+        {%- comment %} ++++++ The 'image-width' and 'image-height' variables are filters created in eleventy.js {% endcomment %}
+        {%- assign logo_width = site.site_logo | prepend: "site" | image-width %}
+        {%- assign logo_height = site.site_logo | prepend: "site" | image-height %}
+  	    <img id="logo" src="{{ site.site_logo }}" alt="{{ site.title }}" style="pointer-events: none;" width="{{ logo_width }}" height="{{ logo_height }}" />
+  	  </a>
+
+	    <a role="button" class="navbar-burger hide-for-print" aria-label="menu" aria-expanded="false" data-target="main-navbar">
+	      <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	    
+	  </div>
+
+	  <nav id="main-navbar" class="navbar-menu">
+
+      {% include './layouts/navigation-navbar-start.liquid' nav_data_file: nav %}
+	    
+	    <div class="navbar-end">
+	      
+	        <button class="button js-modal-trigger" id="show-modal-search" data-target="modal-search" aria-label="Open Search Modal">{%- bookshop_include "icons" icon_name: "Magnifying Glass" %}</button>
+	   
+      </div>
+
+	  </nav>
+	  
+	</div>
+  
+</header>

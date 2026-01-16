@@ -1,0 +1,115 @@
+{%- if processEnv.environment == "production" %}
+  {%- assign base_url = site.base_url %}
+{%- else %}
+  {%- assign base_url = "" %}
+{%- endif %}
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta property="og:url" content="{{ base_url }}{{ page.url | url }}" />
+{%- comment %} Page description for SEO {% endcomment %}
+      <meta property="og:site_name" content="{{ site.site_title | replace: '"','\'' }}" />
+{%- if seo.meta_description %}
+      <meta name="description" content="{{ seo.meta_description | replace: '"','\'' }}" />
+      <meta property="og:description" content="{{ seo.meta_description | replace: '"','\'' }}" />
+      <meta name="twitter:description" content="{{ seo.meta_description | replace: '"','\'' }}" />
+{%- elsif excerpt %}
+      <meta name="description" content="{{ excerpt | replace: '"','\'' }}" />
+      <meta property="og:description" content="{{ excerpt | replace: '"','\'' }}" />
+      <meta name="twitter:description" content="{{ excerpt | replace: '"','\'' }}" />
+{%- else %}
+      <meta name="description" content="{{ site.site_description | replace: '"','\'' }}" />
+      <meta property="og:description" content="{{ site.site_description | replace: '"','\'' }}" />
+      <meta name="twitter:description" content="{{ site.site_description | replace: '"','\'' }}" />
+{%- endif %}
+
+{%- comment %} meta tags for open graph and twitter {% endcomment %}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@{{ site.twitter_site }}" />
+
+{%- if page.url == "/" %}
+
+      <meta property="og:title" content="{{ site.site_title | replace: '"','\'' }}" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="{{ base_url }}{{ site.site_image }}" />
+      <meta name="twitter:title" content="{{ site.site_title | replace: '"','\'' }}" />
+      <meta name="twitter:creator" content="@{{ site.twitter_site }}" />
+  {%- if site.twitter_image %}
+      <meta name="twitter:image" content="{{ base_url }}{{ site.twitter_image }}" />
+  {%- else %}
+      <meta name="twitter:image" content="{{ base_url }}{{ site.site_image }}" />
+  {%- endif %}
+      <meta name="twitter:image:alt" content="{{ site.site_title | replace: '"','\'' }}" />
+  
+{%- else %}
+
+  {%- if seo.meta_title %}
+      <meta property="og:title" content="{{ seo.meta_title | replace: '"','\'' }}" />
+      <meta name="twitter:title" content="{{ seo.meta_title | replace: '"','\'' }}" />
+  {%- else %}
+      <meta property="og:title" content="{{ title | replace: '"','\'' }} | {{ site.site_title | replace: '"','\'' }}" />
+      <meta name="twitter:title" content="{{ title | replace: '"','\'' }} | {{ site.site_title | replace: '"','\'' }}" />
+  {%- endif %}
+  {%- if seo.open_graph_type %}
+      <meta property="og:type" content="{{ seo.open_graph_type }}" />
+  {%- else %}
+      <meta property="og:type" content="website" />
+  {%- endif %}
+  {%- if seo.meta_image %}
+      <meta property="og:image" content="{{ base_url }}{{ seo.meta_image }}" />
+      <meta name="twitter:image" content="{{ base_url }}{{ seo.meta_image }}" />
+  {%- elsif blog_feature_image %}
+      <meta property="og:image" content="{{ base_url }}{{ blog_feature_image }}" />
+      <meta name="twitter:image" content="{{ base_url }}{{ blog_feature_image }}" />
+  {%- else %}
+      <meta property="og:image" content="{{ base_url }}{{ site.site_image }}" />
+    {%- if site.twitter_image %}
+      <meta name="twitter:image" content="{{ base_url }}{{ site.twitter_image }}" />
+    {%- else %}
+      <meta name="twitter:image" content="{{ base_url }}{{ site.site_image }}" />
+    {%- endif %}
+  {%- endif %}
+      <meta name="twitter:image:alt" content="{{ title | replace: '"','\'' }} | {{ site.site_title | replace: '"','\'' }}" />
+  {%- if seo.author_twitter_handle %}  
+      <meta name="twitter:creator" content="@{{ seo.author_twitter_handle }}" />
+  {%- else %}
+      <meta name="twitter:creator" content="@{{ site.twitter_site }}" />
+  {%- endif %}
+  
+{%- endif %}
+
+{%- comment %} Add robots no index {% endcomment %}
+{%- if seo.no_index %}
+      <meta name="robots" content="noindex">
+      <meta name="googlebot" content="noindex">
+{%- endif %}
+
+{%- comment %} Canonical URL for SEO {% endcomment %}
+{%- if seo.canonical_url %}
+      <link rel="canonical" href="{{ base_url }}{{ seo.canonical_url | url }}" />
+{%- else %}
+      <link rel="canonical" href="{{ base_url }}{{ page.url | url }}" />
+{%- endif %}
+
+{%- comment %} Google Structured Data {% endcomment %}
+{%- if seo.meta_title %}
+    {% assign schema_title = seo.meta_title | replace: '"','\'' %}
+{%- else %}
+    {%- assign schema_title = title | replace: '"','\'' | append: " | " | append: site.site_title | replace: '"','\'' %}
+{%- endif %}
+{%- if seo.meta_description %}
+    {%- assign schema_description = seo.meta_description | replace: '"','\'' %}
+{%- elsif excerpt %}
+    {%- assign schema_description = excerpt | replace: '"','\'' %}
+{%- else %}
+    {%- assign schema_description = site.site_description | replace: '"','\'' %}
+{%- endif %}
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Website",
+        "name": "{{ site.site_title | replace: '"','\'' }}",
+        "headline": "{{ schema_title }}",
+        "description": "{{ schema_description }}",
+        "url": "{{ base_url }}{{ page.url | url }}"
+      }
+      </script>

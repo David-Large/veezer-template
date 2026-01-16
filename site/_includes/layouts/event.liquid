@@ -1,0 +1,100 @@
+---
+layout: base.liquid
+---
+
+{%- capture now-unix %}{{ "now" | dateUnixIntegerNow | minus: "86400" }}{% endcapture %}
+{%- comment %} +++ Check if date is in the future +++ {% endcomment %}
+{%- if event_end_date %}
+    {%- capture event-time %}{{ event_end_date | dateUnixInteger }}{% endcapture %}
+{%- else %}
+    {%-capture event-time %}{{ event_date | dateUnixInteger }}{% endcapture %}
+{%- endif %}
+{%- if now-unix <= event-time %}
+    {%- assign event-in-past="false" %}
+{%- else %}
+    {%- assign event-in-past="true" %}
+{%- endif %}
+
+{%- comment %} Get the palette colour selected in the 'events' summary page. {% endcomment %}
+{%- for page in collections.all %}
+    {%- if page.url == "/events/" %}
+        {%- assign events_palette = page.data.component_palette %}
+    {%- endif %}
+{%- endfor %}
+
+<section class="section event-header-links-wrapper vb-theme-{{ events_palette }} section-padding-top-4 section-padding-bottom-0 use-gsap">
+    <div class="first-of-type-section-spacer"></div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-1-tablet is-offset-2-desktop is-10-tablet is-8-desktop">
+                <div class="content gsap-element-wrapper event-main-title" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.5">
+                    <a class="button single-line selected" href="/events/" aria-current="page">{%- bookshop_include "icons" icon_name: "Arrow Left" %} ALL Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- bookshop "basic/header" title: title title_size: "h1" full_container_width: "false" content_alignment: "centered" component_palette: events_palette content_padding_top: 1 content_padding_bottom: 0 %}
+
+{% include "./layouts/gallery-event" class: "event-detail-wrapper" events_palette: events_palette content_padding_top: 1 content_padding_bottom: 3 %}
+
+<section class="section use-gsap vb-theme-{{ events_palette }} pt-5 event-detail-wrapper">
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column is-6-desktop print-full-width">
+              
+                <div class="content gsap-element-wrapper event-main-title" data-gsap-animation-name="slide-up-from-bottom">
+                    
+                    <h2>{{ title }}</h2>
+                    
+                    <h3>
+                        {%- bookshop_include "icons" icon_name: "Calendar" %}
+                        {% assign display_event_date = event_date | dateEventFull %}
+                        {% if event_end_date %}
+                            {% assign display_event_end_date = event_end_date | dateEventFull %}
+                        {% endif %}
+                        {{ display_event_date }}
+                        {%- if display_event_end_date and display_event_end_date != display_event_date %}
+                            - {{ display_event_end_date }}
+                        {%- endif %}
+                    </h3>
+                    
+                    {{ content }}
+                    
+                </div>
+             
+            </div>
+            
+            <div class="column is-offset-1-desktop print-full-width">
+              
+                <div class="content gsap-element-wrapper event-spec-list" data-gsap-animation-name="slide-up-from-bottom">
+            		    
+                		{%- if event_duration %}
+                		    <p><strong>Duration:</strong> {{ event_duration }}</p>
+                		{%- endif %}
+                		
+                		{%- if event_start_time %}
+                  		  <p><strong>Start Time:</strong> {{ event_start_time }}{% if event_start_time_notes %} - {{ event_start_time_notes }}{% endif %}</p>
+                		{%- endif %}
+                		
+                		{%- if event_start_location %}
+                  		  <p><strong>Start Location:</strong> {{ event_start_location }}</p>
+                		{%- endif %}
+                	
+                		{%- if event_cost %}
+                		    <p><strong>Cost:</strong> {{ event_cost }}</p>
+                		{%- endif %}
+                		
+                </div>
+                
+            </div>
+        
+        </div>
+    
+    </div>
+                
+</section>

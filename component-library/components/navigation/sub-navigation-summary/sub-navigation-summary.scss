@@ -1,0 +1,50 @@
+.cms-editor-active {
+  
+  .sub-navigation-summary-component {
+  
+    .filter-item .content {
+      opacity: 1;
+      scale: 1;
+    }
+    
+    .summary-item {
+      opacity: 1;
+      scale: 1;
+    }
+    
+  }
+}
+
+
+.sub-navigation-summary-component {
+    
+    /* GSAP Stagger batched stagger function will change these values. */
+    .filter-item .content,
+    .summary-item {
+      opacity: 0;
+      scale: 0.9;
+    }
+    
+    .cover-mask {
+      position: absolute;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background-color: #ffffff;
+      
+      transition: 0.35s ease-in-out opacity; 
+      opacity: 0;
+    }
+    
+    .cover-mask.opaque {
+      opacity: 1;
+      /* By adding 'transition: none' below, it means the transition will only work one way.
+      That is, it will go fully opaque as soon as this class is added BUT when the class is removed
+      it will be the slow transition. */
+      transition: none;
+    }
+    
+}

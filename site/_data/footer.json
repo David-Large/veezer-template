@@ -1,0 +1,65 @@
+{
+  "copyright": "Lumina Brand Site",
+  "sections": [
+    {
+      "title": "Docs",
+      "links": [
+        {
+          "text": "Documentation",
+          "link": "/documentation/",
+          "open_in_new_tab": false
+        },
+        {
+          "text": "Installation",
+          "link": "/documentation/installation/",
+          "open_in_new_tab": false
+        },
+        {
+          "text": "Image Credits",
+          "link": "/documentation/image-credits/",
+          "open_in_new_tab": false
+        },
+        {
+          "text": "404 Page",
+          "link": "/404/",
+          "open_in_new_tab": false
+        }
+      ]
+    },
+    {
+      "title": "Tools",
+      "links": [
+        {
+          "text": "Github",
+          "link": "https://github.com",
+          "open_in_new_tab": true
+        },
+        {
+          "text": "CloudCannon",
+          "link": "https://cloudcannon.com",
+          "open_in_new_tab": true
+        },
+        {
+          "text": "Eleventy",
+          "link": "https://www.11ty.dev/",
+          "open_in_new_tab": true
+        },
+        {
+          "text": "GSAP",
+          "link": "https://gsap.com/",
+          "open_in_new_tab": true
+        },
+        {
+          "text": "Bulma",
+          "link": "https://bulma.io/",
+          "open_in_new_tab": true
+        },
+        {
+          "text": "Fullscreen Lightbox",
+          "link": "https://fslightbox.com/",
+          "open_in_new_tab": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+This folder contains JS modules that relate to specific Bookshop components.

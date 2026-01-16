@@ -1,0 +1,51 @@
+.tabs-component {
+  
+    /* Avoid the footer being  up high and then being pushed down after the first tab displays. */
+    min-height: 95vh;
+    
+    .tab-cover-mask {
+        position: absolute;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        /* background-color: #ffffff; */
+        
+        transition: 0.25s ease-in-out opacity; 
+        opacity: 0;
+    }
+      
+    .tab-cover-mask.opaque {
+        opacity: 1;
+        /* By adding 'transition: none' below, it means the transition will only work one way.
+        That is, it will go fully opaque as soon as this class is added BUT when the class is removed
+        it will be the slow transition. */
+        transition: none;
+    }
+    
+    .tab-items-wrapper {
+        position: relative;
+        margin-top: 2rem;
+    }
+    
+    /* Initially hide all tabs. Use height to hide rather than 'display: none' so keeps images loading, etc in all tabs. */
+    .tab-items-wrapper .tab-item {
+        height: 0;
+        overflow: hidden;
+    }
+
+}
+
+/* Keep all tabs open in editor. */
+.cms-editor-active {
+  
+    .tabs-component .tab-items-wrapper .tab-item {
+        height: auto;
+        overflow: visible;
+        margin-bottom: 10px;
+        border: dotted 1px #999;
+    }
+   
+}

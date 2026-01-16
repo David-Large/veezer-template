@@ -1,0 +1,36 @@
+// Add Custom CSS here, override the defaults
+
+// Clip-path shapes
+.clip-path {
+
+  &.none {
+    clip-path: none;
+  }
+  &.circle {
+    clip-path: circle();
+  }
+  &.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  &.rhombus {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+  &.pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  }
+  &.hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  &.octagon {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+  &.trapezoid {
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  }
+
+}
+
+// Remove the border radius from all of the modal markup.
+.modal * {
+  border-radius: 0 !important;
+}

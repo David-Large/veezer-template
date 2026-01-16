@@ -1,0 +1,129 @@
+---
+layout: base.liquid
+---
+
+{%- if is_section_summary_page != true %}
+
+    <section class="section use-gsap">
+      
+        <div class="container">
+          
+            <div class="columns is-multiline">
+              
+                <div class="column is-offset-1-tablet is-10-tablet is-offset-1-desktop is-10-desktop print-full-width">
+                  
+                    <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.4">
+                      
+                        <h4>Site Documentation:</h4>
+    
+                        <h1>{{ title }}</h1>
+                        <p><em>The page last updated: {{ date | datePost }}</em></p>
+                    
+                    </div>
+                 
+                </div>
+                
+                <div class="column is-offset-1-tablet is-10-tablet is-offset-1-desktop is-10-desktop print-full-width">
+                  
+                    <div class="content gsap-element-wrapper event-title" data-gsap-animation-name="slide-down-from-top">
+    
+                       {{ content }}
+                      
+                    </div>
+                    
+                </div>
+    
+            </div>
+            
+        </div>
+        
+    </section>
+
+{%- else %}
+
+    <section class="section docs-section-summary-page use-gsap">
+      
+        <div class="container">
+        
+            <div class="columns is-multiline">
+        
+                <div class="column is-offset-1-tablet is-10-tablet is-offset-1-desktop is-10-desktop print-full-width">
+              
+                    <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.4">
+                      
+                        <h4>Site Documentation:</h4>
+        
+                        <h1>{{ title }}</h1>
+
+                        {{ content }}
+        
+                        <p class="lead">Pages in this section:</p>
+                    
+                    </div>
+             
+                </div>
+        
+                <div class="column is-offset-1-tablet is-10-tablet is-offset-1-desktop is-10-desktop print-full-width">
+        
+                    <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.7">
+    
+                        <ul class="page-summary-list">
+                    
+                            {%- for item in nav-docs.items %}
+                                
+                                {%- if item.sub_navigation %}
+
+                                    {%- if item.sub_navigation_group_title == navigation_group_docs %}
+                                  
+                                        {%- for sub_navigation_item in item.sub_navigation %}
+                                            
+                                            {%- comment %}
+                                            In an older non-unified config version, could use a 'where' clause to narrow down the items.                    
+                                            Can't seem to do that now so just using a basic loop.                                                          
+                                            (%- assign pg_array = collections["pages"] | where: "url", sub_navigation_item.link %)
+                                            ( %- assign pg = pg_array[0] %)
+                                            {% endcomment %}
+                                            
+                                            {%- assign pg_array = collections["documentation"] %}
+                                            
+                                            {%- for pg in pg_array %}
+            
+                                                {%- comment %}
+                                                There is a quirk when in the CloudCannon visual editor and using Bookshop. The URL instead of matching the permalink will
+                                                be prepended with '/site/pages' and also will have the trailing slash removed and instead have '.html' appended.
+                                                Use a corrected URL for the editing site (it wont be changed in non-editing sites).
+                                                {% endcomment %}
+                                                {%- assign corrected_url = pg.url | replace: "/site/pages","" | replace: ".html","/" %}
+                                                
+                                                {%- if corrected_url == sub_navigation_item.link %}   
+                                                        
+                                                    <li>
+                                                        <a href="{{ sub_navigation_item.link }}">{{ sub_navigation_item.text }}</a>
+                                                    </li> 
+                                                
+                                                {%- endif %}
+                                            
+                                            {%- endfor %}
+                                
+                                        {%- endfor %}
+                                              
+                                    {%- endif %}
+                                      
+                                {%- endif %}
+                                      
+                            {%- endfor %}
+    
+                        </ul>
+    
+                    </div>
+    
+                </div>
+                    
+            </div>
+            
+        </div>
+          
+    </section>
+{%- endif %}
+
+

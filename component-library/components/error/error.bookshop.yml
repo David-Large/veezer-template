@@ -1,0 +1,36 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Error
+  description: 404 error (page not found).
+  icon: error
+  tags: ["error"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  description: "Something is wrong here!"
+  error_image:
+  image_alt: Error
+  button:
+    text: Homepage
+    link: /
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  description:
+    type: markdown
+  error_image:
+    type: image
+    options:
+      width: 1200
+      height: 1200
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/error
+    label: Error Image

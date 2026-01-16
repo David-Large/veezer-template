@@ -1,0 +1,159 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as va;
+
+
+.cms-editor-active .carousel-mini-component .carousel-mini-slide {
+    opacity: 1;
+}
+
+.cms-editor-active .carousel-mini-component .content * {
+    opacity: 1 !important;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.carousel-mini-component.pt-0 .column {
+  padding-top: 0;
+}
+.carousel-mini-component.pb-0 .column {
+  padding-bottom: 0;
+}
+
+
+.carousel-mini-component {
+  
+  position: relative;
+  min-height: 200px;
+  
+  i,
+  [class*="material-symbols"] {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 5px;
+    /* Click is on the link wrapping the slide. If don't have this, clicking on the icon doesn't work.
+    Needs to click through the icon to the underlying link (since the icon is absolutely positioned above the link) */
+    pointer-events: none
+  }
+  
+  .carousel-mini-outer {
+    position: relative;
+    height: 100%;
+  }
+  
+  .carousel-mini-middle {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .carousel-mini-inner {
+    display: flex;
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .carousel-mini-inner.carousel-mini-slide-on {
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+  }
+  
+  .carousel-mini-slide {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Fix the small space added below the img tag and the container div */
+  .carousel-mini-slide img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .carousel-mini-nav-container {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .carousel-mini-prev, .carousel-mini-next {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    cursor: pointer;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.4s background-color ease;
+    border-radius: 3px;
+    user-select: none;
+    background-color: rgba(0,0,0,0.075);
+  }
+  
+  .carousel-mini-next {
+    right: 0;
+  }
+  
+  .carousel-mini-prev:hover, .carousel-mini-next:hover {
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+  }
+  
+  .carousel-mini-nav-dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .carousel-mini-active, .carousel-mini-nav-dot:hover {
+    background-color: #717171;
+  }
+  
+  /* --- SLIDE FADE IN --- */
+  
+  .carousel-mini-fade-in {
+    animation-name: carousel-mini-fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+  }
+  
+  @keyframes carousel-mini-fade-in {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+  
+  /* if SLIDING option is on, then can keep all individual slides visible --- */
+  .carousel-mini-slide-on .carousel-mini-slide {
+    opacity: 1;
+  }
+  
+  .carousel-mini-slide-on .carousel-mini-slide.carousel-mini-fade-in {
+    animation: none;
+    opacity: 1;
+  }
+  
+}
+

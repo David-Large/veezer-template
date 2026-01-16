@@ -1,0 +1,96 @@
+<section class="feature-smooth-container" style="background-color: {{ feature_item[0].background_color }}" data-block-index="{{ block_index }}">
+
+{%- for item in feature_item %}
+    
+    {%- if pattern == "image-left-alternating" %}
+        {%- capture reversed %}{% cycle 'odd', 'even' %}{% endcapture %}
+    {%- elsif pattern == "image-right-alternating" %}
+        {%- capture reversed %}{% cycle 'even', 'odd' %}{% endcapture %}
+    {%- elsif pattern == "image-left" %}
+        {%- assign reversed = "odd" %}
+    {%- elsif pattern == "image-right" %}
+        {%- assign reversed = "even" %}
+    {%- endif %}
+    
+    {%- comment %}
+    Use the block_index generated for each individual component so that if have more than one color changer component on a page,
+    the applied CSS colours will also be independent in the editor (otherwise get all blocks the same background colour in the editor).
+    Could also use the UUID generated for each individual component (e.g 'id' set in the front matter instead of block_index.
+    {% endcomment %}
+    <style>
+      .cms-editor-active .section.item-index-{{ block_index }}-{{ forloop.index0 }} {
+        background-color: {{ item.background_color }};
+      }
+    </style>
+
+    <section class="section feature-smooth-component use-gsap item-index-{{ block_index }}-{{ forloop.index0 }}" data-bg-color="{{ item.background_color }}">
+      
+        <div class="first-of-type-section-spacer"></div>
+      
+        <div class="container">
+          
+            {%- if item.feature_image %}
+            
+                <div class="columns {% if reversed == "even" %}vb-reverse-column-order{% endif %}">
+                  
+                    <div class="column is-flex is-align-items-center is-justify-content-center pt-6 pb-6 {% if reversed == "even" %}pl-6-tablet{% endif %}">
+                      
+                        {%- comment %}
+                        The container element (content) below has the aspect ratio set to the same as the image itself.
+                        This avoids a layout shift that occurs once the image loads.
+                        Also set the width and height attributes on the img itself. Don't actually need this by using
+                        a defined aspect ratio on the container but probably good practice.
+                        {% endcomment %}
+                        
+                        <div class="content gsap-element-wrapper image-wrapper" data-gsap-animation-name="scale-up" data-gsap-delay="0.25" data-gsap-duration="0.4">
+
+                            {%- if item.feature_image %}{% assign current_image = item.feature_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                            {% bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_quality: "70" rs_title: title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: crop %}
+                               
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="column is-7 is-flex is-align-items-center pt-6 pb-6 {% if reversed == "odd" %}pl-6-tablet{% endif %}">
+                      
+                        <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+                        
+                            <h2 class="item-title" style="color: {{ item.text_color }};">{{ item.title }}</h2>
+                            <div class="item-description">
+                                <p style="color: {{ item.text_color }};">{{ item.description | newline_to_br }}</p>
+                            </div>
+                        
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+                
+            {%- else %}
+                
+                <div class="columns">
+                
+                    <div class="column is-10-tablet is-offset-1-tablet is-8-widescreen is-offset-2-widescreen pt-6 pb-6">
+                      
+                        <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+                        
+                            <h2 class="item-title" style="color: {{ item.text_color }};">{{ item.title }}</h2>
+                            <div class="item-description">
+                                <p style="color: {{ item.text_color }};">{{ item.description | newline_to_br }}</p>
+                            </div>
+                        
+                        </div>
+                      
+                    </div>
+                    
+                </div>
+                
+            {%- endif %}
+               
+        </div>
+      
+    </section>
+
+{%- endfor %}
+
+</section>

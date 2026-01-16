@@ -1,0 +1,32 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Tabs
+  description: Single tab visible at one time, selected by clicking toggle.
+  icon: flip
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  id:
+  component_palette: lightest
+  full_container_width: false
+  tabs:
+    - title:
+      main_column: "Content..."
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  id:
+    instance_value: UUID
+    hidden: true
+  main_column:
+    label: "Content"
+  mask_color:
+    comment: "Match the colour of the background chosen for the component."

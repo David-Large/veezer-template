@@ -1,0 +1,61 @@
+{%- for member in team_member %}
+
+    <section class="section team-alt-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ member.component_palette }}" data-block-index="{{ block_index }}.{{ forloop.index }}">
+      
+        <div class="first-of-type-section-spacer"></div>
+      
+        <div class="container gsap-element-wrapper" data-gsap-animation-name="timeline-team-member">
+    
+            <div class="horizontal-line">
+            </div>
+              
+            <div class="columns is-multiline">
+              
+                <div class="column is-12-tablet is-4-desktop is-flex is-flex-wrap-wrap is-align-content-center is-justify-content-center">
+                    
+                    <div class="content main-image">
+                        
+                        {% assign block_index_with_subsection = block_index | append: "." | append: forloop.index %}
+                        {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index_with_subsection %}{% endcapture %}
+                        {%- if set_flag contains "true" %}
+                            {%- assign lazy_load_flag = true %}
+                        {%- else %}
+                            {%- assign lazy_load_flag = false %}
+                        {%- endif %}
+
+                        {%- assign clip_path_class = "clip-path " | append: member.clip_path_style %}
+                        {%- if member.team_image %}{% assign current_image = member.team_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                        {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: "70" rs_title: member.title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: "1" rs_class: clip_path_class %}
+                           
+                    </div>
+                
+                </div>
+                
+                <div class="column is-12-tablet is-4-desktop is-flex is-flex-wrap-wrap is-align-content-center is-justify-content-center">
+                  
+                    <div class="content main-title">
+                    
+                        <h2>{{ member.name }}</h2>
+                        <h3>{{ member.title }}</h3>
+                    
+                    </div>
+                  
+                </div>
+    
+                <div class="column is-12-tablet is-4-desktop is-flex is-flex-wrap-wrap is-align-content-center is-justify-content-center">
+                  
+                    <div class="content main-text">
+                    
+                       {{ member.description | markdownify }}
+                    
+                    </div>
+                  
+                </div>
+                
+            </div>
+                
+        </div>
+      
+    </section>
+
+{%- endfor %}

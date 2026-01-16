@@ -1,0 +1,51 @@
+<section class="section use-gsap gallery-event section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ events_palette }} {{ class }}" data-pagefind-ignore>
+    
+    <div class="container event-lightgallery">
+      
+        <span class="editor-content">Please note: The gallery wont work as a lightbox in admin mode.</span>
+        
+        <div class="columns">
+
+            {%- if event_summary_image %}{% assign current_image = event_summary_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+          
+            <div class="column" data-src="{{ current_image }}" data-sub-html="{{ title }}">
+                <a data-fslightbox="gallery-event" class="gsap-element-wrapper gallery-thumbnail-link" href="{{ current_image }}" title="{{ title }}" style="position: relative; display: block;" data-gsap-animation-name="slide-up-from-bottom">
+                    {%- bookshop_include "resize-image-srcset" rs_lazy: false rs_image: current_image rs_title: title rs_quality: "70" rs_multi_column_max_image_width: "100vw" rs_aspect_ratio: "2" %}
+                    {%- bookshop_include "icons" icon_name: "Magnifying Glass" %}
+                </a>
+            </div>
+          
+        </div>
+        
+        <div class="columns is-multiline is-mobile">
+                
+            {%- if reverse_photo_order == true %}
+                {%- assign sorted_photos = photos | reverse %}
+            {%- else %}
+                {%- assign sorted_photos = photos %}
+            {%- endif %}
+            
+            {%- for image in sorted_photos %}
+            
+                {%- if image.gallery_image %}
+                
+                    <div class="column is-4-mobile is-3-tablet is-2-desktop is-2-widescreen has-text-centered" data-src="{{ image.gallery_image }}" data-sub-html="{% if image.title %}{{ image.title }}{% else %}{{ title }}{% endif %}">
+                            
+                        <a data-fslightbox="gallery-event" class="gsap-element-wrapper gallery-thumbnail-link" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="{{ forloop.index | times: 0.1 | plus: 0.2 }}" href="{{ image.gallery_image }}" title="{% if image.title %}{{ image.title }}{% else %}{{ title }}{% endif %}">
+                          
+                            {%- bookshop_include "resize-image" rs_lazy: true rs_image: image.gallery_image rs_title: image.title rs_quality: "70" rs_width: "500" rs_height: "500" %}
+                          
+                            {%- bookshop_include "icons" icon_name: "Magnifying Glass" %}
+                        </a>
+            
+                    </div>
+                
+                {%- endif %}
+            	  
+            {%- endfor %}
+               
+        </div>
+          
+    </div>
+
+</section>

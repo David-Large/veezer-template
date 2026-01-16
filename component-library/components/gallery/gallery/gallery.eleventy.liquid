@@ -1,0 +1,71 @@
+<section class="section gallery-fs-lightbox-component gsap-batch-stagger section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-gsap-class-to-batch-stagger=".fs-lightbox-gallery .gallery-thumbnail-link" data-gsap-stagger-animation-name="scale-up-fade-in-slow" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+        
+        <span class="editor-content">Please note: The gallery wont work as a lightbox in admin mode.</span>
+        
+        <div class="fs-lightbox-gallery columns is-multiline is-mobile">
+                
+            {%- if reverse_photo_order == true %}
+                {%- assign sorted_photos = photos | reverse %}
+            {%- else %}
+                {%- assign sorted_photos = photos %}
+            {%- endif %}
+            
+            {%- for image in sorted_photos %}
+            
+                {%- if image.gallery_image %}
+                
+                    <div class="column is-12-mobile is-4-tablet is-4-desktop is-3-widescreen has-text-centered">
+
+                        {%- if image.gallery_image %}{% assign current_image = image.gallery_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                        {%- comment %}
+                        This applies a data-srcset attribute to the anchor link for use in the gallery components. That in turn
+                        applies srcset attributes to the images within the gallery via fslightbox JS. In the non-production site
+                        just use the single original fullsize image (no srcset data attribute added to the anchor element.
+                        {% endcomment %}
+                        {%- assign image_x = current_image | prepend: "site" | image-width %}
+                        {%- assign image_y = current_image | prepend: "site" | image-height %}
+                        {%- assign aspect_ratio = image_x | divided_by: image_y | times: 1 %}
+                        {%- comment %} ++++++ Set default sizes for the resized images. {% endcomment %}
+                        {%- assign rs_small_width = 768 %}
+                        {%- assign rs_medium_width = 1023 %}
+                        {%- assign rs_large_width = 1407 %}
+                        {%- comment %} ++++++ Calculate height for the resized images. {% endcomment %}
+                        {%- assign rs_very_small_height = rs_very_small_width | divided_by: aspect_ratio | round %}
+                        {%- assign rs_small_height = rs_small_width | divided_by: aspect_ratio | round %}
+                        {%- assign rs_medium_height = rs_medium_width | divided_by: aspect_ratio | round %}
+                        {%- assign rs_large_height = rs_large_width | divided_by: aspect_ratio | round %}
+                        {%- if processEnv.environment == 'production' %}
+                        {%- comment %} ++++++ Note: Using capture, you can variables inside it need to have been created using 'assign'. {% endcomment %}
+                        {%- comment %} ++++++ Determine srcset values if using 'ImageKit' optimsation. {% endcomment %}
+                        {%- if site.image_optimisation == "ImageKit" %}
+                        {%- if site.imagekit_url %}
+                        {%- capture srcset %}{{ site.imagekit_url }}{{ current_image }}?tr=h-{{ rs_small_height }},w-{{ rs_small_width }} 768w, {{ site.imagekit_url }}{{ current_image }}?tr=h-{{ rs_medium_height }},w-{{ rs_medium_width }} 1023w, {{ site.imagekit_url }}{{ current_image }}?tr=h-{{ rs_large_height }},w-{{ rs_large_width }} 1407w{%- if rs_width > 1407 %}, {{ current_image }} {{ image_x }}w{% endif %}{% endcapture %}
+                        {%- endif %}
+                        {%- endif %}
+                        {%- comment %} ++++++ Determine srcset values if using 'Wsrv' optimsation. {% endcomment %}
+                        {%- if site.image_optimisation == "Wsrv" %}
+                        {%- assign this_base_url = site.base_url | remove: "https://" |  remove_last: "/" %}
+                        {%- capture srcset %}//wsrv.nl/?url={{ this_base_url }}{{ current_image }}&h={{ rs_small_height }}&w={{ rs_small_width }}&fit=cover 768w, //wsrv.nl/?url={{ this_base_url }}{{ current_image }}&h={{ rs_medium_height }}&w={{ rs_medium_width }}&fit=cover 1023w, //wsrv.nl/?url={{ this_base_url }}{{ current_image }}&h={{ rs_large_height }}&w={{ rs_large_width }}&fit=cover 1407w{%- if image_x > 1407 %}, {{ current_image }} {{ image_x }}w{% endif %}{% endcapture %}
+                        {%- endif %}
+                        {%- endif %}
+                      
+                        <a data-fslightbox="gallery-{{ block_index }}" class="gallery-thumbnail-link" href="{{ current_image }}" data-srcset="{{ srcset }}" data-caption="{% if image.title %}{{ image.title }}{% else %}{{ title }}{% endif %}">
+                            {%- bookshop_include "resize-image" rs_lazy: true rs_image: current_image rs_title: image.title rs_quality: "70" rs_width: "500" rs_height: "500" %}
+                            {%- bookshop_include "icons" icon_name: "Magnifying Glass" %}
+                        </a>
+            
+                    </div>
+                
+                {%- endif %}
+            	  
+            {%- endfor %}
+               
+        </div>
+          
+    </div>
+
+</section>

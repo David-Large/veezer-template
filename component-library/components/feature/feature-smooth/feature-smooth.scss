@@ -1,0 +1,33 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+.feature-smooth-component {
+  
+  min-height: 100vh;
+  
+  .item-title {
+    margin-bottom: 3rem;
+  }
+  
+  .section {
+    border: dotted 1px #000;
+  }
+  
+  .image-wrapper {
+    width: 100%;
+    max-width: 600px;
+    line-height: 0;
+  }
+  .image-wrapper img {
+    object-position: center center; /* The default */
+  }
+  
+}
+
+/* If this is the last item before the footer... */
+@media screen and (min-width: 1024px) {
+  main .feature-smooth-container + .footer-spacer {
+     display: none;
+  }
+}

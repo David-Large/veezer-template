@@ -1,0 +1,53 @@
+<section class="section modal-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column">
+              
+                <div class="content gsap-element-wrapper has-text-centered" data-gsap-animation-name="slide-down-from-top">
+                  
+                    <div class="button js-modal-trigger" data-target="{{ modal_id }}" style="border: none;">
+                        {%- bookshop_include "icons" icon_name: "Info" %} &nbsp; {{ button_title }}
+                    </div>
+                
+                </div>
+              
+            </div>
+          
+        </div>
+    
+    </div>
+    {% comment %}
+    Due to using GSAP Smooth Scrolling, modals need to be placed outside of the smooth scrolling container to avoid issues with fixed positioning.
+    To accommodate this, the modal structure is included here as a template to be cloned and moved to the #modal-holder div (see layouts/base.liquid) when
+    a page with modals is loaded. The JavaScript in js/init-modals.js handles this process.
+
+    THis 'original' modal structure is hidden with the "to-be-cloned" class and is not displayed to users. It also has no id attribute (which is
+    added to the cloned modal) to so cannot be triggered to display.
+    {% endcomment %}
+    <div data-modal-id="{{ modal_id }}" class="modal to-be-cloned">
+    
+        <div class="modal-background"></div>
+            
+        <div class="modal-card">
+            
+            <header class="modal-card-head">
+                <p class="modal-card-title">{{ modal_title }}</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+                
+            <section class="modal-card-body">
+                <div class="content">
+                    {{ modal_content | markdownify }}
+                </div>
+            </section>
+            
+        </div>
+  
+    </div>
+  
+</section>

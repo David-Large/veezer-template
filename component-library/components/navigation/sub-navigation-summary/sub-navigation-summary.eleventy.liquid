@@ -1,0 +1,196 @@
+{%- assign this_collection = navigation_group | strip | downcase | replace: "  "," " | replace: "   "," " | replace: " ","-" %}
+
+{%- if navigation_group_is_collection %}
+
+    <section class="section sub-navigation-summary-component section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}" data-pagefind-ignore>
+      
+        <div class="first-of-type-section-spacer"></div>
+      
+        <div class="container">
+          
+            {%- if collection_has_categories %}
+          
+            <div class="columns">
+              
+                <div class="column {% if full_container_width != true %}is-10-tablet is-offset-1-tablet is-10-desktop is-offset-1-desktop is-8-widescreen is-offset-2-widescreen{% endif %}">
+                  
+                    <div class="content use-gsap">
+                      
+                        <div class="first-of-type-section-spacer"></div>
+                        
+                        <div class="filter-button-group is-flex is-flex-wrap-wrap {% if content_alignment == 'left' %}is-justify-content-flex-start{% elsif content_alignment == 'centered' %}is-justify-content-center{% elsif content_alignment == 'right' %}is-justify-content-flex-end{% endif %}">
+                            
+                            {%- comment %}
+                            Below can use '[this_collection_category_filename].category' in the for clause directly. Works fine in the built final site.
+                            However, this wont be accepted in live editing so whole component wont appear in the live editor.
+                            By breaking it up into the assign statement and then grabbing the category, seems to not break the live editing display. Just wont show the buttons corectly in the live editing.
+                            {% endcomment %}
+                            
+                            {%- assign this_collection_category_filename = this_collection | append: "-categories" %}
+                            
+                            {%- assign category_array = [this_collection_category_filename] %} {% comment %} e.g. fleet-categories {% endcomment %}
+                            
+                            {%- for item in category_array.category %}
+                                {% if forloop.index == 1 %}
+                                    <button class="button single-line gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left" data-filter="*" data-gsap-delay="{{ forloop.index | times: 0.075 | plus: 0.1 }}">All</button>
+                                {% endif %}
+                                <button class="button single-line gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left" data-filter="{{ item.title | slugify }}" data-gsap-delay="{{ forloop.index | times: 0.075 | plus: 0.1 }}">{{ item.title }}</button>
+                            {%- endfor %}
+                               
+                        </div>
+                            
+                    </div>
+        
+                </div>
+            
+            </div>
+            
+            {% endif %}
+            
+            <div style="position: relative;">
+          
+                <div class="cover-mask"></div> 
+        
+                <div class="columns is-multiline is-mobile filter-items-wrapper gsap-batch-stagger" data-gsap-class-to-batch-stagger=".filter-item .content" data-gsap-stagger-animation-name="scale-up-fade-in-slow">
+                    
+                    {%- for item in nav.items %}
+                	    
+                        {%- if item.sub_navigation and item.sub_navigation_group_title == navigation_group %} {% comment %} e.g. Fleet {% endcomment %}
+                            
+                            {%- for sub_navigation_item in item.sub_navigation %}
+                            
+                                {%- assign pg_array = collections[this_collection] %} {% comment %} e.g. fleet {% endcomment %}
+
+                                {%- for pg in pg_array %}
+
+                                    {%- comment %}
+                                    There is a quirk when in the CloudCannon visual editor and using Bookshop. The URL instead of matching the permalink will
+                                    be prepended with '/site' adn also will have the trailing slash removed and instead have '.html' appended.
+                                    Use a corrected URL for the editing site (it wont be changed in non-editing sites).
+                                    {% endcomment %}
+                                    {%- assign corrected_url = pg.url | replace: "/site","" | replace: ".html","/" %}
+                                   
+                                    {%- if corrected_url == sub_navigation_item.link %}
+
+                                        <div class="column is-12-mobile is-4-tablet is-4-desktop filter-item" data-filter="{{ pg.data.fleet_category | slugify }}">
+                                            
+                                            <div class="content">
+                                                
+                                                {%- if pg.data.feature_image %}{% assign current_image = pg.data.feature_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                                                <p>
+                                                    <a href="{{ sub_navigation_item.link }}">
+                                                        {%- bookshop_include "resize-image" live_render: false rs_lazy: true rs_image: current_image rs_title: pg.data.title rs_quality: "70" rs_width: "800" rs_height: "500" %}
+                                                    </a>
+                                                </p>
+                                                
+                                                <h3 style="margin-top: 0;">{{ pg.data.title }}</h3>
+                                                
+                                                <p>{{ pg.data.description }}</p>
+                                                
+                                                <p>
+                                                    <a class="button" href="{{ sub_navigation_item.link }}">More...</a>
+                                                </p>
+                                            
+                                            </div>
+                                
+                                        </div>
+                                        
+                                    {%- endif %}
+                                
+                                {%- endfor %}
+                    
+                            {%- endfor %}      
+                              
+                        {%- endif %}
+                              
+                    {%- endfor %}
+                    
+                </div>
+            
+            </div>
+        
+        </div>
+      
+    </section>
+
+{%- else %}
+
+    <section class="section sub-navigation-summary-component gsap-batch-stagger section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-gsap-class-to-batch-stagger=".column .summary-item" data-gsap-stagger-animation-name="scale-up-fade-in-slow" data-block-index="{{ block_index }}" data-pagefind-ignore>
+        
+        <div class="first-of-type-section-spacer"></div>
+    
+        <div class="container">
+    
+            <div class="columns is-multiline is-mobile">
+                
+                {%- for item in nav.items %}
+            	    
+                    {%- if item.sub_navigation %}
+                          
+                        {%- if item.sub_navigation_group_title == navigation_group %}
+                      
+                            {%- for sub_navigation_item in item.sub_navigation %}
+                                
+                                {%- comment %}
+                                In an older non-unified config version, could use a 'where' clause to narrow down the items.                    
+                                Can't seem to do that now so just using a basic loop.                                                          
+                                (%- assign pg_array = collections["pages"] | where: "url", sub_navigation_item.link %)
+                                ( %- assign pg = pg_array[0] %)
+                                {% endcomment %}
+                                
+                                {%- assign pg_array = collections["pages"] %}
+                                
+                                {%- for pg in pg_array %}
+
+                                    {%- comment %}
+                                    There is a quirk when in the CloudCannon visual editor and using Bookshop. The URL instead of matching the permalink will
+                                    be prepended with '/site/pages' and also will have the trailing slash removed and instead have '.html' appended.
+                                    Use a corrected URL for the editing site (it wont be changed in non-editing sites).
+                                    {% endcomment %}
+                                    {%- assign corrected_url = pg.url | replace: "/site/pages","" | replace: ".html","/" %}
+                                    
+                                    {%- if corrected_url == sub_navigation_item.link %}
+                                    
+                                        <div class="column is-12-mobile is-4-tablet is-4-desktop">
+                                            
+                                            <div class="content summary-item">
+                                              
+                                                {%- if pg.data.seo.meta_image %}
+                                                <p>
+                                                    <a href="{{ sub_navigation_item.link }}">
+                                                        {%- bookshop_include "resize-image" live_render: false rs_lazy: true rs_image: pg.data.seo.meta_image rs_title: pg.data.title rs_quality: "70" rs_width: "800" rs_height: "500" %}
+                                                    </a>
+                                                </p>
+                                                {%- endif %}
+                                                
+                                                <h3 style="margin-top: 0;">{{ pg.data.title }}</h3>
+                                            
+                                                <p>{{ pg.data.seo.meta_description }}</p>
+                                                
+                                                <p>
+                                                    <a class="button" href="{{ sub_navigation_item.link }}">MORE...</a>
+                                                </p>
+                                                   
+                                            </div>
+                                
+                                        </div>
+                                    
+                                    {%- endif %}
+                                
+                                {%- endfor %}
+                    
+                            {%- endfor %}
+                                  
+                        {%- endif %}
+                          
+                    {%- endif %}
+                          
+                {%- endfor %}
+                
+            </div>
+        
+        </div>
+      
+    </section>
+    
+{%- endif %}

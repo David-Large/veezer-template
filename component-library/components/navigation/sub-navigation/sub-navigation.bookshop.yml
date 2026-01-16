@@ -1,0 +1,23 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Sub Navigation
+  description: Simple horizontal display of sub-page links.
+  icon: checklist
+  tags: ["navigation"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  navigation_group:
+  full_container_width: false
+  content_alignment:
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:

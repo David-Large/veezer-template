@@ -1,0 +1,87 @@
+{%- if constrain_to_container == false %}
+
+    <section class="section youtube-component full-screen use-gsap" data-block-index="{{ block_index }}">
+    
+        <div class="first-of-type-section-spacer"></div>
+        
+        <div class="video-overlay gsap-element-wrapper" data-video-id="{{ video_id }}" data-gsap-animation-name="simple-fade-in">
+          
+            {% assign video_id_attribute = video_id | prepend: "data-video-id='"| append: "'" %}
+            {%- if cover_image %}{% assign current_image = cover_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+            {%- bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_title: title rs_quality: "60" rs_class: "cover fade-in" rs_custom_attribute_text: video_id_attribute rs_multi_column_max_image_width: "100vw" rs_aspect_ratio: "auto" %}
+           
+            <div class="play-button-wrapper" data-video-id="{{ video_id }}">
+              
+              <div class="button-circles">
+                  <div class="button-circle c-1"></div>
+                  <div class="button-circle c-2"></div>
+                  <div class="button-circle c-3"></div>
+              </div>
+              
+              <div class="play-button">
+                  <div class="paused"></div>
+              </div>
+              
+            </div>
+            
+            <div class="video-loading-message pulsate-text" data-video-id="{{ video_id }}">Setting up the video player...</div>
+            
+        </div>
+        
+        <div class="responsive-video-wrapper gsap-element-wrapper" data-gsap-animation-name="simple-fade-in" data-gsap-delay="0.5" data-gsap-duration="0.75">
+            <div id="{{ video_id | slugify }}" class="player" data-video-id="{{ video_id }}"></div>
+        </div>
+    
+    </section>
+  
+{%- else %}
+
+  <section class="section youtube-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+    
+      <div class="container hero-image-wrapper">
+          
+          <div class="columns">
+            
+              <div class="column">
+                
+                  <div class="first-of-type-section-spacer"></div>
+                  
+                  <div class="video-overlay gsap-element-wrapper" data-video-id="{{ video_id }}" data-gsap-animation-name="simple-fade-in">
+                    
+                      {% assign video_id_attribute = video_id | prepend: "data-video-id='"| append: "'" %}
+                      {%- if cover_image %}{% assign current_image = cover_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                      {%- bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_title: title rs_quality: "60" rs_class: "cover fade-in" rs_custom_attribute_text: video_id_attribute rs_multi_column_max_image_width: "100vw" rs_aspect_ratio: "auto" %}
+                     
+                      <div class="play-button-wrapper" data-video-id="{{ video_id }}">
+                        
+                        <div class="button-circles">
+                            <div class="button-circle c-1"></div>
+                            <div class="button-circle c-2"></div>
+                            <div class="button-circle c-3"></div>
+                        </div>
+                        
+                        <div class="play-button">
+                            <div class="paused"></div>
+                        </div>
+                        
+                      </div>
+                      
+                      <div class="video-loading-message pulsate-text" data-video-id="{{ video_id }}">Setting up the video player...</div>
+                      
+                  </div>
+                  
+                  <div class="responsive-video-wrapper gsap-element-wrapper" data-gsap-animation-name="simple-fade-in" data-gsap-delay="0.5" data-gsap-duration="0.75">
+                      <div id="{{ video_id | slugify }}" class="player" data-video-id="{{ video_id }}"></div>
+                  </div>
+    
+              </div>
+    
+          </div>
+    
+      </div>
+    
+    </section>
+
+{%- endif %}
+
+

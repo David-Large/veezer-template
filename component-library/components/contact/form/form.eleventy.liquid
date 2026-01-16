@@ -1,0 +1,230 @@
+<section class="section contact-form-component use-gsap p-0" data-block-index="{{ block_index }}">
+    
+    <div class="columns is-gapless">
+        
+        <div class="column is-flex is-align-items-center vb-theme-{{ component_palette }}">
+
+            <div class="columns is-flex-grow-1">
+
+                <div class="column is-10-tablet is-offset-1-tablet is-10-desktop is-offset-1-desktop">
+
+                    <section class="section contact-form-wrapper section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }}">
+
+                        {%- if thank_you_page == false %}
+
+                            {% if title %}
+                                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                                    <h1>{{ title }}</h1>
+                                </div>
+                            {% endif %}
+                            {% if sub_title %}
+                                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.3">
+                                    <h4>{{ sub_title | newline_to_br }}</h4>
+                                </div>
+                            {% endif %}
+                        
+                            <form method="post" action="/contact-success/" class="site-contact-form {{ form_field_color }} content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.5">
+                                    
+                                <div class="columns is-multiline">
+                                    
+                                    {% assign email_field_index = 1 %}
+                                    
+                                    {% for field in form %}
+                                    
+                                        {% case field._id %}
+                                        
+                                            {% when 'text' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <input {% if field.required %}required{% endif %} class="input" type="text" name="{{ field.name }}" placeholder="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            {% when 'textarea' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <textarea {% if field.required %}required{% endif %} class="textarea" name="{{ field.name }}" placeholder="" rows="6"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            {% when 'email' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <input {% if field.required %}required{% endif %} class="input" type="email" name="email{% if email_field_index > 1 %} {{ email_field_index }}{% endif %}" placeholder="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                {% assign email_field_index = email_field_index | plus: 1 %}
+                                                
+                                            {% when 'select' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <div class="select">
+                                                                <select {% if field.required %}required {% endif %} name="{{ field.name }}" placeholder="" data-input-for-other-option="{% if field.show_input_for_other_option %}true{% else %}false{% endif %}">
+                                                                    <option selected="" value="">Please Select...</option>
+                                                                    {% for option in field.choices %}
+                                                                    <option value="{{ option }}">{{ option }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        {% if field.show_input_for_other_option %}
+                                                            <div class="other-option-wrapper">
+                                                                <label class="label">Please indicate other option:</label>
+                                                                <div class="control">
+                                                                    <input class="input" type="text" name="{{ field.name }} - OTHER" placeholder="" />
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            {% when 'checkbox' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }}</label>
+                                                        <div class="control">
+                                                            <div class="checkboxes">
+                                                                {% for checkbox in field.choices %}
+                                                                    <label class="checkbox">
+                                                                        <input type="checkbox" name="{{ checkbox.option }}" {% if checkbox.show_checked %}checked{% endif %} /> {{ checkbox.option }}
+                                                                    </label>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            {% when 'radio' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }}</label>
+                                                        <div class="control">
+                                                            {% for option in field.choices %}
+                                                                <label class="radio">
+                                                                    <input type="radio" name="{{ field.name }}" value="{{ option }}" {% if forloop.first %}checked{% endif %} /> {{ option }}
+                                                                </label>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                {% when 'number' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <input {% if field.required %}required{% endif %} class="input" type="number" name="{{ field.name }}" {% if field.value_number %}value="{{ field.value_number }}"{% endif %} {% if field.min_number %}min="{{ field.min_number }}"{% endif %} {% if field.max_number %}max="{{ field.max_number }}"{% endif %} {% if field.step_number %}step="{{ field.step_number }}"{% endif %} placeholder="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            {% when 'date' %}
+                                            
+                                                <div class="column is-12{% if field.half_width_widescreen == true %} is-6-widescreen{% endif %}">
+                                                    <div class="field">
+                                                        <label class="label">{{ field.label }} {% if field.required %}*{% endif %}</label>
+                                                        <div class="control">
+                                                            <input id="id-{{ field.uuid }}" {% if field.required %}required{% endif %} class="input date-picker" type="text" name="{{ field.name }}" placeholder="" readonly />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                        {% endcase %}
+                                        
+                                    {% endfor %}
+                                                    
+                                    <div class="column">
+                                        <input type="hidden" name="inbox_key" value="{{ form.form_inbox_key }}" />
+                                        <input type="hidden" name="_subject" value="{% if subject_line %}{{ subject_line }}{% else %}{{ site.site_title }} - Website Enquiry | Contact Form{% endif %}" />
+                                        <input type="text" name="_gotcha" style="display: none;" />
+                                        <div class="control">
+                                            <button type="submit" class="button">{{ submit_button_text }}</button>
+                                        </div>
+                                    </div>
+                                                    
+                                </div>
+                                            
+                            </form>
+
+                        {%- else %}
+
+                            <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.3">
+                                {{ thank_you_message | markdownify }}
+                            </div>
+                          
+                        {%- endif %}
+
+                    </section>
+
+                </div>
+
+            </div>
+        
+        </div>
+    
+        <div class="column is-flex is-align-items-center vb-theme-{{ component_palette_secondary }}{% if contact_details_column_narrow == true %} is-4{% endif %}">
+
+            <div class="columns is-flex-grow-1">
+
+                <div class="column is-10-tablet is-offset-1-tablet is-10-desktop is-offset-1-desktop">
+
+                    <section class="section contact-details-wrapper section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }}">
+                    
+                        <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                        
+                            <span class="editor-content">Please note: The information below is pulled in from the 'contact.json' data file.</span>
+                            
+                            {%- if contact_details.show_phone and contact.contact.phone %}
+                                <h3>{%- bookshop_include "icons" icon_name: "Mobile" %} Call</h3>
+                                <p><strong>{{ contact.contact.phone }}</strong></p>
+                            {%- endif %}
+                            
+                            {%- if contact_details.show_email and contact.contact.email %}
+                                <h3>{%- bookshop_include "icons" icon_name: "Email" %} Email</h3>
+                                <p>{{ contact.contact.email }}</p>
+                            {%- endif %}
+                            
+                            {%- if contact_details.show_address and contact.contact.address %}
+                                <h3>{%- bookshop_include "icons" icon_name: "Location" %} Location</h3>
+                                <p>{{ contact.contact.address | newline_to_br }}</p>
+                            {%- endif %}
+                            
+                            {%- if contact_details.show_hours and contact.contact.hours %}
+                                <h3>{%- bookshop_include "icons" icon_name: "Clock" %} Hours</h3>
+                                <p>{{ contact.contact.hours | newline_to_br }}</p>
+                            {%- endif %}
+                            
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+        
+        </div>
+    
+    </div>
+
+</section>

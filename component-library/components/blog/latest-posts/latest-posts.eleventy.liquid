@@ -1,0 +1,39 @@
+<section class="section latest-posts-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}" data-pagefind-ignore>
+  
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+        
+        {% if title and title !="" %}
+        <div class="columns">
+
+            <div class="column">
+  
+                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                    <h2 class="has-text-centered">{{ title }}</h2>
+                </div>
+  
+            </div>
+ 
+        </div>
+        {% endif %}
+      
+        <div class="columns">
+
+            {% assign sorted_posts = collections.blog | sort: "date" | reverse %}
+
+            {% for blog in sorted_posts limit: number_posts %}
+
+                <div class="column">
+
+                    {% bookshop_include "blog-post-summary-short" blog: blog number_posts: number_posts %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

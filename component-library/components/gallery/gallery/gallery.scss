@@ -1,0 +1,51 @@
+/* Make sure link to full image is deactivated in the editor */
+.cms-editor-active .fs-lightbox-gallery .column a {
+  pointer-events: none;
+}
+
+.cms-editor-active {
+  
+  .gallery-fs-lightbox-component {
+  
+    .fs-lightbox-gallery .gallery-thumbnail-link {
+      opacity: 1;
+      scale: 1;
+    }
+    
+  }
+}
+
+.gallery-fs-lightbox-component {
+
+  .fs-lightbox-gallery .gallery-thumbnail-link {
+    opacity: 0;
+    scale: 0.9;
+    line-height: 0;
+    position: relative;
+    display: block;
+  }
+  i, 
+  [class*="material-symbols"]  {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 5px;
+  }
+    
+}
+
+.blog-single {
+  .gallery-fs-lightbox-component {
+    
+     padding-left: 0 !important;
+     padding-right: 0 !important;
+    
+    .first-of-type-section-spacer {
+      display: none;
+    }
+  }
+}
+

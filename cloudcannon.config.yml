@@ -1,0 +1,829 @@
+_schema: _schema
+source: site
+paths:
+  uploads: uploads
+  static: ''
+  collections:
+  data: _data
+  layouts: layouts
+  includes: layouts
+collections_config:
+  pages:
+    path: pages
+    icon: description
+    url: /[slug]/
+    output: true
+    description: ''
+    _enabled_editors:
+      - visual
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: site/schemas/page.html
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  documentation:
+    path: documentation
+    icon: library_books
+    url: /documentation/[slug]/
+    output: true
+    description: ''
+    _enabled_editors:
+      - content
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: site/schemas/documentation.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  fleet:
+    path: fleet
+    icon: airport_shuttle
+    url: /fleet/[slug]/
+    output: true
+    description: ''
+    _enabled_editors:
+      - visual
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: site/schemas/fleet.html
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  events:
+    path: events
+    glob:
+    name:
+    singular_name:
+    icon: calendar_month
+    output: true
+    url: /events/[slug]/
+    filter:
+    parse_branch_index:
+    documentation:
+    description: ''
+    preview:
+    sort:
+    sort_options:
+    singular_key:
+    _editables:
+    _enabled_editors:
+      - content
+    _inputs:
+    _select_data:
+    _structures:
+    add_options:
+    create:
+    disable_add: false
+    disable_add_folder: true
+    disable_file_actions: false
+    new_preview_url:
+    schemas:
+      default:
+        path: site/schemas/event.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        name:
+        icon: notes
+        preview:
+        _editables:
+        _enabled_editors:
+        _inputs:
+        _select_data:
+        _structures:
+        create:
+        new_preview_url:
+    schema_key:
+  blog:
+    path: blog
+    icon: article
+    output: true
+    # url: /blog/[slug]/
+    description: ''
+    preview:
+      metadata:
+        - text:
+            - key: tags
+          icon: newspaper
+    _enabled_editors:
+      - content
+      - visual
+    disable_add: false
+    disable_add_folder: true
+    disable_file_actions: false
+    schemas:
+      default:
+        path: site/schemas/post.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        name: Blog Post
+        icon: notes
+  data:
+    path: _data
+    icon: data_object
+    output: true
+    filter:
+      exclude:
+    description: ''
+    _enabled_editors:
+      - data
+    disable_add: true
+    disable_add_folder: true
+    disable_file_actions: false
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+      - fleet
+      - events
+      - documentation
+  - heading: Blogging
+    collections:
+      - blog
+  - heading: Site Settings
+    collections:
+      - data
+_inputs:
+
+  date:
+    type: date
+    instance_value: NOW
+  uuid:
+    type: auto
+    instance_value: UUID
+    hidden: true
+  permalink:
+    options:
+      pattern: '^[\/].*[\/]$|^\/$'
+      pattern_message: Permalink must start and end with a forward slash.
+    
+  main_column: # Updated 22/11/2025
+    type: markdown
+    options:
+      # Text options
+      blockquote: true
+      bold: true
+      format: p h1 h2 h3 h4 pre
+      italic: true
+      link: true
+      strike: true
+      subscript: true
+      superscript: true
+      # Style and alignment options
+      styles: /css/editor.css
+      left: align-left
+      center: align-center
+      right: align-right
+      justify: align-justify
+      # List options
+      bulletedlist: true
+      numberedlist: true
+      # Image options
+      image_size_attributes: true
+      width: 1200
+      height: 1400
+      resize_style: contain
+      expandable: false
+      allowed_sources:
+        - site-files
+      # Block options
+      code: true
+      horizontalrule: true
+      image: true
+      table: true
+      # Action options
+      undo: true
+      redo: true
+      removeformat: true
+      # Paths
+      paths:
+        uploads: uploads/content
+      # Custom markup
+      allow_custom_markup: false
+
+  left_column: # Updated 22/11/2025
+    type: markdown
+    options:
+      # Text options
+      blockquote: true
+      bold: true
+      format: p h1 h2 h3 h4 pre
+      italic: true
+      link: true
+      strike: true
+      subscript: true
+      superscript: true
+      # Style and alignment options
+      styles: /css/editor.css
+      left: align-left
+      center: align-center
+      right: align-right
+      justify: align-justify
+      # List options
+      bulletedlist: true
+      numberedlist: true
+      # Image options
+      image_size_attributes: true
+      width: 1200
+      height: 1400
+      resize_style: contain
+      expandable: false
+      allowed_sources:
+        - site-files
+      # Block options
+      code: true
+      horizontalrule: true
+      image: true
+      table: true
+      # Action options
+      undo: true
+      redo: true
+      removeformat: true
+      # Paths
+      paths:
+        uploads: uploads/content
+      # Custom markup
+      allow_custom_markup: false
+
+  right_column: # Updated 22/11/2025
+    type: markdown
+    options:
+      # Text options
+      blockquote: true
+      bold: true
+      format: p h1 h2 h3 h4 pre
+      italic: true
+      link: true
+      strike: true
+      subscript: true
+      superscript: true
+      # Style and alignment options
+      styles: /css/editor.css
+      left: align-left
+      center: align-center
+      right: align-right
+      justify: align-justify
+      # List options
+      bulletedlist: true
+      numberedlist: true
+      # Image options
+      image_size_attributes: true
+      width: 1200
+      height: 1400
+      resize_style: contain
+      expandable: false
+      allowed_sources:
+        - site-files
+      # Block options
+      code: true
+      horizontalrule: true
+      image: true
+      table: true
+      # Action options
+      undo: true
+      redo: true
+      removeformat: true
+      # Paths
+      paths:
+        uploads: uploads/content
+      # Custom markup
+      allow_custom_markup: false
+
+  # Image Fields
+  gallery_image:
+    type: image
+    options:
+      width: 1800
+      height: 1800
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/gallery
+    label: Gallery Image
+  blog_feature_image:
+    type: image
+    options:
+      width: 1200
+      height: 1400
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/blog
+      required: true
+      required_message: An image is required.
+    label: Featured Image
+    comment: Defaults to the image set in the Site SEO data file.
+  meta_image:
+    type: image
+    options:
+      width: 1200
+      height: 1400
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/meta
+    label: Meta Image
+    comment: >-
+      If empty, defaults to the featured image (if a blog post) otherwise to the
+      image set in the Site SEO data file.
+  team_image:
+    type: image
+    options:
+      width: 800
+      height: 1000
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/team
+    label: Team Member Image
+  slider_image:
+    type: image
+    options:
+      width: 1000
+      height: 1200
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/slider
+    label: Slider Image
+  feature_image:
+    type: image
+    options:
+      width: 1200
+      height: 1000
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/feature
+    label: Feature Image
+  event_summary_image:
+    type: image
+    options:
+      width: 1800
+      height: 1800
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/events
+    label: Event Summary Image
+
+  # Image related fields
+  multi_column_max_image_width:
+    hidden: true
+    comment: "Hidden. Used with srcset on the image value like 100vw, 50vw, 600px to restrict sizing."
+  image_quality:
+    type: number
+    comment: "Enter a value 60 to 100 (Default is 90). Applies to images on production sites only."
+    options:
+      min: 60
+      max: 100
+      step: 1
+  image_aspect_ratio:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        1 : "1:1"
+        1.25 : "5:4"
+        1.33 : "4:3"
+        1.5 : "3:2"
+        1.66 : "5:3"
+        1.77 : "16:9"
+        2 : "2:1"
+        3 : "3:1"
+        0.8 : "4:5"
+        0.75 : "3:4"
+        0.66 : "2:3"
+        0.6 : "3:5"
+        "auto": "Auto"
+  focal_point:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        center center: Center Center
+        center top: Center Top
+        center bottom: Center Bottom
+        left top: Left Top
+        left center: Left Center
+        left bottom: Left Bottom
+        right top: Right Top
+        right center: Right Center
+        right bottom: Right Bottom
+        
+  # Embed related fields
+  embed_aspect_ratio:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        none: None
+        ratio-1-1: Square
+        ratio-5-4: '5:4'
+        ratio-4-3: '4:3'
+        ratio-16-9: '16:9'
+        ratio-2-1: '2:1'
+        ratio-3-1: '3:1'
+        ratio-4-5: '4:5'
+        ratio-3-4: '3:4'
+        ratio-2-3: '2:3'
+        ratio-3-5: '3:5'
+        ratio-9-16: 9:16 (FB Reels)
+      label: Embed Aspect Ratio
+ 
+  # Section and general layout
+  component_palette:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        lightest: Lightest
+        lighter: Lighter
+        light: Light
+        dark: Dark
+        darker: Darker
+        darkest: Darkest
+        alternate-1: Alternate 1
+        alternate-2: Alternate 2
+        alternate-3: Alternate 3
+    allow_empty: false
+  component_palette_secondary:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        lightest: Lightest
+        lighter: Lighter
+        light: Light
+        dark: Dark
+        darker: Darker
+        darkest: Darkest
+        alternate-1: Alternate 1
+        alternate-2: Alternate 2
+        alternate-3: Alternate 3
+    allow_empty: false
+  title_size:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        h1: H1
+        h2: H2
+        h3: H3
+  content_alignment:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        left: Left
+        centered: Centered
+        right: Right
+  content_padding_top:
+    type: number
+    options:
+      min: 0
+      max: 7
+      step: 1
+    allow_empty: false
+  content_padding_bottom:
+    type: number
+    options:
+      min: 0
+      max: 7
+      step: 1
+    allow_empty: false
+  
+  # Pagination related fields
+  pagination.data:
+    type: auto
+    hidden: true
+  pagination.alias:
+    type: auto
+    hidden: true
+  
+  # Footer related fields
+  social:
+    type: auto
+    options:
+      structures: _structures.social
+      preview:
+        icon: link
+  links:
+    type: auto
+    options:
+      structures: _structures.links
+      preview:
+        icon: link
+  sections:
+    type: auto
+    options:
+      structures: _structures.sections
+      preview:
+        icon: link
+  items:
+    type: auto
+    options:
+      preview:
+        icon: link
+  #social[*].icon:
+  # type: select
+  #  options:
+  #    allow_empty: true
+  #    values:
+  #      <i class="fa-brands fa-square-facebook"></i>: Facebook
+  #      <i class="fa-brands fa-square-instagram"></i>: Instagram
+  #      <i class="fa-brands fa-square-x-twitter"></i>: Twitter/X
+  #      <i class="fa-brands fa-linkedin"></i>: LinkedIn
+  #      <i class="fa-brands fa-youtube"></i>: YouTube
+  #  comment: Font Awesome Social Icons
+
+  # Contact related fields
+  address:
+    type: textarea
+  hours:
+    type: textarea
+  
+  # Sitewide settings
+  use_fetch:
+    type: auto
+    comment: Check if want to have AJAX page transitions.
+  base_url:
+    type: auto
+    comment: Use production site base URL (leave off the trailing forward slash).
+  site_title:
+    type: auto
+    comment: Used for SEO
+  site_description:
+    type: auto
+    comment: Default meta description for SEO
+  site_logo:
+    type: image
+    options:
+      width: 300
+      height: 300
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/theme
+  site_image:
+    type: image
+    options:
+      width: 1600
+      height: 1600
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/defaults
+    comment: Default image for SEO
+  twitter_image:
+    type: image
+    options:
+      width: 1600
+      height: 1600
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/defaults
+    comment: Default image for SEO
+  twitter_site:
+    type: twitter
+    label: Twitter Username/Handle
+    comment: Default for page SEO (for example @happymarketer)
+  placeholder_image:
+    type: image
+    comment: Used as default image until replaced
+  meta_title:
+    type: auto
+    comment: If empty, defaults to the title of the page
+  meta_description:
+    type: auto
+    comment: >-
+      If empty, defaults to the excerpt (if a blog post) otherwise to the
+      description set in the Site SEO data file
+  canonical_url:
+    type: auto
+    comment: If empty, defaults to the page URL
+  open_graph_type:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - website
+        - article
+        - profile
+  author_twitter_handle:
+    type: twitter
+    comment: Defaults to the twitter site value set in the Site SEO data file
+  no_index:
+    type: checkbox
+    comment: >-
+      When selected this removes the page from your sitemap and adds the noindex
+      robots meta tag
+
+  # Navigation related fields
+  enable_dropdown:
+    type: switch
+    comment: Enables dropdown of sub-navigation items (if present) on the main navbar.
+  sub_navigation_group_title:
+    comment: >-
+      Used in the sub-navigation components to know which sub navigation items
+      to display.
+  sub_navigation:
+    type: array
+    options:
+      structures: _structures.sub_navigation
+    label: Sub Navigation Items
+  navigation_group:
+    type: select
+    options:
+      values: data.nav.items[*].sub_navigation_group_title
+    comment: >-
+      Pulled from on any sub-navigation group titles added in the main nav file of the data
+      folder ('_data/nav.json').
+
+  # Collections and Blog related fields
+  excerpt:
+    type: textarea
+    comment: Short summary of page (e.g. first one or two sentences)
+  fleet_category:
+    type: select
+    options:
+      allow_empty: true
+      values: data.fleet-categories.category
+    comment: Choose fleet category this item belongs to (for filtering).
+  tags:
+    type: multiselect
+    options:
+      empty_type: array
+      values: data.blog-tags
+      value_key: title
+      preview:
+        text:
+          - key: title
+  layout:
+    type: auto
+    hidden: true
+  eleventyExcludeFromCollections:
+    type: auto
+    hidden: true
+    
+_structures:
+
+  content_blocks:
+    style: modal
+  # Navigation related structures
+  sub_navigation:
+    style: select
+    values:
+      value:
+        text:
+        link:
+  # Footer related structures
+  social:
+    style: select
+    values:
+      value:
+        link:
+        icon:
+        title:
+  sections:
+    style: select
+    values:
+      value:
+        title:
+        links:
+  links:
+    style: select
+    values:
+      value:
+        text:
+        link:
+  # Image related structures
+  photos:
+    style: select
+    values:
+      - label: Gallery Image
+        image_key: gallery_image
+        icon: add_a_photo
+        value:
+          gallery_image:
+          title:
+  # Embed related structures
+  embed_code:
+    style: select
+    values:
+      - label: Embed Code
+        icon: play_circle
+        value:
+          code_block:
+          embed_aspect_ratio:
+          
+_editables:
+
+  # Editable regions in the Visual Editor (not working currently)
+  #text:
+  #  bold: true
+  #  italic: true
+  #  underline: true
+  #block:
+  #  format: p h2 h3 h4 h3
+  # undo: true
+  #  redo: true
+  #link:
+  #  bold: true
+  #  italic: true
+  # underline: true
+  #image:
+  #  allowed_sources:
+  #    - site-files
+    
+  content: # Rich Text Editor in Content Editor (e.g. Blog Post)
+    # Text options
+    blockquote: true
+    bold: true
+    format: p h1 h2 h3 h4 pre
+    italic: true
+    link: true
+    strike: true
+    subscript: true
+    superscript: true
+    underline: true
+    # Style and alignment options
+    styles: /css/editor.css
+    left: align-left
+    center: align-center
+    right: align-right
+    justify: align-justify
+    # List options
+    bulletedlist: true
+    numberedlist: true
+    indent: true
+    outdent: true
+    join_above: true
+    join_below: true
+    # Image options
+    image_size_attributes: true
+    width: 1200
+    height: 1400
+    resize_style: contain
+    expandable: false
+    allowed_sources:
+      - site-files
+    # Block options
+    code: true
+    embed: true
+    horizontalrule: true
+    image: true
+    table: true
+    # Action options
+    undo: true
+    redo: true
+    removeformat: true
+    # Paths
+    paths:
+      uploads: uploads/content
+    # Custom markup
+    allow_custom_markup: false
+    
+data_config:
+
+  blog-tags:
+    path: _data/blog-tags.json
+  contact:
+    path: _data/contact.json
+  fleet-categories:
+    path: _data/fleet-categories.json
+  nav:
+    path: _data/nav.json
+  nav-docs:
+    path: _data/nav-docs.json
+  sub-nav:
+    path: _data/sub-nav.json
+  footer:
+    path: _data/footer.json
+  site:
+    path: _data/site.json
+  icon-sets:
+    path: _data/icon-sets.json
+    
+timezone: Pacific/Auckland
+

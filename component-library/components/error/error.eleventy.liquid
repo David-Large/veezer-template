@@ -1,0 +1,32 @@
+<section class="section error-component use-gsap vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column is-8-tablet is-offset-2-tablet is-6-desktop is-offset-3-desktop">
+              
+                <div class="first-of-type-section-spacer"></div>
+        
+                {%- if error_image %}
+                    <div class="content gsap-element-wrapper has-text-centered" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0">
+                        <p class="pb-5">
+                            {%- if error_image %}{% assign current_image = error_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                            {%- bookshop_include "resize-image" rs_lazy: false rs_image: current_image rs_title: title rs_quality: "70" rs_width: "400" %}
+                        </p>
+                    </div>
+                {%- endif %}
+                <div class="content gsap-element-wrapper has-text-centered" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.25">
+                    {{ description | markdownify }}
+                    <p class="pt-5">
+                        <a href="{{ button.link }}" class="editable button"> {{ button.text }} </a>
+                    </p>
+                </div>
+              
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

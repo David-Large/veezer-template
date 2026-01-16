@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include './layouts/head.liquid' %}
+  <body>
+    {% include './layouts/navigation.liquid' %}
+    {% include './layouts/screen-size-indicator.liquid' %}
+    {% include './layouts/pagefind.liquid' %}
+    {% include './layouts/page-loader.liquid' %}
+    {% include './layouts/documentation-link' %}
+    {% include './layouts/documentation-navigation.liquid' %}
+    <div id="gsap-smooth-wrapper">
+      <div id="gsap-smooth-content">
+        {%- capture pagefind_ignore %}{%- if page.url == '/blog/' or page.url == '/events/' or page.url contains '/tags/' %} data-pagefind-ignore="all"{% endif %}{% endcapture %}
+        <main{{ pagefind_ignore }}>
+          {{ content }}
+          <div class="footer-spacer"></div>
+        </main>
+        {% include './layouts/footer.liquid' %}
+      </div>
+    </div>
+    <div id="modal-holder"></div>
+    {% include './layouts/connection-issue-notice.liquid' %}
+    {% include './layouts/tail.liquid' %}
+  </body>
+</html>

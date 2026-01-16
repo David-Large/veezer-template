@@ -1,0 +1,19 @@
+{
+  "ssg": "eleventy",
+  "mode": "hosted",
+  "build": {
+    "install_command": "npm i",
+		"build_command": "npm run build",
+		"output_path": "_site",
+    "preserved_paths": "",
+    "environment_variables": [],
+    "config": "",
+    "formats": "",
+    "input": "",
+    "output": "_site",
+    "pathprefix": "",
+    "quiet": false,
+    "manage_plugin_manually": false,
+    "manually_configure_urls": false
+  }
+}

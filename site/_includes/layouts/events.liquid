@@ -1,0 +1,122 @@
+---
+layout: base.liquid
+---
+
+{%- bookshop "basic/header" title: "Event Calendar" title_size: "h1" full_container_width: "false" content_alignment: "centered" component_palette: component_palette content_padding_top: 5 content_padding_bottom: 0 %}
+
+<div class="event-header-links-wrapper vb-theme-{{ component_palette }} use-gsap">
+    <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.5">
+        <button class="button single-line selected" id="show-upcoming-events">{%- bookshop_include "icons" icon_name: "Next" %} Upcoming</button>
+        <button class="button single-line" id="show-previous-events">{%- bookshop_include "icons" icon_name: "Previous" %}  Previous</button>
+    </div>
+</div>
+
+<div class="section events-summary vb-theme-{{ component_palette }} pt-2">
+  
+    <div class="container">
+
+        <!-- NOTE: Need the overflow hidden to catch any overflow between the longest of the 'blog-display-flat' and the 'blog-display-grid'
+        The relative positioning helps keep jumps from happening when changing between the two views. -->
+        <div style="overflow: hidden; position: relative;">
+
+            {%- comment %} ++++++ Check for 'now' but take off one day (86400 seconds) {% endcomment %}
+            {%- capture now-unix %}{{ "now" | dateUnixIntegerNow | minus: "86400" }}{% endcapture %}
+
+            <div id="events-summary-upcoming">
+
+                {%- assign sorted_events = collections["events"] | sort: "data.event_date" %}
+                
+                {%- for item in sorted_events %}
+            
+                    {%- comment %} Check if date is in the future. Base it on the end_date if there is one. {% endcomment %}
+                    {%- if item.data.event_end_date %}
+                        {%- capture event-time %}{{ item.data.event_end_date | dateUnixInteger }}{% endcapture %}
+                    {%- else %}
+                        {%-capture event-time %}{{ item.data.event_date | dateUnixInteger }}{% endcapture %}
+                    {%- endif %}
+                    
+                    {%- if now-unix <= event-time %}
+                        {%- assign event-in-past="false" %}
+                    {%- else %}
+                        {%- assign event-in-past="true" %}
+                    {%- endif %}
+                    
+                    {% capture newYear %}{{ item.data.event_date | dateEventYearFourDigits }}{% endcapture %}
+                    {% if newYear != oldYear %}
+                        {% if event-in-past == "false" %}
+                            <div class="use-gsap">
+                                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                                    <h2 class="calendar-year">{{ newYear }}</h2>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    
+                    {% capture newMonth %}{{ item.data.event_date | dateEventMonth }}{% endcapture %}
+                    {% if newMonth != oldMonth %}
+                        {% if event-in-past == "false" %}
+                            <div class="use-gsap">
+                                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                                    <h2 class="calendar-month"><span>{{ newMonth }}</span></h2>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    
+                    {% capture oldYear %}{{ newYear }}{% endcapture %}
+                    {% capture oldMonth %}{{ newMonth }}{% endcapture %}
+                    
+                    {% if event-in-past == "false" %}
+                        {% include "./layouts/event-item-summary" item: item %}
+                    {% endif %}
+                
+                {%- endfor %}
+                
+            </div>
+            
+            <div id="events-summary-previous" class="hide">
+
+                {%- assign sorted_events = collections["events"] | sort: "data.event_date" | reverse %}
+                
+                {%- comment %}
+                Keep track of how many previous events we've shown.
+                Set a limit below to avoid displaying too many previous events.
+                {% endcomment %}
+                {%- assign previous_events_counter = 0  %}
+
+                {%- for item in sorted_events %}
+            
+                    {%- comment %} Check if date is in the future. Base it on the end_date if there is one. {% endcomment %}
+                    {%- if item.data.event_end_date %}
+                        {%- capture event-time %}{{ item.data.event_end_date | dateUnixInteger }}{% endcapture %}
+                    {%- else %}
+                        {%-capture event-time %}{{ item.data.event_date | dateUnixInteger }}{% endcapture %}
+                    {%- endif %}
+                    
+                    {%- if now-unix <= event-time %}
+                        {%- assign event-in-past="false" %}
+                    {%- else %}
+                        {%- assign event-in-past="true" %}
+                    {%- endif %}
+                    
+                    {% capture newYear %}{{ item.data.event_date | dateEventYearFourDigits }}{% endcapture %}
+                    
+                    {% capture newMonth %}{{ item.data.event_date | dateEventMonth }}{% endcapture %}
+                    
+                    {% capture oldYear %}{{ newYear }}{% endcapture %}
+                    {% capture oldMonth %}{{ newMonth }}{% endcapture %}
+
+                    {% if event-in-past == "true" and previous_events_counter < 20 %}
+                        {% include "./layouts/event-item-summary" item: item %}
+                        {% assign previous_events_counter = previous_events_counter | plus: 1 %}
+                    {% endif %}
+
+                {%- endfor %}
+                
+            </div>
+        
+        </div>
+      
+    </div>
+    
+</div>

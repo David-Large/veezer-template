@@ -1,0 +1,68 @@
+<section class="section carousel-component use-gsap" data-block-index="{{ block_index }}">
+        
+    <div class="carousel-outer {{ container_height_small }} {{ container_height_medium }} {{ container_height_large }}" data-total-slides="{{ carousel.size }}" data-auto-interval="{{ auto_change_speed }}">
+            
+        <div class="carousel-middle">
+            
+            <div class="carousel-inner{% if slide_transition %} carousel-slide-on {% endif %}">
+                
+                {% for item in carousel %}
+                <div class="carousel-slide">
+                    
+                    <div class="gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" style="height: 100%;">
+                        {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index %}{% endcapture %}
+                        {%- if set_flag contains "true" %}
+                            {%- assign lazy_load_flag = true %}
+                        {%- else %}
+                            {%- assign lazy_load_flag = false %}
+                        {%- endif %}
+                        {%- if item.carousel_image %}{% assign current_image = item.carousel_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                        {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: item.image_quality rs_title: title rs_focal_point: item.focal_point rs_aspect_ratio: "auto" %}
+                    </div>
+                    
+                    <div class="container">
+                      
+                        <div class="columns">
+                          
+                          <div class="column">
+                              <div class="content {{ item.text_alignment }}">
+                                  {%- comment %} Apart from the first slide, add the gsap animation text effect to the newly appearing slide with JS when the slide changes.
+                                  Otherwise, the text animation will play (with scrolltrigger as the trigger) on all slides at once. This way means that the animation
+                                  only starts when slide becomes visible. This is done by adding the gsap animation class to the newly appearing slide with JS when the slide changes.{% endcomment %}
+                                  <div class="carousel-title{% if forloop.first %} gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1" style="color: {{ item.title_color }}">{{ item.title }}</div>
+                                  <div class="carousel-sub-title{% if forloop.first %} gsap-element-wrapper{% else %} gsap-element-wrapper-no-scrolltrigger{% endif %}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1.5" style="color: {{ item.sub_title_color }}">{{ item.sub_title }}</div>
+                              </div>
+                          </div>
+                          
+                        </div>
+                        
+                    </div>
+                      
+                    {% if overlay_gradient == true %}
+                        <div class="carousel-gradient {{ item.text_alignment }} gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+                        </div>
+                    {% endif %}
+                      
+                </div>
+                {% endfor %}
+                  
+            </div>
+              
+        </div>
+            
+        <!-- Next and previous buttons -->
+        <span style="overflow-x: hidden;" class="carousel-prev gsap-element-wrapper{% if navigation.hide_prev_next_buttons == true %} is-hidden{% endif %}" data-gsap-animation-name="slide-in-from-left" data-gsap-delay="1.25"><span>&#10094;</span></span>
+        <span style="overflow-x: hidden;" class="carousel-next gsap-element-wrapper{% if navigation.hide_prev_next_buttons == true %} is-hidden{% endif %}" data-gsap-animation-name="slide-in-from-right" data-gsap-delay="1.25"><span>&#10095;</span></span>
+
+        <!-- Nav dots -->
+        <div class="carousel-nav-container{% if navigation.hide_page_indicator == true %} is-hidden{% endif %} gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="2">
+          {% for item in carousel %}
+            <span class="carousel-nav-dot" data-dot-index="{{ forloop.index0 }}"></span>
+          {% endfor %}
+        </div>
+            
+    </div>
+
+    <span class="editor-content">Please note: The carousel wont work as expected in admin mode.</span>
+        
+</section>

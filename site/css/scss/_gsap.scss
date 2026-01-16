@@ -1,0 +1,52 @@
+/* Used to have it so woul dhave a fade-in of the whole section before the fade in of the gsap-element-wrapper elements. */
+/* Simplified now though and don't fade in the sections (.use-gsap class). */
+
+/* These are the elements where the individual animations are applied (including a fade-in) */
+.gsap-element-wrapper,
+.gsap-element-wrapper-no-scrolltrigger {
+  /* Instead of using opacity, for better performance use Auto Alpha in GSAP. Need to set initial visibility
+  as hidden. Auto Alpha will assume opacity:0 to start with then as it animates up the opacity value, it will
+  also add visbility: visible as soon asw opacity is > 0. */
+  /* opacity: 0.01; */
+  visibility: hidden;
+}
+/* Set the animation positions to the default when viewed in the editor */
+.cms-editor-active .gsap-element-wrapper,
+.cms-editor-active .gsap-element-wrapper-no-scrolltrigger {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transform: translateY(0) !important;
+  scale: 1 !important;
+}
+
+/* --- ANIMATION START POSITION DEFAULTS --- */
+
+/* Instead of setting the initial trnasforms in CSS, set it within GSAP for better control
+of the animation process. Better if GSAP has control of all aspects of the positioning. */
+/*[data-gsap-animation-name="slide-in-from-left"] {
+  transform: translateX(-20px);
+}
+[data-gsap-animation-name="slide-in-from-right"] {
+  transform: translateX(20px);
+}
+[data-gsap-animation-name="slide-up-from-bottom"] {
+  transform: translateY(20px);
+}
+[data-gsap-animation-name="slide-down-from-top"] {
+  transform: translateY(-20px);
+}
+[data-gsap-animation-name="scale-up"] {
+  scale: 0.6;
+} */
+
+section.use-gsap,
+.section.use-gsap,
+.section.gsap-batch-stagger,
+.section.events-summary,
+.event-header-links-wrapper {
+  margin-top: -1px; 
+  /* Fixes a small gap that sometimes appears (on and off with scrolling) at the top
+  of the section when using GSAP animations and Scroll Smoother. Most visible whith
+  dark backgrounds over a light body colour. */
+}

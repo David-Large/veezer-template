@@ -1,0 +1,33 @@
+<section class="section double-column-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column is-6-desktop pr-6-desktop{% if center_column_content_vertically %} is-flex is-flex-wrap-wrap is-align-content-center{% endif %}">
+              
+                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-in-from-left">
+                
+                    {{ left_column | markdownify }}
+                
+                </div>
+              
+            </div>
+          
+            <div class="column is-6-desktop pl-6-desktop{% if center_column_content_vertically %} is-flex is-flex-wrap-wrap is-align-content-center{% endif %}">
+              
+                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-in-from-right">
+                
+                    {{ right_column | markdownify }}
+                    
+                </div>
+                
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

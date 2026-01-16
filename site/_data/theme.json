@@ -1,0 +1,181 @@
+{
+  "use_default_theme": false,
+  "theme": [
+    {
+      "title": "Main theme",
+      "google_font_snippet": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&subset=latin&display=swap\" rel=\"stylesheet\">",
+      "primary_font_family": "\"Nunito Sans\", sans-serif",
+      "secondary_font_family": "\"Nunito Sans\", sans-serif",
+      "navigation_font_family": "\"Nunito Sans\", sans-serif",
+      "body_line_height": 1.6,
+      "main_background_color": "#f1f1f1",
+      "content": {
+        "text_color": "#333333",
+        "heading_color": "#333333",
+        "button_background_color": "#ff8a00",
+        "button_color": "#ffffff",
+        "link_color": "#666666"
+      },
+      "navbar": {
+        "background_color": "#ffffff",
+        "link_color": "#222222",
+        "active_link_color": "#ffffff",
+        "active_link_background_color": "#ff8a00",
+        "dropdown_background_color": "#f5f5f5"
+      },
+      "components": {
+        "lightest": {
+          "background_color": "#ffffff",
+          "text_color": "#333333",
+          "heading_color": "#333333",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#666666",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "lighter": {
+          "background_color": "#f7f7f7",
+          "text_color": "#333333",
+          "heading_color": "#333333",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#666666",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "light": {
+          "background_color": "#eeeeee",
+          "text_color": "#333333",
+          "heading_color": "#333333",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#333333",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "dark": {
+          "background_color": "#999999",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "darker": {
+          "background_color": "#555555",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "darkest": {
+          "background_color": "#111111",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "button_background_color": "#ff8a00",
+          "button_color": "#ffffff",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#cccccc",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#ffffff"
+        },
+        "alternate_1": {
+          "background_color": "#e9d4b4",
+          "text_color": "#222222",
+          "heading_color": "#222222",
+          "button_background_color": "#222222",
+          "button_color": "#ffffff",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#dfdfdf",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#f3f3f3"
+        },
+        "alternate_2": {
+          "background_color": "#c0a27a",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "button_background_color": "#ffffff",
+          "button_color": "#222222",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#dfdfdf",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#f3f3f3"
+        },
+        "alternate_3": {
+          "background_color": "#347d75",
+          "text_color": "#ffffff",
+          "heading_color": "#ffffff",
+          "button_background_color": "#84cdc5",
+          "button_color": "#ffffff",
+          "link_color": "#dddddd",
+          "table_header_background_color": "#dfdfdf",
+          "table_row_odd_background_color": "#ffffff",
+          "table_row_even_background_color": "#f3f3f3"
+        }
+      },
+      "footer": {
+        "background_color": "#e9e9e9",
+        "text_color": "#222222",
+        "heading_color": "#222222",
+        "button_background_color": "#9aca3c",
+        "button_color": "#ffffff",
+        "link_color": "#222222"
+      },
+      "page_preloader": {
+        "page_preloader_color": "#ff8a00"
+      }
+    }
+  ],
+  "_inputs": {
+    "use_default_theme": {
+      "type": "checkbox",
+      "comment": "Ignore all sub themes below and use defaults from the bulma/variables.scss file."
+    },
+    "theme": {
+      "comment": "The first theme item below will be used (unless 'Use Default Theme' is checked). Re-order to change to another theme. If a value is left blank, then the value from the default theme (in bulma/variables.scss) will be used."
+    },
+    "google_font_snippet": {
+      "type": "code",
+      "comment": "Embed snippet that appears in the 'head' area. Must contain the fonts used in 'Primary', 'Secondary' and 'Navigation' font fields."
+    },
+    "primary_font_family": {
+      "type": "code",
+      "comment": "Comma-seperated CSS value applied to 'font-family' on the 'body. e.g. 'Arial, Helvetica, sans-serif'"
+    },
+    "secondary_font_family": {
+      "type": "code",
+      "comment": "Comma-seperated CSS value applied to 'font-family' for secondary items like headings. e.g. 'Arial, Helvetica, sans-serif'"
+    },
+    "navigation_font_family": {
+      "type": "code",
+      "comment": "Comma-seperated CSS value applied to 'font-family' for main navigation bar. e.g. 'Arial, Helvetica, sans-serif'"
+    },
+    "body_line_height": {
+      "type": "number",
+      "comment": "Global line height. If set to zero, will use default value (from bulma/variables.scss)."
+    },
+    "main_background_color": {
+      "type": "color",
+      "comment": "Colour of the 'main' div (containing everything apart from to navigation bar and the footer)."
+    },
+    "content": {
+      "type": "object",
+      "comment": "Colours applied to the main content area."
+    },
+    "components": {
+      "type": "object",
+      "comment": "Background colours for components that can be selected for individual components in the editor."
+    }
+  }
+}

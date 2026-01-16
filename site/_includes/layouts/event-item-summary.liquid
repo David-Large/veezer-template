@@ -1,0 +1,93 @@
+<div class="use-gsap">
+
+    <article class="event-wrapper gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom">
+                    
+        {%- if item.data.event_summary_image %}{% assign current_image = item.data.event_summary_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+            
+        {%- comment %} ++++++ With a filter, determine dimensions of image so know if 'landscape', 'square' or 'portrait'. {% endcomment %}
+        {%- comment %} ++++++ 1.618 -> Golden Ratio {% endcomment %}
+        
+        {%- assign image_x = current_image | prepend: "site" | image-width %}
+        {%- assign image_y = current_image | prepend: "site" | image-height %}
+        {%- assign thumb_ratio = image_x | append: "/" | append: image_y %}
+        
+        {%- comment %} ++++++ Use square if the image is 'almost' square as well as if perfectly square. {% endcomment %}
+        
+        {%- if image_x == image_y %}
+            {%- assign aspect = "square" %}
+            {%- assign thumb_width = "450" %}
+        {%- elsif image_x > image_y %}
+            {%- assign rat = image_x | divided_by: image_y %}
+            {%- if rat > 1.2 %}
+                {%- assign aspect = "landscape" %}
+                {%- assign thumb_width = "650" %}
+            {%- else %}
+                {%- assign aspect = "square" %}
+                {%- assign thumb_width = "450" %}
+            {%- endif %}
+        {%- else %}
+            {%- assign rat = image_y | divided_by: image_x %}
+            {%- if rat > 1.2 %}
+                {%- assign aspect = "portrait" %}
+                {%- assign thumb_width = "400" %}
+            {%- else %}
+                {%- assign aspect = "square" %}
+                {%- assign thumb_width = "450" %}
+            {%- endif %}
+        {%- endif %}
+        
+        <div class="columns">
+                    
+            <div class="column" style="display: flex;">
+            
+                <div class="content gsap-element-wrapper print-full-width image-{{ aspect }}" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.5">
+                    
+                    <div class="event-item-thumb">
+                        
+                        <a href="{{ item.url }}">
+                            {% bookshop_include "resize-image-srcset" live_render: false rs_lazy: true rs_image: current_image rs_quality: "70" rs_title: item.data.title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: "auto" %} 
+                        </a>
+                        
+                    </div>
+                
+                </div>
+                
+            </div>
+                    
+            <div class="column" style="display: flex; flex-direction: column; justify-content: center;">
+        
+                <div class="content gsap-element-wrapper print-full-width" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.25">
+                    
+                    <h3>{{ item.data.title }}</h3>
+                    
+                    <div class="date">
+                        {%- bookshop_include "icons" icon_name: "Calendar" %}
+                        {% capture display_event_date %}{{ item.data.event_date | dateEventDayName }}, {{ item.data.event_date | dateEventDayNumber }} {{ item.data.event_date | dateEventMonth }} {{ item.data.event_date | dateEventYearFourDigits }}{% endcapture %}
+                        {% if item.data.event_end_date %}
+                            {% capture display_event_end_date %}{{ item.data.event_end_date | dateEventDayName }}, {{ item.data.event_end_date | dateEventDayNumber }} {{ item.data.event_end_date | dateEventMonth }} {{ item.data.event_end_date | dateEventYearFourDigits }}{% endcapture %}
+                        {% endif %}
+                        <span>{{ display_event_date }}
+                        {%- if display_event_end_date and display_event_end_date != display_event_date %}
+                            - {{ display_event_end_date }}
+                        {%- endif %}
+                        </span>
+                    </div>
+                    
+                    {% if event-in-past == "true" %}
+                        {% include "./layouts/past-event-message" %}
+                    {% endif %}
+                    
+                    <div class="info-text">
+                        <p class="description">{{ item.content | strip_html | truncatewords: 40 }}</p>
+                        <p class="hide-for-print"><a href="{{ item.url }}" class="button">More...</a></p>
+                    </div>
+                        
+                </div>
+                
+            </div>    
+                        
+        </div>
+            
+    </article>
+
+</div>

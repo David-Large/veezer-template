@@ -1,0 +1,44 @@
+<head>
+      <title>{% if seo.meta_title %}{{ seo.meta_title }}{% else %}{{ title }}{% endif %} | {{ site.site_title }}</title>
+      {% include './layouts/meta.liquid' %}
+  {%- comment %} Styles {% endcomment %}
+      <link rel="stylesheet" href="/css/bulma.css" />
+      <link rel="stylesheet" href="/css/main.css" />
+      <link rel="stylesheet" href="/css/bookshop.css" />
+      {%- comment %}
+      Below is a widely used and relatively simple technique. The browser initially loads the stylesheet with media="print",
+      which means it only applies when printing and thus doesn't block rendering. Once the stylesheet is fully loaded,
+      a JavaScript onload event changes the media attribute to "all", applying the styles to the screen.
+      {% endcomment %}
+      <link rel="stylesheet" href="/css/editor.css" media="print" onload="this.media='all'; this.onload=null;" />
+      <link rel="stylesheet" href="/vendor/air-datepicker/css/air-datepicker.css" media="print" onload="this.media='all'; this.onload=null;" />
+  {%- comment %} Favicon - https://realfavicongenerator.net/ {% endcomment %}
+      <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+      <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+      <meta name="apple-mobile-web-app-title" content="Veezer" />
+      <link rel="manifest" href="/favicon/site.webmanifest" />
+  {%- comment -%} Fonts {% endcomment %}
+  {%- if theme.use_default_theme == true%}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  {% else %}
+    {%- if theme.theme[0].google_font_snippet %}
+      {{ theme.theme[0].google_font_snippet }}
+    {%- else %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    {%- endif %}
+  {%- endif %}
+  {%- if icon-sets.head_code %}
+      {{ icon-sets.head_code }}
+  {%- endif %}
+  {%- if processEnv.environment == 'production' %}
+    {%- if site.google_analytics_code_block %}
+      {{ site.google_analytics_code_block }}
+    {%- endif %}
+  {%- endif %}
+  </head>

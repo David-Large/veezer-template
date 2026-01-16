@@ -1,0 +1,8 @@
+---
+layout: base.liquid
+---
+
+{%- comment %} --- VB added page 'title' to push through to the component. Can use 'title' without this in the component and it will be rendered in the --- {% endcomment %}
+{%- comment %} --- live site BUT it can't be accessed in the visual editor so is not rendered in the admin. This solves that issue.                     --- {% endcomment %}
+
+{% block content %} {% bookshop_include "page" content_blocks: content_blocks title: title %} {% endblock %}

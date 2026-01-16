@@ -1,0 +1,121 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+.contact-form-component {
+  
+  /* Prevent oveflow of items positioned out of the horizontal bounds of the viewport (e.g. when using gsap fade-in's from left and right and they initially set to say +/-20px).
+  only really notice this on mobile at times, but is annoying as it adds a small horizontal scoll component which is unwanted. */
+  overflow: hidden;
+
+  .site-contact-form {
+
+    &.light-gray {
+
+      .select select, .input, .textarea {
+        background-color: #ccc;
+        color: #000;
+      }
+     
+    }
+    &.dark-gray {
+
+      .select select, .input, .textarea {
+        background-color: #666;
+        color: #fff;
+      }
+     
+    }
+    &.black {
+
+      .select select, .input, .textarea {
+        background-color: #000;
+        color: #fff;
+      }
+    
+    }
+    &.white {
+
+      .select select, .input, .textarea {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  h4 {
+    line-height: 1.4;
+    margin-bottom: 3rem;
+  }
+
+ .select select, .input, .textarea {
+
+    border-radius: 0;
+    border: 0 !important;
+    
+  }
+  
+  .field {
+    margin-top: -1rem;
+  }
+  .checkbox,
+  .radio {
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  
+  .checkbox input,
+  .radio input {
+    margin-right: 5px;
+  }
+  
+  /* Override Bulma */
+  .radio + .radio {
+    margin-left: 0;
+  }
+  
+  .select,
+  select {
+    width: 100%;
+  }
+  
+  label.label {
+    font-weight: 600;
+  }
+  
+  // Used when a select item option 'other' allows for another to be entered into an input. Handled by JS.
+  .other-option-wrapper {
+    display: none;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .contact-form-wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .contact-details-wrapper {
+    max-width: 350px;
+    margin: 0 auto;
+
+    i,
+    [class*="material-symbols"] {
+      opacity: 0.5;
+    }
+  }
+  
+}
+
+@include mixins.from(iv.$desktop) {
+
+  /* The standard div used elsewhere for the 'first-of-type' section spacing  doesn't
+  apply here as the component has its own spacing needs due to the image being
+  full height of the section. */
+  main .section:first-of-type.contact-form-component .columns.is-gapless > .column {
+    padding-top: 90px !important;
+  }
+  
+}
+
+

@@ -1,0 +1,25 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Latest Posts
+  description: Image, description and link to latest blog posts.
+  icon: collections
+  tags: ["blog"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  title:
+  number_posts: 3
+  content_padding_top: 5
+  content_padding_bottom: 5
+  
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  number_posts:
+    type: number
+    label: "Number of posts to show"

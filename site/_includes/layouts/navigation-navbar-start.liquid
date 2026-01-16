@@ -1,0 +1,58 @@
+<div class="navbar-start">
+    
+    {%- for item in nav_data_file.items %}
+    
+        {%- if item.enable_dropdown and item.sub_navigation %}
+        
+            {%- assign dropdown_selected = false %}
+        
+            {%- for sub_navigation_item in item.sub_navigation %}
+                
+                {%- if page.url == sub_navigation_item.link %}
+                    {%- assign dropdown_selected = true %}
+                {%- endif %}
+                            
+            {%- endfor %}
+        
+            <div class="navbar-item has-dropdown is-hoverable-desktop">
+                    
+                {%- if item.link %}
+                    <a class="navbar-link{% if page.url == item.link or dropdown_selected == true %} is-active{% endif %}" href="{{ item.link }}">
+                        {{ item.text }}
+                    </a>
+                {%- else %}
+                    <span class="navbar-link" style="cursor: default;">{{ item.text }}</span>
+                {%- endif %}
+              
+                {%- comment %} This button implements the dropdown toggler for small screens. {% endcomment %}
+                <button class="dropdown-toggle" aria-label="Toggle Dropdown">
+                    <span></span>
+                </button>
+        
+                <div class="navbar-dropdown">
+                    
+                    <div>{%- comment %} Wrapper div (non-Bulma) for overflow control to use the grid open-close animation. {% endcomment %}
+                    {%- for dropdown_item in item.sub_navigation %}
+                        <a class="navbar-item{% if page.url == dropdown_item.ink %} is-active{% endif %}" href="{{ dropdown_item.link }}">
+                        {{ dropdown_item.text }}
+                        </a>
+                    {%- endfor %}
+                    </div>
+
+                </div>
+                
+            </div>
+        
+        {%- else %}
+        
+            <a class="navbar-item{% if page.url == item.link %} is-active{% endif %}" href="{{ item.link }}">
+                {{ item.text }}
+            </a>
+        
+        {%- endif %}  
+                
+    {%- endfor %}
+    
+</div>
+    
+

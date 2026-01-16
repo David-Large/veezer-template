@@ -1,0 +1,47 @@
+<section class="section sponsors-component section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} use-gsap" data-block-index="{{ block_index }}">
+              
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="sponsors-wrapper gsap-element-wrapper has-text-centered" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="0.4">
+              
+        {% for item in sponsors %}
+
+            {%- if item.sponsor_image %}{% assign current_image = item.sponsor_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+           
+            {%- comment %} ++++++ With a filter, determine dimensions of image so know if 'landscape', 'square' or 'portrait'. {% endcomment %}
+            {%- comment %} ++++++ Need to work with floats not integers to get a floating result when using 'divided_by'. Hence the 'times: 1.0'. {% endcomment %}
+            
+            {%- assign image_x = current_image | prepend: "site" | image-width | times: 1.0 %}
+            {%- assign image_y = current_image | prepend: "site" | image-height | times: 1.0 %}
+
+            {% assign ratio = image_x | divided_by: image_y %}
+            
+            {%- if image_x > image_y %}
+                {%- if ratio > 2.5 %}
+                    {%- assign aspect = "landscape-wide-short" %}
+                {% else %}
+                    {%- assign aspect = "landscape" %}
+                {%- endif %}
+            {%- elsif image_x == image_y   %}
+                {%- assign aspect = "square" %}
+            {%- else %}
+                {%- if ratio < 0.4 %}
+                    {%- assign aspect = "portrait-narrow-tall" %}
+                {% else %}
+                    {%- assign aspect = "portrait" %}
+                {%- endif %}
+            {%- endif %}
+              
+            {% if item.link %}
+                <a href="{{ item.link }}" target="_blank">
+                    <img loading="lazy" src="{{ current_image }}" width="{{ image_x }}" height="{{ image_y }}" class="{{ aspect }} {% if grayscale == true %}grayscale{% endif %}" alt="{{ item.title }}" onerror="this.onerror=null;this.src='{{ site.placeholder_image }}'" />
+                </a>
+            {% else %}
+                <img loading="lazy" src="{{ current_image }}" width="{{ image_x }}" height="{{ image_y }}" class="{{ aspect }} {% if grayscale == true %}grayscale{% endif %}" alt="{{ item.title }}" onerror="this.onerror=null;this.src='{{ site.placeholder_image }}'" />
+            {% endif %}
+               
+        {% endfor %}
+        
+    </div>
+        
+</section>

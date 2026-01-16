@@ -1,0 +1,163 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Form
+  description: Configurable contact form.
+  icon: check_box
+  tags: ["contact"]
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: light
+  component_palette_secondary: lighter
+  thank_you_page: true
+  thank_you_message:
+  title: "Let's talk."
+  sub_title: "Have a question or suggestion? Feel free to drop us a message!"
+  contact_details:
+    show_phone: false
+    show_email: false
+    show_address: false
+    show_hours: false
+  contact_details_column_narrow: true
+  form:
+  form_field_color: white
+  form_inbox_key:
+  submit_button_text: Submit
+  subject_line: Website Enquiry
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  thank_you_page:
+    type: checkbox
+    comment: "Check if this is a contact page."
+  thank_you_message:
+    type: markdown
+    hidden: "!thank_you_page"
+  title:
+    type: text
+    hidden: "thank_you_page"
+  sub_title:
+    type: textarea
+    hidden: "thank_you_page"
+  form:
+    type: array
+    label: Form Fields
+    hidden: "thank_you_page"
+    options:
+      structures: _structures.form_fields
+  form_field_color:
+    type: select
+    label: Form Field Color
+    hidden: "thank_you_page"
+    options:
+      allow_empty: false
+      values:
+        white: White
+        light-gray: Light Gray
+        dark-gray: Dark Gray
+        black: Black
+  form_inbox_key:
+    type: text
+    label: Form Inbox Key
+    comment: "Enter your CloudCannon Form Inbox Key to enable form submissions to be sent to your inbox. You can find your inbox key in your CloudCannon dashboard under Forms > Inboxes."
+    hidden: "thank_you_page"
+  submit_button_text:
+    type: text
+    hidden: "thank_you_page"
+  subject_line:
+    type: text
+    hidden: "thank_you_page"
+  placeholder:
+    type: text
+    comment: "Can leave blank."
+    
+        
+# Any extra CloudCannon structures configuration to apply to the blueprint
+_structures:
+  form_fields:
+    style: modal
+    id_key: _id
+    values:
+      - label: Text Input
+        icon: horizontal_rule
+        value:
+          _id: text
+          name:
+          label:
+          required: false
+          half_width_widescreen: false
+      - label: Textarea
+        icon: view_headline
+        value:
+          _id: textarea
+          name:
+          label:
+          required: false
+          half_width_widescreen: false
+      - label: Email
+        icon: alternate_email
+        value:
+          _id: email
+          label:
+          required: false
+          half_width_widescreen: false
+      - label: Select
+        icon: list
+        value:
+          _id: select
+          name:
+          label:
+          required: false
+          choices:
+            - Option 1
+          show_input_for_other_option: false
+          half_width_widescreen: false
+      - label: Checkbox
+        icon: check_box
+        value:
+          _id: checkbox
+          name:
+          label:
+          choices:
+            - option: Option 1
+              show_checked: false
+          half_width_widescreen: false
+      - label: Radio
+        icon: radio_button_checked
+        value:
+          _id: radio
+          name:
+          label:
+          choices:
+            - Option 1
+          half_width_widescreen: false
+      - label: Number
+        icon: pin
+        value:
+          _id: number
+          name:
+          label:
+          required: false
+          value_number:
+          min_number:
+          max_number:
+          step_number:
+          half_width_widescreen: false
+      - label: Date
+        icon: today
+        value:
+          _id: date
+          name:
+          label:
+          required: false
+          uuid:
+          half_width_widescreen: false

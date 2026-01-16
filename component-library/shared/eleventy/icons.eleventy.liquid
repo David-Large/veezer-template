@@ -1,0 +1,8 @@
+{%- assign set = icon-sets.icon_set_selected %}
+{%- for item in icon-sets[set] %}
+{%- if item.name == icon_name %}
+{{ item.icon_code }}
+{%- assign icon_found = true %}
+{%- endif %}
+{%- endfor %}
+{%- if icon_found != true %}(no icon found){% endif %}

@@ -1,0 +1,147 @@
+@use "../../../site/vendor/bulma/sass/utilities/mixins";
+@use "../../../site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+@media print {
+
+    /* Override styles for the GSAP SmoothScroller JS library, otherwise printing will not work correctly. */
+    body,
+    .smooth-wrapper,
+    .smooth-content {
+        transform: none !important;
+        /* Other potential overrides */
+        position: static !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    /* Ensure all other elements are visible and correctly positioned, again to correct for ScrollSmoother. 
+    This will throw off some things like absolutely positioned buttons but can be adjusted as needed (see
+    CSS lower down. */
+    * {
+        visibility: visible !important;
+        position: static !important;
+    }
+
+    .hide-for-print {
+        display: none !important;
+    }
+
+    body,
+    main {
+        background: #fff !important;
+    }
+    
+    /* Hide elements above main content not needed in print. */
+    #modal-search,
+    #documentation-link,
+    #page-loader,
+    .documentation-navigation {
+        display: none !important;
+    }
+    .navbar-item img {
+        max-height: 80px !important;
+    }
+
+    main {
+        padding-top: 0 !important;
+    }
+
+    /* Ensure GSAP animated elements are fully visible in print. */
+    .gsap-element-wrapper,
+    .gsap-element-wrapper-no-scrolltrigger,
+    .gsap-batch-stagger * {
+        opacity: 1 !important;
+    }
+    .gsap-batch-stagger * {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .first-of-type-section-spacer {
+        display: none !important;
+    }
+
+    [class*="vb-theme-"] {
+        background-color: #fff !important;
+    }
+    [class*="vb-theme-"] .content *{
+        color: #000 !important;
+        background-color: #fff !important;
+    }
+    .event-wrapper {
+        background-color: #fff !important;
+    }
+
+    .button,
+    button {
+        border: 1px solid #333 !important;
+    }
+
+    .footer {
+        background: #fff;
+    }
+    .footer * {
+        color: #000 !important;
+    }
+
+    /* Component Specific Fixes */
+
+    .gallery-fs-lightbox-component,
+    .carousel-mini-component {
+
+        i, 
+        [class*="material-symbols"]  {
+            position: absolute !important;
+        }
+    }
+    .hero-component .text-wrapper,
+    .hero-component-constrained .text-wrapper,
+    .carousel-component .carousel-prev,
+    .carousel-component .carousel-next,
+    .carousel-component .carousel-nav-container,
+    .carousel-mini-component .carousel-mini-prev,
+    .carousel-mini-component .carousel-mini-next,
+    .slider-component .slider-prev,
+    .slider-component .slider-next,
+    .slider-component .slider-nav-container {
+       display: none !important;
+    }
+
+
+    /* Section padding helpers */
+    $padding-position: "top","bottom";
+
+    /* Note below: Adding the column gap (0.75rem default) avoids overlapping of the sections.
+    Make the section padding top and bottom smaller for print. */
+    @each $position in $padding-position {
+        .section-padding-#{$position} {
+        
+            &-0 {
+                padding-#{$position}: var(--bulma-column-gap) !important;
+            }
+            &-1 {
+                padding-#{$position}: calc(0.2rem + var(--bulma-column-gap)) !important;
+            }
+            &-2 {
+                padding-#{$position}: calc(0.4rem + var(--bulma-column-gap)) !important;
+            }
+            &-3 {
+                padding-#{$position}: calc(0.6em + var(--bulma-column-gap)) !important;
+            }
+            &-4 {
+                padding-#{$position}: calc(0.8rem + var(--bulma-column-gap)) !important;
+            }
+            &-5 {
+                padding-#{$position}: calc(1rem + var(--bulma-column-gap)) !important;
+            }
+            &-6 {
+                padding-#{$position}: calc(1.2rem + var(--bulma-column-gap)) !important;
+            }
+            &-7 {
+                padding-#{$position}: calc(1.4rem + var(--bulma-column-gap)) !important;
+            }
+        }
+    }
+
+
+}

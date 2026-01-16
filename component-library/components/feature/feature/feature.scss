@@ -1,0 +1,42 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+.feature-component {
+
+  .gsap-parallax-element {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+  .gsap-parallax-element img {
+    position: relative;
+    scale: 1.25;
+    object-fit: cover;
+    max-width: none !important;
+  }
+  
+  .feature-title {
+    margin-bottom: 2rem;
+  }
+  .feature-description {
+    margin-bottom: 2rem;
+  }
+  
+  .feature-image-wrapper {
+    max-width: 600px;
+    line-height: 0;
+  }
+  .feature-image-wrapper img {
+    object-position: center center; /* default */
+    height: 100%;
+  }
+  
+  .column-wrap {
+    overflow: hidden;
+  }
+              
+}

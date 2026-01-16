@@ -1,0 +1,49 @@
+/* Applied to content, excluded from style dropdown */
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; }
+.align-justify { text-align: justify; }
+
+/* In Bulma, need to set class of 'table' to the table before you can then add striped, etc. */
+/* So instead add the Bulma classes here and apply generically to 'table' elements */
+/* So just replace '.table' for 'table' */
+
+table.is-bordered {
+}
+
+/* EDITOR STYLE OVERRIDE */
+/* ProseMirror seems to be the current editor 04/05/2024 */
+
+html .ProseMirror blockquote {
+    /* Copy of Bulma default */
+    background-color: hsl(0deg, 0%, 96%) !important;
+    border-left: 5px solid hsl(0deg, 0%, 86%) !important;
+    margin: 0 0 1em 0 !important;
+    padding: 1.25em 1.5em !important;
+}
+html .cke_editable blockquote {
+    /* Copy of Bulma default */
+    background-color: hsl(0deg, 0%, 96%) !important;
+    border-left: 5px solid hsl(0deg, 0%, 86%) !important;
+    margin: 0 0 1em 0 !important;
+    padding: 1.25em 1.5em !important;
+}
+a.button {
+}
+html .ProseMirror a.button {
+    /* Copy of Bulma default */
+    background-color: #f1f1f1 !important;
+    padding-bottom: calc(0.5em - 1px) !important;
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+    padding-top: calc(0.5em - 1px) !important;
+}
+html .cke_editable a.button {
+  display: inline-block;
+  padding: 5px;
+  border: solid 1px #aaa;
+  text-decoration: none;
+}
+p.lead {
+  font-size: 115%;
+}

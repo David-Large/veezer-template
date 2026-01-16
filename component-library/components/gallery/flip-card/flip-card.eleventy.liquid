@@ -1,0 +1,50 @@
+<section class="section flip-card-component gsap-batch-stagger section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-gsap-class-to-batch-stagger=".flip-card-front" data-gsap-stagger-animation-name="scale-up-fade-in-slow" data-block-index="{{ block_index }}"> 
+  
+    <div class="first-of-type-section-spacer"></div>
+    
+    <div class="container">
+      
+        <span class="editor-content">Please note: The back side of the card is not visible in the editor (card wont flip).</span>
+      
+        <div class="columns flip-cards is-multiline">
+          
+            {% for card in cards %}
+            <div class="column flip-card is-6-tablet is-6-desktop is-4-widescreen">
+              
+                <div class="flip-card-body"{% unless card_aspect_ratio == 'auto' %} style="aspect-ratio: {{ card_aspect_ratio }};"{% endunless %}>
+                
+                    <div class="flip-card-front">
+        
+                        {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index %}{% endcapture %}
+                        {%- if set_flag contains "true" %}
+                            {%- assign lazy_load_flag = true %}
+                        {%- else %}
+                            {%- assign lazy_load_flag = false %}
+                        {%- endif %}
+
+                        {%- if card.front.flip_card_image %}{% assign current_image = card.front.flip_card_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                        {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: "70" rs_title: card.front.button_text rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: card_aspect_ratio %}
+
+                        <div class="content">
+                            <p class="has-text-centered"><span class="card-button">{{ card.front.button_text }}</span></p>
+                        </div>
+                    </div>
+              
+                    <div class="flip-card-back">
+                        <div class="content has-text-centered">
+                          <h3>{{ card.back.title }}</h3>
+                          <p>{{ card.back.description }}</p>
+                          <p><span class="card-button">{{ card.back.button_text }}</span></p>
+                        </div>
+                    </div>
+                  
+                </div>
+              
+            </div>
+            {% endfor %}
+          
+        </div>
+      
+    </div>
+
+</section>

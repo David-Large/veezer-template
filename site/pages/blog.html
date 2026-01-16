@@ -1,0 +1,33 @@
+---
+_schema: blog
+title: Blog
+component_palette: darker
+show_layout_selector: true
+show_tags: true
+permalink: >-
+  /blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber | plus: 1
+  }}/{% endif %}
+pagination:
+  data: collections.blog
+  size: 12
+  alias: blog
+  reverse: true
+layout: layouts/blog.liquid
+seo:
+  meta_title:
+  meta_description:
+  canonical_url:
+  meta_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+_inputs:
+  tags:
+    hidden: true
+  permalink:
+    hidden: true
+  pagination:
+    hidden: true
+  content_blocks:
+    hidden: true
+---

@@ -1,0 +1,160 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+/* Set the animation positions to the default when viewed in the editor */
+.cms-editor-active .team-alt-component .gsap-element-wrapper .horizontal-line,
+.cms-editor-active .team-alt-component .gsap-element-wrapper .main-image,
+.cms-editor-active .team-alt-component .gsap-element-wrapper .main-title,
+.cms-editor-active .team-alt-component .gsap-element-wrapper .main-text {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1) translateX(0);
+}
+
+.team-alt-component {
+
+  /* Move all of the initial transforms into GSAP (via 'gsap.set') rather than here in the CSS
+  for better GSAP performance. */
+  .horizontal-line {
+    visibility: hodden;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    right: 20%;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  @media screen and (max-width: iv.$desktop) {
+    .horizontal-line {
+      left: 30%;
+      right: 30%;
+    }
+  }
+  
+  .main-image {
+    z-index: 1;
+    width: 450px;
+  }
+  .main-image img {
+    height: 100%; // Required for object-fit to work properly
+  }
+  
+  .main-title {
+    visibility: hidden;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  .main-title h2 {
+    margin: 0;
+  }
+  .main-title h3 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .main-text {
+    visibility: hidden;
+    padding: 40px 30px;
+    max-width: 800px;
+  }
+
+}
+
+/* Make the backrounds of the overlying objects slightly darker/lighter than the section background.
+Saves needing to have any extra requirements fore readable CSS styles for backround vs overlying objects. */
+.team-alt-component {
+
+  &.vb-theme-lightest {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--lightest-theme-background-color) 100%, black 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--lightest-theme-background-color) 100%, black 8%);
+    }
+  }
+
+  &.vb-theme-lighter {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--lighter-theme-background-color) 100%, black 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--lighter-theme-background-color) 100%, black 8%);
+    }
+  }
+
+  &.vb-theme-light {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 8%);
+    }
+  }
+
+  &.vb-theme-dark {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-darker {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-darkest {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 10%);
+    }
+  }
+
+  &.vb-theme-alternate-1 {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-alternate-2 {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 10%);
+    }
+  }
+  &.vb-theme-alternate-3 {
+    .main-title,
+    .main-text {
+      background-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 4%);
+    }
+    .horizontal-line {
+      border-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 10%);
+    }
+  }
+
+}
+
+
+
+
+

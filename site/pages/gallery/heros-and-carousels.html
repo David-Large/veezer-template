@@ -1,0 +1,168 @@
+---
+_schema: default
+title: Heroes and Carousels
+tags: pages
+permalink: /gallery/heroes-and-carousels/
+url: /gallery/heroes-and-carousels/
+layout: layouts/blocks.liquid
+seo:
+  meta_title:
+  meta_description:
+  canonical_url:
+  meta_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+content_blocks:
+  - _bookshop_name: basic/header
+    component_palette: lightest
+    title: Hero Images
+    title_size: h1
+    description:
+    description_large_font: false
+    full_container_width: true
+    content_alignment: centered
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: gallery/hero
+    title: My Hero
+    title_color: '#ffffff'
+    sub_title: Goes here
+    sub_title_color: '#dddddd'
+    hero_image: /uploads/hero/markus-petritz-iukadtlfbk0-unsplash.jpg
+    image_quality: 90
+    focal_point: center center
+    text_alignment: bottom-right
+    overlay_gradient: false
+    overlay_grid: false
+    use_parallax: false
+    constrain_to_container: true
+    container_height_large: large-px-500
+    container_height_medium: medium-vh-50
+    container_height_small: small-vh-50
+    component_palette: lightest
+    constrained_image_aspect_ratio: '1.77'
+    content_padding_top: 0
+    content_padding_bottom: 5
+  - _bookshop_name: gallery/hero
+    title: ANOTHER HERO...
+    title_color: '#ffffff'
+    sub_title: Full width
+    sub_title_color: '#ffffff'
+    hero_image: /uploads/hero/olivier-guillard-fkjgbudovc0-unsplash.jpg
+    image_quality: 90
+    focal_point: center center
+    text_alignment: bottom-left
+    overlay_gradient: false
+    overlay_grid: true
+    use_parallax: false
+    constrain_to_container: false
+    container_height_large: large-px-650
+    container_height_medium: medium-vh-50
+    container_height_small: small-vh-85
+    component_palette: lightest
+    constrained_image_aspect_ratio: '1.77'
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: basic/header
+    component_palette: darkest
+    title: Add a touch of parallax (not on mobile)...
+    title_size: h2
+    description:
+    description_large_font: false
+    full_container_width: true
+    content_alignment: right
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: gallery/hero
+    title: Parallax (not on mobile)...
+    title_color: '#ffffff'
+    sub_title:
+    sub_title_color: '#ffffff'
+    hero_image: /uploads/hero/peter-thomas-budh3r6s0em-unsplash.jpg
+    image_quality: 90
+    focal_point: center center
+    text_alignment: center-center
+    overlay_gradient: false
+    overlay_grid: false
+    use_parallax: true
+    constrain_to_container: false
+    container_height_large: large-px-750
+    container_height_medium: medium-vh-50
+    container_height_small: small-vh-50
+    component_palette: lightest
+    constrained_image_aspect_ratio: '1.77'
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: basic/header
+    component_palette: darkest
+    title: An image carousel...
+    title_size: h2
+    description: >-
+      You can add auto slide change, show or hide the navigation buttons and
+      image indicators.
+    description_large_font: false
+    full_container_width: true
+    content_alignment:
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: gallery/carousel
+    carousel:
+      - carousel_image: /uploads/carousel/ian-keefe-ogcjikrnrc8-unsplash.jpg
+        image_quality: 90
+        focal_point: center center
+        title: Enchanted Evergreen Lodge
+        title_color: '#ffffff'
+        sub_title:
+        sub_title_color: '#ffffff'
+        text_alignment: bottom-center
+      - carousel_image: /uploads/carousel/zachary-kyra-derksen-ajqdp29pz7m-unsplash.jpg
+        image_quality: 90
+        focal_point: center center
+        title: Moonbeam Cottage
+        title_color: '#dddddd'
+        sub_title:
+        sub_title_color: '#ffffff'
+        text_alignment: bottom-center
+      - carousel_image: /uploads/carousel/luke-stackpoole-ewqogj-lfii-unsplash.jpg
+        image_quality: 90
+        focal_point: center center
+        title: Stargazer's Nook
+        title_color: '#ffffff'
+        sub_title: Archers Peak Park
+        sub_title_color: '#dddddd'
+        text_alignment: bottom-center
+    auto_change_speed: '0'
+    container_height_large: large-px-750
+    container_height_medium: medium-vh-50
+    container_height_small: small-vh-50
+    overlay_gradient: false
+    navigation:
+      hide_prev_next_buttons: false
+      hide_page_indicator: false
+  - _bookshop_name: basic/header
+    component_palette: light
+    title: A mini image carousel...
+    title_size: h2
+    description: With lightbox on click.
+    description_large_font: false
+    full_container_width: false
+    content_alignment: centered
+    content_padding_top: 5
+    content_padding_bottom: 0
+  - _bookshop_name: gallery/carousel-mini
+    component_palette: light
+    full_container_width: true
+    photos:
+      - gallery_image: /uploads/gallery/kalen-emsley-g1qxbdxm8ve-unsplash.jpg
+        title:
+      - gallery_image: /uploads/gallery/daniel-sessler-px5pxhc1aem-unsplash.jpg
+        title:
+      - gallery_image: /uploads/gallery/toomas-tartes-yizrl9n-eda-unsplash.jpg
+        title:
+    content_padding_top: 5
+    content_padding_bottom: 5
+_inputs:
+  tags:
+    hidden: true
+---

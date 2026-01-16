@@ -1,0 +1,14 @@
+---
+title: Blog Tags
+layout: layouts/tags.liquid
+pagination:
+   data: collections
+   size: 1
+   alias: tag
+permalink: /tags/{{ tag | slugify}}/
+_inputs:
+  permalink:
+    hidden: true
+  content_blocks:
+    hidden: true
+---

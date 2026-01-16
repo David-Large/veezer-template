@@ -1,0 +1,82 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+/* The standard div used elsewhere for the 'first-of-type' section spacing  doesn't
+apply here as the feature-alt component has its own spacing needs due to the image being
+full height of the section. */
+main .section:first-of-type.feature-alt-component .content.text-wrapper {
+  padding-top: 90px !important;
+}
+
+.feature-alt-component {
+
+  /* Prevent oveflow of items positioned out of the horizontal bounds of the viewport (e.g. when using gsap fade-in's from left and right and they initially set to say +/-20px).
+  only really notice this on mobile at times, but is annoying as it adds a small horizontal scoll component which is unwanted. */
+  overflow: hidden;
+  
+  .feature-title {
+    margin-bottom: 2rem;
+  }
+  .feature-description {
+    margin-bottom: 2rem;
+  }
+  
+  .feature-image-wrapper {
+    
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+   
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+   .gsap-parallax-element {
+      position: relative;
+      top: -10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 120%;
+      overflow: hidden;
+
+      @media screen and (max-width: 1023px) and (hover: none) and (pointer: coarse) {
+      /* This query only applies if ALL conditions are true (mobile):
+      1. The screen width is 768px or less.
+      2. The primary input mechanism does not support hovering (suggests touch).
+      3. The primary input mechanism is coarse (confirms touch).
+      In these case will NOT be using parallax. */
+        top: 0;
+        height: 100%;
+      }
+
+    }
+    .gsap-parallax-element img {
+      position: relative;
+      transform: scale(1.5);
+      width: auto;
+      height: auto;
+      max-width: none !important;
+
+      @media screen and (max-width: 1023px) and (hover: none) and (pointer: coarse) {
+        /* This query only applies if ALL conditions are true (mobile):
+        1. The screen width is 768px or less.
+        2. The primary input mechanism does not support hovering (suggests touch).
+        3. The primary input mechanism is coarse (confirms touch).
+        In these case will NOT be using parallax. */
+        transform: scale(1);
+      }
+    }
+
+  }
+  
+  .column-wrap{
+    overflow: hidden;
+  }
+  
+}
+

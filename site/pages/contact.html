@@ -1,0 +1,57 @@
+---
+_schema: default
+title: Contact
+tags: pages
+permalink: /contact/
+url: /contact/
+layout: layouts/blocks.liquid
+seo:
+  meta_title:
+  meta_description: A meta description...
+  canonical_url:
+  meta_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+content_blocks:
+  - _bookshop_name: contact/form
+    component_palette: light
+    component_palette_secondary: darkest
+    thank_you_page: false
+    thank_you_message:
+    title: Contact Us
+    sub_title: Drop us a message with your questions or suggestions.
+    contact_details:
+      show_phone: true
+      show_email: true
+      show_address: true
+      show_hours: true
+    contact_details_column_narrow: true
+    form:
+      - _id: text
+        name: Name
+        label: Name
+        required: true
+        half_width_widescreen: true
+      - _id: email
+        label: Email
+        required: true
+        half_width_widescreen: true
+      - _id: textarea
+        name: Message
+        label: Message
+        required: true
+        half_width_widescreen: false
+    form_field_color: white
+    form_inbox_key:
+    submit_button_text: Submit
+    subject_line: Website Enquiry
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: embed/snazzy-map
+    snazzy_map_link: https://snazzymaps.com/embed/762206
+    map_height: '500'
+_inputs:
+  tags:
+    hidden: true
+---

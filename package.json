@@ -1,0 +1,39 @@
+{
+  "name": "veezer_cloudcannon_template",
+  "version": "1.0.0",
+  "description": "An Eleventy template for use with CloudCannon.",
+  "scripts": {
+    "bookshop:watch": "bookshop-browser",
+    "bookshop-sass:fetch-theme": "node site/js/fetch-theme.js",
+    "bookshop-sass:build": "bookshop-sass -b component-library -o site/css/bookshop.css",
+    "bookshop-sass:watch": "bookshop-sass -b component-library -o site/css/bookshop.css -w",
+    "sass:build": "sass site/css/scss:site/css site/vendor/bulma/bulma.scss:site/css/bulma.css",
+    "sass:watch": "sass --watch site/css/scss:site/css site/vendor/bulma/bulma.scss:site/css/bulma.css",
+    "eleventy:build": "cross-env ELEVENTY_ENV=development eleventy",
+    "eleventy:build-production": "cross-env ELEVENTY_ENV=production eleventy",
+    "eleventy:watch": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "build": "npm-run-all bookshop-sass:fetch-theme bookshop-sass:build sass:build eleventy:build",
+    "build-production": "npm-run-all bookshop-sass:fetch-theme bookshop-sass:build sass:build eleventy:build-production",
+    "start": "npm-run-all bookshop-sass:fetch-theme bookshop-sass:build sass:build --parallel bookshop-sass:watch sass:watch bookshop:watch eleventy:watch",
+    "start-production": "npm-run-all bookshop-sass:fetch-theme bookshop-sass:build sass:build --parallel bookshop-sass:watch sass:watch bookshop:watch eleventy:watch eleventy:build-production"
+  },
+  "author": "CloudCannon",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11tyrocks/eleventy-plugin-emoji-readtime": "^1.0.1",
+    "@bookshop/eleventy-bookshop": "3.16.3",
+    "@bookshop/eleventy-engine": "3.16.3",
+    "@bookshop/generate": "3.16.3",
+    "eleventy-plugin-purgecss": "^0.5.0",
+    "eleventy-plugin-wordcount": "^1.0.5",
+    "image-size": "1.2.0",
+    "markdown-it": "^14.1.0",
+    "npm-run-all": "^4.1.5",
+    "punycode": "^2.1.1"
+  },
+  "devDependencies": {
+    "@bookshop/sass": "3.16.3",
+    "cross-env": "^7.0.3"
+  }
+}

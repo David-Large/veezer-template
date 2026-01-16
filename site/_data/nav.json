@@ -1,0 +1,156 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "link": "/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": null,
+      "sub_navigation": []
+    },
+    {
+      "text": "Feature",
+      "link": "/feature/",
+      "enable_dropdown": true,
+      "sub_navigation_group_title": "feature",
+      "sub_navigation": [
+        {
+          "text": "Feature Component",
+          "link": "/feature/feature-component/"
+        },
+        {
+          "text": "Feature Component with Parallax",
+          "link": "/feature/feature-component-with-parallax/"
+        },
+        {
+          "text": "Feature Smooth Component",
+          "link": "/feature/feature-smooth-component/"
+        },
+        {
+          "text": "Team Component",
+          "link": "/feature/team-component/"
+        },
+        {
+          "text": "Alternative Team Component",
+          "link": "/feature/team-alt-component/"
+        }
+      ]
+    },
+    {
+      "text": "Gallery",
+      "link": "/gallery/",
+      "enable_dropdown": true,
+      "sub_navigation_group_title": "gallery",
+      "sub_navigation": [
+        {
+          "text": "Lightbox",
+          "link": "/gallery/galleries/"
+        },
+        {
+          "text": "Flip Cards",
+          "link": "/gallery/flip-cards/"
+        },
+        {
+          "text": "Sliders",
+          "link": "/gallery/sliders/"
+        },
+        {
+          "text": "Heroes and Carousels",
+          "link": "/gallery/heroes-and-carousels/"
+        }
+      ]
+    },
+    {
+      "text": "Mix",
+      "link": "/mix/",
+      "enable_dropdown": true,
+      "sub_navigation_group_title": "mix",
+      "sub_navigation": [
+        {
+          "text": "FAQs, Tabs and Sponsors",
+          "link": "/mix/faqs-tabs-sponsors/"
+        },
+        {
+          "text": "Embeds and Modals",
+          "link": "/mix/embeds-modals/"
+        },
+        {
+          "text": "Basic Content Blocks",
+          "link": "/mix/basic-content-blocks/"
+        },
+        {
+          "text": "Typography",
+          "link": "/mix/typography/"
+        },
+        {
+          "text": "Alternate Colour Palettes",
+          "link": "/mix/alternate-colour-palettes/"
+        }
+      ]
+    },
+    {
+      "text": "Fleet",
+      "link": "/fleet/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "fleet",
+      "sub_navigation": [
+        {
+          "text": "Emberfox",
+          "link": "/fleet/emberfox/"
+        },
+        {
+          "text": "Forstbound R",
+          "link": "/fleet/forstbound-r/"
+        },
+        {
+          "text": "Iron Sylph",
+          "link": "/fleet/iron-sylph/"
+        },
+        {
+          "text": "Night Warden",
+          "link": "/fleet/night-warden/"
+        },
+        {
+          "text": "Oracle Drift",
+          "link": "/fleet/oracle-drift/"
+        },
+        {
+          "text": "Rune Sprinter",
+          "link": "/fleet/rune-sprinter/"
+        },
+        {
+          "text": "Sky Leviathon",
+          "link": "/fleet/sky-leviathan/"
+        },
+        {
+          "text": "Sunforge GT",
+          "link": "/fleet/sunforge-gt/"
+        },
+        {
+          "text": "Void Howler",
+          "link": "/fleet/void-howler/"
+        }
+      ]
+    },
+    {
+      "text": "Events",
+      "link": "/events/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": null,
+      "sub_navigation": []
+    },
+    {
+      "text": "Blog",
+      "link": "/blog/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": null,
+      "sub_navigation": []
+    },
+    {
+      "text": "Contact",
+      "link": "/contact/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": null,
+      "sub_navigation": []
+    }
+  ]
+}

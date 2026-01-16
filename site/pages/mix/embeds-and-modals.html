@@ -1,0 +1,92 @@
+---
+_schema: default
+title: Embeds and Modals
+tags: pages
+permalink: /mix/embeds-modals/
+url: /mix/embeds-modals/
+layout: layouts/blocks.liquid
+seo:
+  meta_title:
+  meta_description:
+  canonical_url:
+  meta_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+content_blocks:
+  - _bookshop_name: basic/header
+    component_palette: lightest
+    title: Embeds and Modals
+    title_size: h1
+    description: YouTube Video player with JS,  iframe and JS embeds.
+    description_large_font: false
+    full_container_width: true
+    content_alignment: centered
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: embed/youtube
+    title: Wardruna
+    cover_image: /uploads/youtube/wardruna-video-still.jpg
+    video_id: VEizKmZlUAw
+    constrain_to_container: false
+    component_palette: lightest
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: embed/youtube
+    title: Nightwish
+    cover_image: /uploads/youtube/nightwish-video-still.jpg
+    video_id: JYjIlHWBAVo
+    constrain_to_container: true
+    component_palette: darkest
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: embed/embed
+    component_palette: lightest
+    embed_code:
+      - code_block: >-
+          <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/FnkTuHP9q3o?si=35ayHabfuiipHaX7"
+          title="YouTube video player" frameborder="0" allow="accelerometer;
+          autoplay; clipboard-write; encrypted-media; gyroscope;
+          picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+        embed_aspect_ratio: ratio-16-9
+    content_padding_top: 5
+    content_padding_bottom: 5
+  - _bookshop_name: basic/header
+    component_palette: lighter
+    title: Album Review
+    title_size: h2
+    description: Laments of the Starbound Vale — Auralith & the Moonforged Choir
+    description_large_font: true
+    full_container_width: false
+    content_alignment: centered
+    content_padding_top: 5
+    content_padding_bottom: 0
+  - _bookshop_name: misc/modal
+    component_palette: lighter
+    modal_id: example-modal
+    button_title: Click for a Modal
+    modal_title: >-
+      Album Review: Laments of the Starbound Vale — Auralith & the Moonforged
+      Choir
+    modal_content: >-
+      *Laments of the Starbound Vale* unfolds like a whispered spell. Harp, low
+      horns, and restrained percussion create an airy, ancient mood, while the
+      Moonforged Choir appears in carefully chosen moments—sometimes a hush,
+      sometimes a surge of ritual power. Silence is used as deftly as sound,
+      giving the album a sense of breath and space.
+
+
+      “Silver Roads of Ithmere” stands out, shifting from graceful melody to
+      gathering menace, while “Ashes Under Crownlight” offers a sparse, aching
+      lament that resolves in quiet hope. Subtle and immersive, this is an album
+      that rewards unhurried listening—perfect for long journeys, candlelight,
+      and lost maps.
+    content_padding_top: 0
+    content_padding_bottom: 5
+_inputs:
+  tags:
+    hidden: true
+---

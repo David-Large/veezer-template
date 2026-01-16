@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+npx @bookshop/generate
+
+npx pagefind --site _site

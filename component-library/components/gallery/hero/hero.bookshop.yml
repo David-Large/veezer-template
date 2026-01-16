@@ -1,0 +1,194 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Hero
+  description: Large image with animated text overlay.
+  icon: insert_photo
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  title: Title
+  title_color: '#ffffff'
+  sub_title: Subtitle
+  sub_title_color: '#ffffff'
+  hero_image:
+  image_quality: 90
+  focal_point: "center center"
+  text_alignment: "center-center"
+  overlay_gradient: false
+  overlay_grid: false
+  use_parallax: false
+  constrain_to_container: false
+  container_height_large: large-px-500
+  container_height_medium: medium-vh-50
+  container_height_small: small-vh-50
+  component_palette: lightest
+  constrained_image_aspect_ratio: "1.77"
+  content_padding_top: 5
+  content_padding_bottom: 5
+  
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  title:
+    comment: Can leave blank.
+  sub_title:
+    comment: Can leave blank.
+  title_color:
+    type: color
+    label: Title Colour
+    options:
+      format: hex
+      required: true
+      pattern: ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+      pattern_message: Please enter a valid HEX format.
+  sub_title_color:
+    type: color
+    label: Sub Title Colour
+    options:
+      format: hex
+      required: true
+      pattern: ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+      pattern_message: Please enter a valid HEX format.
+  hero_image:
+    type: image
+    options:
+      width: 1600
+      height: 1200
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/hero
+    label: Hero Image
+  text_alignment:
+    type: select
+    comment: "Position of overlayed text."
+    options:
+      allow_empty: false
+      values:
+        "top-left": "Top Left"
+        "center-left": "Center Left"
+        "bottom-left": "Bottom Left"
+        "top-right": "Top Right"
+        "center-right": "Center Right"
+        "bottom-right": "Bottom Right"
+        "top-center": "Top Center"
+        "center-center": "Center Center"
+        "bottom-center": "Bottom Center"
+  overlay_gradient:
+    type: checkbox
+    comment: "Useful to increase text contrast."
+  overlay_grid:
+    type: checkbox
+    comment: "Can improve a grainy image appearance."
+  use_parallax:
+    type: checkbox 
+    comment: "Enables a parallax scrolling effect on the hero image (disabled for mobile - below 1024px)."
+  constrain_to_container:
+    type: checkbox
+    comment: "Will constrain the hero image to a fixed aspect ratio and size based on the container height settings below."
+  container_height_large:
+    type: select
+    comment: "Height of 'unconstrained' image - Large Screen"
+    hidden: "constrain_to_container"
+    options:
+      allow_empty: false
+      values:
+        "large-vh-100": "Viewport 100%"
+        "large-vh-95": "Viewport 95%"
+        "large-vh-85": "Viewport 85%"
+        "large-vh-75": "Viewport 75%"
+        "large-vh-65": "Viewport 65%"
+        "large-vh-55": "Viewport 55%"
+        "large-vh-50": "Viewport 50%"
+        "large-vh-45": "Viewport 45%"
+        "large-vh-40": "Viewport 40%"
+        "large-px-1000": "Pixels 1000"
+        "large-px-950": "Pixels 950"
+        "large-px-850": "Pixels 850"
+        "large-px-750": "Pixels 750"
+        "large-px-650": "Pixels 650"
+        "large-px-550": "Pixels 550"
+        "large-px-500": "Pixels 500"
+        "large-px-450": "Pixels 450"
+        "large-px-400": "Pixels 400"
+  container_height_medium:
+    type: select
+    comment: "Height of 'unconstrained' image - Medium Screen"
+    hidden: "constrain_to_container"
+    options:
+      allow_empty: false
+      values:
+        "medium-vh-100": "Viewport 100%"
+        "medium-vh-95": "Viewport 95%"
+        "medium-vh-85": "Viewport 85%"
+        "medium-vh-75": "Viewport 75%"
+        "medium-vh-65": "Viewport 65%"
+        "medium-vh-55": "Viewport 55%"
+        "medium-vh-50": "Viewport 50%"
+        "medium-vh-45": "Viewport 45%"
+        "medium-vh-40": "Viewport 40%"
+        "medium-px-1000": "Pixels 1000"
+        "medium-px-950": "Pixels 950"
+        "medium-px-850": "Pixels 850"
+        "medium-px-750": "Pixels 750"
+        "medium-px-650": "Pixels 650"
+        "medium-px-550": "Pixels 550"
+        "medium-px-500": "Pixels 500"
+        "medium-px-450": "Pixels 450"
+        "medium-px-400": "Pixels 400"
+  container_height_small:
+    type: select
+    comment: "Height of 'unconstrained' image - Small Screen"
+    hidden: "constrain_to_container"
+    options:
+      allow_empty: false
+      values:
+        "small-vh-100": "Viewport 100%"
+        "small-vh-95": "Viewport 95%"
+        "small-vh-85": "Viewport 85%"
+        "small-vh-75": "Viewport 75%"
+        "small-vh-65": "Viewport 65%"
+        "small-vh-55": "Viewport 55%"
+        "small-vh-50": "Viewport 50%"
+        "small-vh-45": "Viewport 45%"
+        "small-vh-40": "Viewport 40%"
+        "small-px-1000": "Pixels 1000"
+        "small-px-950": "Pixels 950"
+        "small-px-850": "Pixels 850"
+        "small-px-750": "Pixels 750"
+        "small-px-650": "Pixels 650"
+        "small-px-550": "Pixels 550"
+        "small-px-500": "Pixels 500"
+        "small-px-450": "Pixels 450"
+        "small-px-400": "Pixels 400"
+  component_palette:
+    hidden: "!constrain_to_container"
+  constrained_image_aspect_ratio:
+    type: select
+    comment: "Aspect Ratio of 'constrained' image."
+    hidden: "!constrain_to_container"
+    options:
+      allow_empty: false
+      values:
+        "1" : "1:1"
+        "1.25" : "5:4"
+        "1.33" : "4:3"
+        "1.5" : "3:2"
+        "1.66" : "5:3"
+        "1.77" : "16:9"
+        "2" : "2:1"
+        "3" : "3:1"
+        "0.8" : "4:5"
+        "0.75" : "3:4"
+        "0.66" : "2:3"
+        "0.6" : "3:5"
+  content_padding_top:
+    hidden: "!constrain_to_container"
+  content_padding_bottom:
+    hidden: "!constrain_to_container"
+    

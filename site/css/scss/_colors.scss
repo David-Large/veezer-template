@@ -1,0 +1,658 @@
+@use "../../../site/css/variables" as va;
+
+
+body {
+  background-color: va.$body-background-color;
+}
+
+main {
+  background-color: va.$main-background-color;
+}
+
+
+/* ------------------------------------------------------- */
+/*    NON-COMPONENT CONTENT (DEFAULTS - e.g. blog post)    */
+/* ------------------------------------------------------- */
+
+.content {
+  
+  div,span {
+    color: va.$body-color;
+  }
+  p,li,strong,label {
+    color: va.$body-color;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    color: va.$heading-color;
+  }
+  .button,button {
+    background-color: va.$button-background_color;
+    color: va.$button-color;
+  }
+  .button.single-line,button.single-line {
+    background-color: transparent;
+    color: va.$body-color;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 3px solid transparent !important;
+  }
+  .button.single-line.selected,button.single-line.selected {
+    border-color: va.$button-background-color !important;
+  }
+  a {
+    color: va.$link;
+  }
+  table thead td,
+  table thead th,
+  table td,
+  table th {
+    color: va.$body-color;
+  }
+  blockquote {
+    background-color: transparent;
+  }
+  pre,
+  code {
+    background-color: #fff;
+  }
+  pre code {
+    background-color: transparent;
+  }
+  
+}
+
+
+/* ----------------------- */
+/*    SECTION COLOURS      */
+/* ----------------------- */
+
+.vb-theme {
+  
+  &-lightest {
+    
+    background-color: va.$lightest-theme-background-color;
+    
+    .content {
+
+      div,span {
+        color: va.$lightest-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$lightest-theme-text-color;
+      }
+      hr {
+        background-color: va.$lightest-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$lightest-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$lightest-theme-button-background-color;
+        color: va.$lightest-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$lightest-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$lightest-theme-button-background-color !important;
+      }
+      a {
+        color: va.$lightest-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$lightest-theme-text-color;
+      }
+      table th {
+        background-color: va.$lightest-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$lightest-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$lightest-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+        
+    }
+    
+  }
+  
+  &-lighter {
+    
+    background-color: va.$lighter-theme-background-color;
+    
+    .content {
+
+      div,span {
+        color: va.$lighter-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$lighter-theme-text-color;
+      }
+      hr {
+        background-color: va.$lighter-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$lighter-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$lighter-theme-button-background-color;
+        color: va.$lighter-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$lighter-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$lighter-theme-button-background-color !important;
+      }
+      a {
+        color: va.$lighter-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$lighter-theme-text-color;
+      }
+      table th {
+        background-color: va.$lighter-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$lighter-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$lighter-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+        
+    }
+    
+  }
+  
+  &-light {
+    
+    background-color: va.$light-theme-background-color;
+    
+    .content {
+
+      div,span {
+        color: va.$light-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$light-theme-text-color;
+      }
+      hr {
+        background-color: va.$light-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$light-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$light-theme-button-background-color;
+        color: va.$light-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$light-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$light-theme-button-background-color !important;
+      }
+      a {
+        color: va.$light-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$light-theme-text-color;
+      }
+      table th {
+        background-color: va.$light-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$light-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$light-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+        
+    }
+    
+  }
+  
+  &-dark {
+    
+    background-color: va.$dark-theme-background-color;
+    
+    .content {
+      
+      div,span {
+        color: va.$dark-theme-text-color;
+      }
+
+      p,li,strong,label {
+        color: va.$dark-theme-text-color;
+      }
+      hr {
+        background-color: va.$dark-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$dark-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$dark-theme-button-background-color;
+        color: va.$dark-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$dark-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$dark-theme-button-background-color !important;
+      }
+      a {
+        color: va.$dark-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$dark-theme-text-color;
+      }
+      table th {
+        background-color: va.$dark-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$dark-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$dark-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+        
+    }
+    
+  }
+  
+  &-darker {
+    
+    background-color: va.$darker-theme-background-color;
+    
+    .content {
+
+      div,span {
+        color: va.$darker-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$darker-theme-text-color;
+      }
+      hr {
+        background-color: va.$darker-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$darker-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$darker-theme-button-background-color;
+        color: va.$darker-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$darker-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$darker-theme-button-background-color !important;
+      }
+      a {
+        color: va.$darker-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$darker-theme-text-color;
+      }
+      table th {
+        background-color: va.$darker-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$darker-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$darker-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+        
+    }
+    
+  }
+  
+  &-darkest {
+    
+    background-color: va.$darkest-theme-background-color;
+  
+    .content {
+      
+      div,span {
+        color: va.$darkest-theme-text-color;
+      }
+
+      p,li,strong,label {
+        color: va.$darkest-theme-text-color;
+      }
+      hr {
+        background-color: va.$darkest-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$darkest-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$darkest-theme-button-background-color;
+        color: va.$darkest-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$darkest-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$darkest-theme-button-background-color !important;
+      }
+      a {
+        color: va.$darkest-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$darkest-theme-text-color;
+      }
+      table th {
+        background-color: va.$darkest-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$darkest-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$darkest-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+    
+    }
+  
+  }
+  
+  &-alternate-1 {
+    
+    background-color: va.$alternate-1-theme-background-color;
+  
+    .content {
+
+      div,span {
+        color: va.$alternate-1-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$alternate-1-theme-text-color;
+      }
+      hr {
+        background-color: va.$alternate-1-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$alternate-1-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$alternate-1-theme-button-background-color;
+        color: va.$alternate-1-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$alternate-1-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$alternate-1-theme-button-background-color !important;
+      }
+      a {
+        color: va.$alternate-1-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$alternate-1-theme-text-color;
+      }
+      table th {
+        background-color: va.$alternate-1-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$alternate-1-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$alternate-1-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+    
+    }
+  
+  }
+  
+  &-alternate-2 {
+    
+    background-color: va.$alternate-2-theme-background-color;
+  
+    .content {
+
+      div,span {
+        color: va.$alternate-2-theme-text-color;
+      } 
+      
+      p,li,strong,label {
+        color: va.$alternate-2-theme-text-color;
+      }
+      hr {
+        background-color: va.$alternate-2-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$alternate-2-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$alternate-2-theme-button-background-color;
+        color: va.$alternate-2-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$alternate-2-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$alternate-2-theme-button-background-color !important;
+      }
+      a {
+        color: va.$alternate-2-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$alternate-2-theme-text-color;
+      }
+      table th {
+        background-color: va.$alternate-2-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$alternate-2-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$alternate-2-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+    
+    }
+  
+  }
+  
+  &-alternate-3 {
+    
+    background-color: va.$alternate-3-theme-background-color;
+  
+    .content {
+
+      div,span {
+        color: va.$alternate-3-theme-text-color;
+      }
+      
+      p,li,strong,label {
+        color: va.$alternate-3-theme-text-color;
+      }
+      hr {
+        background-color: va.$alternate-3-theme-text-color;
+        opacity: 0.5;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: va.$alternate-3-theme-heading-color;
+      }
+      .button,button {
+        background-color: va.$alternate-3-theme-button-background-color;
+        color: va.$alternate-3-theme-button-color;
+      }
+      .button.single-line,button.single-line {
+        background-color: transparent;
+        color: va.$alternate-3-theme-text-color;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 3px solid transparent !important;
+      }
+      .button.single-line.selected,button.single-line.selected {
+        border-color: va.$alternate-3-theme-button-background-color !important;
+      }
+      a {
+        color: va.$alternate-3-theme-link-color;
+      }
+      table thead td,
+      table thead th,
+      table td,
+      table th {
+        color: va.$alternate-3-theme-text-color;
+      }
+      table th {
+        background-color: va.$alternate-3-theme-table-header-background-color;
+      }
+      table tr:nth-of-type(odd) {
+        background-color: va.$alternate-3-theme-table-row-odd-background-color;
+      }
+      table tr:nth-of-type(even) {
+        background-color: va.$alternate-3-theme-table-row-even-background-color;
+      }
+      blockquote {
+        background-color: transparent;
+      }
+    
+    }
+  
+  }
+  
+}
+
+
+/* -------------- */
+/*    FOOTER      */
+/* -------------- */
+
+.footer {
+  
+  background: va.$footer-background-color;
+  
+  .content h2,
+  .content h3,
+  .content h4 {
+    color: va.$footer-heading-color;
+  }
+  .content p,
+  .content li {
+    color: va.$footer-text-color;
+  }
+  .content p a:not(.button),
+  .content li a:not(.button) {
+    color:va.$footer-link-color;
+  }
+  .social-icons a i,
+  .social-icons a svg {
+    color: va.$footer-link-color;
+  }
+  .social-icons a:hover i {
+    color: va.$footer-link-color;
+  }
+  .content .button,
+  .content button {
+    color: va.$footer-button-color;
+    background-color: va.$footer-button-background-color;
+  }
+
+}

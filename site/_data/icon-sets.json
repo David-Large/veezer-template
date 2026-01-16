@@ -1,0 +1,266 @@
+{
+  "icon_set_selected": "Material Symbols",
+  "head_code": "<!-- Google Material Symbols -->\n<link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=block\"\" rel=\"stylesheet\" />\n<!-- Phosphor Icons -->\n<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css\" />",
+  "tail_code": "<!-- Font Awesome (Pro) -->\n<!-- <script defer=\"defer\" src=\"https://kit.fontawesome.com/8078fb668a.js\" crossorigin=\"anonymous\"></script> -->\n<!-- Font Awesome (Free testing) -->\n<script defer=\"defer\" src=\"https://kit.fontawesome.com/603ce26e50.js\" crossorigin=\"anonymous\"></script>",
+  "Font Awesome": [
+    {
+      "name": "Next",
+      "icon_code": "<i class=\"fa-solid fa-rotate-right\"></i>"
+    },
+    {
+      "name": "Previous",
+      "icon_code": "<i class=\"fa-solid fa-rotate-left\"></i>"
+    },
+    {
+      "name": "Magnifying Glass",
+      "icon_code": "<i class=\"fa-solid fa-magnifying-glass\"></i>"
+    },
+    {
+      "name": "Facebook",
+      "icon_code": "<i class=\"fa-brands fa-facebook-f\"></i>"
+    },
+    {
+      "name": "X",
+      "icon_code": "<i class=\"fa-brands fa-x-twitter\"></i>"
+    },
+    {
+      "name": "Instagram",
+      "icon_code": "<i class=\"fa-brands fa-instagram\"></i>"
+    },
+    {
+      "name": "LinkedIn",
+      "icon_code": "<i class=\"fa-brands fa-linkedin-in\"></i>"
+    },
+    {
+      "name": "YouTube",
+      "icon_code": "<i class=\"fa-brands fa-youtube\"></i>"
+    },
+    {
+      "name": "Info",
+      "icon_code": "<i class=\"fa-solid fa-circle-info\"></i>"
+    },
+    {
+      "name": "Arrow Right",
+      "icon_code": "<i class=\"fa-solid fa-arrow-right\"></i>"
+    },
+    {
+      "name": "Arrow Left",
+      "icon_code": "<i class=\"fa-solid fa-arrow-left\"></i>"
+    },
+    {
+      "name": "Circle",
+      "icon_code": "<i class=\"fa-solid fa-circle-exclamation\"></i>"
+    },
+    {
+      "name": "Calendar",
+      "icon_code": "<i class=\"fa-solid fa-calendar-days\"></i>"
+    },
+    {
+      "name": "Table",
+      "icon_code": "<i class=\"fa-solid fa-table-cells-large\"></i>"
+    },
+    {
+      "name": "List",
+      "icon_code": "<i class=\"fa-solid fa-list\"></i>"
+    },
+    {
+      "name": "Mobile",
+      "icon_code": "<i class=\"fa-solid fa-mobile\"></i>"
+    },
+    {
+      "name": "Email",
+      "icon_code": "<i class=\"fa-solid fa-at\"></i>"
+    },
+    {
+      "name": "Location",
+      "icon_code": "<i class=\"fa-solid fa-location-dot\"></i>"
+    },
+    {
+      "name": "Clock",
+      "icon_code": "<i class=\"fa-solid fa-clock\"></i>"
+    }
+  ],
+  "Phosphor Icons": [
+    {
+      "name": "Next",
+      "icon_code": "<i class=\"ph-fill ph-arrow-clockwise\"></i>"
+    },
+    {
+      "name": "Previous",
+      "icon_code": "<i class=\"ph-fill ph-arrow-counter-clockwise\"></i>"
+    },
+    {
+      "name": "Magnifying Glass",
+      "icon_code": "<i class=\"ph-fill ph-magnifying-glass\"></i>"
+    },
+    {
+      "name": "Facebook",
+      "icon_code": "<i class=\"ph-fill ph-facebook\"></i>"
+    },
+    {
+      "name": "X",
+      "icon_code": "<i class=\"ph-fill ph-x-logo\"></i>"
+    },
+    {
+      "name": "Instagram",
+      "icon_code": "<i class=\"ph-fill ph-instagram-logo\"></i>"
+    },
+    {
+      "name": "LinkedIn",
+      "icon_code": "<i class=\"ph-fill ph-linkedin-logo\"></i>"
+    },
+    {
+      "name": "YouTube",
+      "icon_code": "<i class=\"ph-fill ph-youtube-logo\"></i>"
+    },
+    {
+      "name": "Info",
+      "icon_code": "<i class=\"ph-fill ph-info\"></i>"
+    },
+    {
+      "name": "Arrow Right",
+      "icon_code": "<i class=\"ph-fill ph-arrow-right\"></i>"
+    },
+    {
+      "name": "Arrow Left",
+      "icon_code": "<i class=\"ph-fill ph-arrow-left\"></i>"
+    },
+    {
+      "name": "Circle",
+      "icon_code": "<i class=\"ph-fill ph-exclamation-mark\"></i>"
+    },
+    {
+      "name": "Calendar",
+      "icon_code": "<i class=\"ph-fill ph-calendar-dots\"></i>"
+    },
+    {
+      "name": "Table",
+      "icon_code": "<i class=\"ph-fill ph-grid-nine\"></i>"
+    },
+    {
+      "name": "List",
+      "icon_code": "<i class=\"ph-fill ph-list\"></i>"
+    },
+    {
+      "name": "Mobile",
+      "icon_code": "<i class=\"ph-fill ph-device-mobile\"></i>"
+    },
+    {
+      "name": "Email",
+      "icon_code": "<i class=\"ph-fill ph-at\"></i>"
+    },
+    {
+      "name": "Location",
+      "icon_code": "<i class=\"ph-fill ph-map-pin\"></i>"
+    },
+    {
+      "name": "Clock",
+      "icon_code": "<i class=\"ph-fill ph-clock\"></i>"
+    }
+  ],
+  "Material Symbols": [
+    {
+      "name": "Next",
+      "icon_code": "<span class=\"material-symbols-outlined\"> forward_media </span>"
+    },
+    {
+      "name": "Previous",
+      "icon_code": "<span class=\"material-symbols-outlined\"> replay </span>"
+    },
+    {
+      "name": "Magnifying Glass",
+      "icon_code": "<span class=\"material-symbols-outlined\"> search </span>"
+    },
+    {
+      "name": "Facebook",
+      "icon_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"currentColor\" viewBox=\"0 0 256 256\"><path d=\"M232,128a104.16,104.16,0,0,1-91.55,103.26,4,4,0,0,1-4.45-4V152h24a8,8,0,0,0,8-8.53,8.17,8.17,0,0,0-8.25-7.47H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,8-8.53A8.17,8.17,0,0,0,167.73,80H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0-8,8.53A8.17,8.17,0,0,0,96.27,152H120v75.28a4,4,0,0,1-4.44,4A104.15,104.15,0,0,1,24.07,124.09c2-54,45.74-97.9,99.78-100A104.12,104.12,0,0,1,232,128Z\"></path></svg>"
+    },
+    {
+      "name": "X",
+      "icon_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"currentColor\" viewBox=\"0 0 256 256\"><path d=\"M215,219.85a8,8,0,0,1-7,4.15H160a8,8,0,0,1-6.75-3.71l-40.49-63.63L53.92,221.38a8,8,0,0,1-11.84-10.76l61.77-68L41.25,44.3A8,8,0,0,1,48,32H96a8,8,0,0,1,6.75,3.71l40.49,63.63,58.84-64.72a8,8,0,0,1,11.84,10.76l-61.77,67.95,62.6,98.38A8,8,0,0,1,215,219.85Z\"></path></svg>"
+    },
+    {
+      "name": "Instagram",
+      "icon_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"currentColor\" viewBox=\"0 0 256 256\"><path d=\"M176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24ZM128,176a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,176Zm60-96a12,12,0,1,1,12-12A12,12,0,0,1,188,80Zm-28,48a32,32,0,1,1-32-32A32,32,0,0,1,160,128Z\"></path></svg>"
+    },
+    {
+      "name": "LinkedIn",
+      "icon_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"currentColor\" viewBox=\"0 0 256 256\"><path d=\"M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0ZM88,96a12,12,0,1,1,12-12A12,12,0,0,1,88,96Zm96,80a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140Z\"></path></svg>"
+    },
+    {
+      "name": "YouTube",
+      "icon_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" fill=\"currentColor\" viewBox=\"0 0 256 256\"><path d=\"M234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-73.74,65-40,28A8,8,0,0,1,108,156V100a8,8,0,0,1,12.59-6.55l40,28a8,8,0,0,1,0,13.1Z\"></path></svg>"
+    },
+    {
+      "name": "Info",
+      "icon_code": "<span class=\"material-symbols-outlined\"> info </span>"
+    },
+    {
+      "name": "Arrow Right",
+      "icon_code": "<span class=\"material-symbols-outlined\"> arrow_right_alt </span>"
+    },
+    {
+      "name": "Arrow Left",
+      "icon_code": "<span class=\"material-symbols-outlined\"> arrow_left_alt </span>"
+    },
+    {
+      "name": "Circle",
+      "icon_code": "<span class=\"material-symbols-outlined\"> error </span>"
+    },
+    {
+      "name": "Calendar",
+      "icon_code": "<span class=\"material-symbols-outlined\"> calendar_month </span>"
+    },
+    {
+      "name": "Table",
+      "icon_code": "<span class=\"material-symbols-outlined\"> grid_on </span>"
+    },
+    {
+      "name": "List",
+      "icon_code": "<span class=\"material-symbols-outlined\"> list_alt </span>"
+    },
+    {
+      "name": "Mobile",
+      "icon_code": "<span class=\"material-symbols-outlined\"> mobile_3 </span>"
+    },
+    {
+      "name": "Email",
+      "icon_code": "<span class=\"material-symbols-outlined\"> alternate_email </span>"
+    },
+    {
+      "name": "Location",
+      "icon_code": "<span class=\"material-symbols-outlined\"> location_on </span>"
+    },
+    {
+      "name": "Clock",
+      "icon_code": "<span class=\"material-symbols-outlined\"> schedule </span>"
+    }
+  ],
+  "_inputs": {
+    "icon_set_selected": {
+      "type": "select",
+      "label": "Icon set",
+      "comment": "Choose icon set to use site-wide.",
+      "allow_empty": false,
+      "options": {
+        "values": [
+          "Font Awesome",
+          "Phosphor Icons",
+          "Material Symbols"
+        ]
+      }
+    },
+    "head_code": {
+      "type": "code",
+      "comment": "Code snippet (link) to enable this icon set. If required. To help stop FOUC with Google Material Symbols, add this paramenter to the href: '&display=block'."
+    },
+    "tail_code": {
+      "type": "code",
+      "comment": "Code snippet (JS) to enable this icon set. If required."
+    },
+    "icon_code": {
+      "type": "code",
+      "comment": "Code snippet that displays this icon (e.g. <i class='fa-solid fa-rotate-left'></i>."
+    }
+  }
+}

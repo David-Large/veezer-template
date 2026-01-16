@@ -1,0 +1,24 @@
+<section class="section header-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} {% if component_palette %}vb-theme-{{ component_palette }}{% endif %}" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column {% if full_container_width != true %}is-offset-1-tablet is-offset-2-desktop is-10-tablet is-8-desktop{% endif %}">
+                
+                <div class="content gsap-element-wrapper {% if content_alignment %}has-text-{{ content_alignment }}{% endif %}" data-gsap-animation-name="slide-down-from-top">
+                    <{{ title_size }}>{{ title }}</{{ title_size }}>
+                    {% if description %}
+                        <p class="{% if description_large_font == true %}lead{% endif %}">{{ description | newline_to_br }}</p>
+                    {% endif %}
+                </div>
+              
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

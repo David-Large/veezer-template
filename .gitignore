@@ -1,0 +1,11 @@
+node_modules
+_site
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+site/css/bookshop.css
+site/css/bulma.css
+site/css/bulma.css.map
+site/css/main.css
+site/css/main.css.map
+site/css/variables.scss

@@ -1,0 +1,30 @@
+{
+  "contact": {
+    "phone": "(01) 234 5678",
+    "email": "example@example.com",
+    "address": "123 Marble Slope Road\nAethelgard\nThe Kingdom of Valoria 991\n",
+    "hours": "Open all day!"
+  },
+  "social": [
+    {
+      "link": "/",
+      "title": "Facebook"
+    },
+    {
+      "link": "/",
+      "title": "X"
+    },
+    {
+      "link": "/",
+      "title": "Instagram"
+    },
+    {
+      "link": "/",
+      "title": "LinkedIn"
+    },
+    {
+      "link": "/",
+      "title": "YouTube"
+    }
+  ]
+}

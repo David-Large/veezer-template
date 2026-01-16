@@ -1,0 +1,5 @@
+# DONT NEED TO USE THIS FILE AT ALL AS USE THE PACKAGE.JSON AND CC CONFIGURATION SECTION
+
+# npm i
+# npm run bookshop-sass:fetch-theme
+# npm run bookshop-sass:build

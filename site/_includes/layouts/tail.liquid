@@ -1,0 +1,30 @@
+{%- if processEnv.environment == "production" %}
+    {%- if site.recaptcha_key %}
+    <script>
+      const recaptchaKey = "{{ site.recaptcha_key }}";
+    </script>
+    <script defer="defer" src="https://www.google.com/recaptcha/api.js?render={{ site.recaptcha_key }}"></script>
+    {%- else %}
+    <script>
+      const recaptchaKey = undefined;
+    </script>
+    {%- endif %}
+{%- else %}
+    <script>
+      const recaptchaKey = undefined;
+    </script>
+{%- endif %}
+{%- if icon-sets.tail_code %}
+    {{ icon-sets.tail_code }}
+{%- endif %}
+    <script src="/js/script.js"></script>
+    <script src="/js/gsap/gsap.min.js"></script>
+    <script src="/js/gsap/ScrollTrigger.min.js"></script>
+    <script src="/js/gsap/ScrollSmoother.min.js"></script>
+    <script src="/vendor/fslightbox-pro/fslightbox.js"></script>
+    <script defer src="/vendor/air-datepicker/js/air-datepicker.js"></script>
+{%- if site.use_fetch %}
+    <script type="module" src="/js/fetch.js"></script>
+{%- else %}
+    <script type="module" src="/js/non-fetch.js"></script>
+{%- endif %}

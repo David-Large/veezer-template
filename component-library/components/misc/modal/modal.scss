@@ -1,0 +1,26 @@
+.modal-component,
+#modal-holder {
+
+  .modal {
+     z-index: 1003;
+  }
+  .modal-card-head {
+    background-color: #e9e9e9;
+    box-shadow: none;
+  }
+  .modal-card-title {
+    color: #333;
+  }
+  .modal-card-body {
+    background-color: #fff;
+  }
+  /* Need to specifiy color here or otherwise it inherits from the colour of the component */
+  .modal-card-body .content * {
+    color: #333;
+    background-color: #fff;
+  }
+  .modal-card-title {
+    max-width: 100%;
+    line-height: 1.3;
+  }
+}

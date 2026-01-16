@@ -1,0 +1,105 @@
+@use "../../../site/css/variables" as va;
+@use "../../../site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+// PAGE LOADER - At top of page above navbar
+#page-loader {
+
+  display: block;
+  position: fixed;
+  z-index: 1004;
+  width: 100%;
+  max-width: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5px;
+  background: transparent;
+  
+  &.hide-loader {
+    display: none;
+  }
+  
+  #inner-page-loader {
+    position: absolute;
+    background-color: va.$page-preloader-color;
+    width: 0px;
+    height: 5px;
+    animation: progress 1.5s infinite linear;    
+  }
+  
+  @keyframes progress {
+    0%{
+      width: 0%;
+    }
+    25%{
+        width: 50%;
+    }
+    50%{
+        width: 75%;
+    }
+    75%{
+        width: 85%;
+    }
+    100%{
+        width: 100%;
+    }
+  }
+  
+  transition: top 0.6s;
+
+  // Up to tablet - 768px
+  @media screen and (max-width: iv.$tablet) {
+    top: 72px;
+  }
+  // Between tablet and desktop - 768px to 1024px
+  @media screen and (min-width: iv.$tablet) and (max-width: iv.$desktop) {
+    top: 110px;
+  }
+  // Between desktop and widescreen - 1024px to 1216px
+  @media screen and (min-width: iv.$desktop) and (max-width: iv.$widescreen) {
+    top: 130px;
+  }
+  // Widescreen and larger - 1216px
+  @media screen and (min-width: iv.$widescreen) {
+    top: 130px;
+  }
+
+  &.sticky-top {
+    // Up to tablet - 768px
+    @media screen and (max-width: iv.$tablet) {
+      top: 10px;
+    }
+    // Between tablet and desktop - 768px to 1024px
+    @media screen and (min-width: iv.$tablet) and (max-width: iv.$desktop) {
+      top: 10px;
+    }
+    // Between desktop and widescreen - 1024px to 1216px
+    @media screen and (min-width: iv.$desktop) and (max-width: iv.$widescreen) {
+      top: 80px;
+    }
+    // Widescreen and larger - 1216px
+    @media screen and (min-width: iv.$widescreen) {
+      top: 80px;
+    }
+  }
+
+}
+
+body.documentation-wrapper {
+
+  #page-loader {
+    
+    top: 10px !important;
+    &.sticky-top {
+      top: 10px !important;
+    }
+
+  }
+     
+}
+
+
+
+
+
+

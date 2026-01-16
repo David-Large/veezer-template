@@ -1,0 +1,64 @@
+.embed-component {
+  
+  .embed-wrapper {
+    text-align: center;
+    background-color: rgba(0,0,0,0.05);
+    line-height: 0;
+  }
+  
+  .ratio-1-1 iframe {
+    aspect-ratio: 1/1;
+  }
+  .ratio-5-4 iframe {
+    aspect-ratio: 5/4;
+  }
+  .ratio-4-3 iframe {
+    aspect-ratio: 4/3;
+  }
+  .ratio-16-9 iframe {
+    aspect-ratio: 16/9;
+  }
+  .ratio-2-1 iframe {
+    aspect-ratio: 2/1;
+  }
+  .ratio-3-1 iframe {
+    aspect-ratio: 3/1;
+  }
+  .ratio-4-5 iframe {
+    aspect-ratio: 4/5;
+  }
+  .ratio-3-4 iframe {
+    aspect-ratio: 3/4;
+  }
+  .ratio-2-3 iframe {
+    aspect-ratio: 2/3;
+  }
+  .ratio-3-5 iframe {
+    aspect-ratio: 3/5;
+  }
+  .ratio-9-16 iframe {
+    aspect-ratio: 9/16;
+  }
+  
+  .ratio-1-1 iframe,
+  .ratio-5-4 iframe,
+  .ratio-4-3 iframe,
+  .ratio-16-9 iframe,
+  .ratio-2-1 iframe,
+  .ratio-3-1 iframe,
+  .ratio-4-5 iframe,
+  .ratio-3-4 iframe,
+  .ratio-2-3 iframe,
+  .ratio-3-5 iframe {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* This is waht FACEBOOK REELS uses */
+  .ratio-9-16 iframe {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+  
+}

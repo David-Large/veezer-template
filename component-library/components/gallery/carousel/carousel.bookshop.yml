@@ -1,0 +1,159 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Carousel
+  description: Image carousel.
+  icon: collections
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  carousel:
+    - carousel_image:
+      image_quality: 90
+      focal_point: "center center"
+      title: Title...
+      title_color: "#ffffff"
+      sub_title: Subtitle...
+      sub_title_color: "#ffffff"
+      text_alignment: "center-center"
+  auto_change_speed: "0"
+  container_height_large: large-px-500
+  container_height_medium: medium-vh-50
+  container_height_small: small-vh-50
+  overlay_gradient: false
+  navigation:
+    hide_prev_next_buttons: false
+    hide_page_indicator: false
+  
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  carousel_image:
+    type: image
+    options:
+      width: 1600
+      height: 1200
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/carousel
+    label: Carousel Image
+  title_color:
+    type: color
+    label: Title Colour
+    options:
+      format: hex
+      required: true
+      pattern: ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+      pattern_message: Please enter a valid HEX format.
+  sub_title_color:
+    type: color
+    label: Sub Title Colour
+    options:
+      format: hex
+      required: true
+      pattern: ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+      pattern_message: Please enter a valid HEX format.
+  auto_change_speed:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        "0": "None"
+        "4000": "4 seconds"
+        "8000": "8 Seconds"
+  container_height_large:
+    type: select
+    comment: "Height of image - Large Screen"
+    options:
+      allow_empty: false
+      values:
+        "large-vh-100": "Viewport 100%"
+        "large-vh-95": "Viewport 95%"
+        "large-vh-85": "Viewport 85%"
+        "large-vh-75": "Viewport 75%"
+        "large-vh-65": "Viewport 65%"
+        "large-vh-55": "Viewport 55%"
+        "large-vh-50": "Viewport 50%"
+        "large-vh-45": "Viewport 45%"
+        "large-vh-40": "Viewport 40%"
+        "large-px-1000": "Pixels 1000"
+        "large-px-950": "Pixels 950"
+        "large-px-850": "Pixels 850"
+        "large-px-750": "Pixels 750"
+        "large-px-650": "Pixels 650"
+        "large-px-550": "Pixels 550"
+        "large-px-500": "Pixels 500"
+        "large-px-450": "Pixels 450"
+        "large-px-400": "Pixels 400"
+  container_height_medium:
+    type: select
+    comment: "Height of image - Medium Screen"
+    options:
+      allow_empty: false
+      values:
+        "medium-vh-100": "Viewport 100%"
+        "medium-vh-95": "Viewport 95%"
+        "medium-vh-85": "Viewport 85%"
+        "medium-vh-75": "Viewport 75%"
+        "medium-vh-65": "Viewport 65%"
+        "medium-vh-55": "Viewport 55%"
+        "medium-vh-50": "Viewport 50%"
+        "medium-vh-45": "Viewport 45%"
+        "medium-vh-40": "Viewport 40%"
+        "medium-px-1000": "Pixels 1000"
+        "medium-px-950": "Pixels 950"
+        "medium-px-850": "Pixels 850"
+        "medium-px-750": "Pixels 750"
+        "medium-px-650": "Pixels 650"
+        "medium-px-550": "Pixels 550"
+        "medium-px-500": "Pixels 500"
+        "medium-px-450": "Pixels 450"
+        "medium-px-400": "Pixels 400"
+  container_height_small:
+    type: select
+    comment: "Height of image - Small Screen"
+    options:
+      allow_empty: false
+      values:
+        "small-vh-100": "Viewport 100%"
+        "small-vh-95": "Viewport 95%"
+        "small-vh-85": "Viewport 85%"
+        "small-vh-75": "Viewport 75%"
+        "small-vh-65": "Viewport 65%"
+        "small-vh-55": "Viewport 55%"
+        "small-vh-50": "Viewport 50%"
+        "small-vh-45": "Viewport 45%"
+        "small-vh-40": "Viewport 40%"
+        "small-px-1000": "Pixels 1000"
+        "small-px-950": "Pixels 950"
+        "small-px-850": "Pixels 850"
+        "small-px-750": "Pixels 750"
+        "small-px-650": "Pixels 650"
+        "small-px-550": "Pixels 550"
+        "small-px-500": "Pixels 500"
+        "small-px-450": "Pixels 450"
+        "small-px-400": "Pixels 400"
+  text_alignment:
+    type: select
+    comment: "Position of overlayed text."
+    options:
+      allow_empty: false
+      values:
+        "top-left": "Top Left"
+        "center-left": "Center Left"
+        "bottom-left": "Bottom Left"
+        "top-right": "Top Right"
+        "center-right": "Center Right"
+        "bottom-right": "Bottom Right"
+        "top-center": "Top Center"
+        "center-center": "Center Center"
+        "bottom-center": "Bottom Center"
+  overlay_gradient:
+    type: checkbox
+    comment: "Useful to increase text contrast"
+    

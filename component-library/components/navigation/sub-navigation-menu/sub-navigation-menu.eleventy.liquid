@@ -1,0 +1,43 @@
+<section class="section sub-navigation-menu-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}" data-pagefind-ignore>
+  
+    <div class="first-of-type-section-spacer"></div>
+  
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column {% if full_container_width != true %}is-8-tablet is-offset-2{% endif %}">
+              
+                <div class="content{% if content_alignment %} has-text-{{ content_alignment }}{% endif %}">
+               
+                    {%- for item in nav.items %}
+        	    
+                        {%- if item.sub_navigation %}
+                      
+                            {%- if item.sub_navigation_group_title == navigation_group %}
+                                
+                                <ul>
+                                {%- for sub_navigation_item in item.sub_navigation %}
+                                    <li>
+                                        <a class="gsap-element-wrapper {% if page.url == sub_navigation_item.link %} selected{% endif %}" href="{{ sub_navigation_item.link }}" data-gsap-animation-name="slide-in-from-left" data-gsap-delay="{{ forloop.index | times: 0.075 | plus: 0.1 }}">
+                                            {{ sub_navigation_item.text }}
+                                        </a>
+                                    </li>
+                                {%- endfor %}
+                                </ul>
+                              
+                            {%- endif %}
+                      
+                        {%- endif %}
+                      
+                    {%- endfor %}
+                
+                </div>
+    
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

@@ -1,0 +1,29 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Modal
+  description: Popup modal content.
+  icon: help
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  modal_id:
+  button_title:
+  modal_title:
+  modal_content:
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  modal_content:
+    type: markdown
+    label: Modal Content
+  modal_id:
+    comment: Unique ID (lowercase letters and hyphens e.g. my-faq-modal).

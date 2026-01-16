@@ -1,0 +1,43 @@
+.sponsors-component {
+    
+    /* Default to plain white so copes with most logo scenarios */
+    background: #fff;
+     
+    .sponsors-wrapper {
+      margin-top: 1.75rem;
+    }
+    
+    a {
+      display: inline-block;
+    }
+    
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 10px 15px;
+    }
+    img.landscape {
+      width: 225px;
+    }
+    img.landscape-wide-short {
+      width: 235px;
+    }
+    img.square {
+      width: 165px;
+    }
+    img.portrait {
+      width: 165px;
+    }
+    img.portrait-narrow-tall {
+      width: 175px;
+    }
+    img.grayscale {
+      filter: grayscale(100%) brightness(1) contrast(1) opacity(0.8);
+      transition: all 0.2s ease-in-out;
+    }
+    img.grayscale:hover,
+    img.grayscale.high-contrast:hover {
+      filter: grayscale(0%) brightness(1) contrast(1) opacity(1);
+      scale: 1.05;
+    }
+}

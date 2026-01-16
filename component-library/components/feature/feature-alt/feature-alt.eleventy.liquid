@@ -1,0 +1,62 @@
+<section class="section feature-alt-component use-gsap p-0 vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+
+    <div class="columns {% if reversed %}vb-reverse-column-order{% endif %} is-gapless">
+    
+        <div class="column is-flex is-align-items-center">
+          
+            <div class="columns is-flex-grow-1">
+              
+                <div class="column is-10-tablet is-offset-1-tablet is-10-desktop is-offset-1-desktop">
+                    
+                    <section class="section section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }}">
+          
+                        <div class="content gsap-element-wrapper text-wrapper" data-gsap-animation-name="{% if reversed %}slide-in-from-right{% else %}slide-in-from-left{% endif %}" style="max-width: 600px; margin: 0 auto;">
+                        
+                            <h2 class="feature-title">{{ title }}</h2>
+                            <div class="feature-description">
+                                {{ description | markdownify }}
+                            </div>
+                            {% if button.text and button.text != "" and button.hide_button == false %}
+                            <p>
+                                <a href="{{ button.link }}" class="button">{{ button.text }}</a>
+                            </p>
+                            {% endif %}
+                        
+                        </div>
+                    
+                    </section>
+                    
+                </div>
+                
+            </div>
+          
+        </div>
+      
+        <div class="column is-flex is-align-items-center column-wrap{% if img.image_column_narrow == true %} is-4{% endif %}">
+            
+            {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index %}{% endcapture %}
+            {%- if set_flag contains "true" %}
+                {%- assign lazy_load_flag = true %}
+            {%- else %}
+                {%- assign lazy_load_flag = false %}
+            {%- endif %}
+
+            {%- if img.feature_image %}{% assign current_image = img.feature_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+
+            {% if img.use_parallax %}
+                <div class="content gsap-element-wrapper feature-image-wrapper" data-gsap-animation-name="simple-fade-in" style="aspect-ratio: {{ img.crop }};">
+                    <div class="gsap-parallax-element" data-speed="0.8">
+                        {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: "50" rs_title: title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: img.crop %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="content gsap-element-wrapper feature-image-wrapper" data-gsap-animation-name="{% if reversed %}slide-in-from-left{% else %}slide-in-from-right{% endif %}" data-gsap-delay="0.5" style="aspect-ratio: {{ img.crop }};">
+                    {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: "50" rs_title: this_title rs_multi_column_max_image_width: "50vw" rs_aspect_ratio: img.crop %}
+                </div>
+            {%- endif %}
+                
+        </div>
+    
+    </div>
+  
+</section>

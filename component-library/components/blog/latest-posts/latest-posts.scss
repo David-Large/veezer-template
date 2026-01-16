@@ -1,0 +1,22 @@
+.latest-posts-component {
+  
+  .blog-post-thumb {
+    aspect-ratio: 1/1;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 0;
+    background: #fff;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.04), 0 4px 4px rgba(0, 0, 0, 0.04), 0 8px 8px rgba(0, 0, 0, 0.04), 0 16px 16px rgba(0, 0, 0, 0.04);
+  }
+  .blog-post-thumb img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+  .blog-post-details {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+}

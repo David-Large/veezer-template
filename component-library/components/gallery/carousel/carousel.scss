@@ -1,0 +1,508 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+
+.cms-editor-active .carousel-component .carousel-slide {
+  opacity: 1;
+}
+
+.cms-editor-active .carousel-component .carousel-gradient {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cms-editor-active .carousel-component .content * {
+  opacity: 1 !important;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+
+.carousel-component {
+
+  /* Prevent oveflow of items positioned out of the horizontal bounds of the viewport (e.g. when using gsap fade-in's from left and right and they initially set to say +/-20px).
+  only really notice this on mobile at times, but is annoying as it adds a small horizontal scoll component which is unwanted. */
+  overflow: hidden;
+  position: relative;
+  padding-top: 0 !important;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  
+  .carousel-outer {
+    position: relative;
+    /* Height can be set wihin admin */
+  }
+  
+  .carousel-middle {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .carousel-inner {
+    display: flex;
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .carousel-inner.carousel-slide-on {
+    -webkit-transition: left 0.3s ease-out;
+    transition: left 0.3s ease-out;
+  }
+  
+  .carousel-slide {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0;
+  }
+  
+  .carousel-slide img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .carousel-slide .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .carousel-slide .container,
+  .carousel-slide .columns,
+  .carousel-slide .column,
+  .carousel-slide .content {
+    height: 100%;
+  }
+  .carousel-slide .columns {
+    margin-top: 0;
+  }
+  .carousel-slide .column {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .carousel-slide .content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    padding: 40px 0;
+  }
+  
+  .carousel-slide .content.top-left {
+    justify-content: start;
+    margin-top: 50px;
+  }
+  
+  .carousel-slide .content.center-left {
+    justify-content: center;
+  }
+  
+  .carousel-slide .content.bottom-left {
+    justify-content: end;
+  }
+  
+  .carousel-slide .content.top-right {
+    justify-content: start;
+    text-align: right;
+    margin-top: 50px;
+  }
+  
+  .carousel-slide .content.center-right {
+    justify-content: center;
+    text-align: right;
+  }
+  
+  .carousel-slide .content.bottom-right {
+    justify-content: end;
+    text-align: right;
+  }
+  
+  .carousel-slide .content.top-center {
+    justify-content: start;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .carousel-slide .content.center-center {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .carousel-slide .content.bottom-center {
+    justify-content: end;
+    text-align: center;
+  }
+  
+  @include mixins.from(iv.$desktop) {
+    
+    .carousel-slide .content.top-left {
+       margin-top: 100px;
+    }
+    
+    .carousel-slide .content.top-right {
+       margin-top: 100px;
+    }
+    
+    .carousel-slide .content.top-center {
+       margin-top: 100px;
+    }
+    
+  }
+  
+  .carousel-nav-container {
+    position: absolute;
+    z-index: 3;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .carousel-prev, .carousel-next {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    cursor: pointer;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.4s background-color ease;
+    border-radius: 3px;
+    user-select: none;
+    background-color: rgba(0,0,0,0.2);
+  }
+  
+  .carousel-next {
+    right: 0;
+  }
+  
+  .carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+  }
+  
+  .carousel-nav-dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .carousel-active, .carousel-nav-dot:hover {
+    background-color: #717171;
+  }
+  
+  
+  /* --- SLIDE FADE IN --- */
+
+  .carousel-fade-in {
+    animation-name: carousel-fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+  }
+  
+   @keyframes carousel-fade-in {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+  
+  /* if SLIDING option is on, then can keep all individual slides visible --- */
+  .carousel-slide-on .carousel-slide {
+    opacity: 1;
+  }
+  
+  .carousel-slide-on .carousel-slide.carousel-fade-in {
+    animation: none;
+    opacity: 1;
+  }
+  
+  
+  /* --- OVERLAY TEXT --- */
+  
+  .carousel-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 0 20px;
+  }
+  
+  .carousel-sub-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 0 20px;
+    text-transform: uppercase;
+  }
+  
+  @include mixins.from(iv.$tablet) {
+    
+    .carousel-title {
+      font-size: 2.5rem;
+    }
+    .carousel-sub-title {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @include mixins.from(iv.$desktop) {
+    
+    .carousel-title {
+      font-size: 4rem;
+    }
+    .carousel-sub-title {
+      font-size: 2rem;
+    }
+  }
+  
+  .carousel-gradient {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .carousel-gradient.top-left {
+    background: linear-gradient(315deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.center-left {
+    background: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.bottom-left {
+    background: linear-gradient(225deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.top-right {
+    background: linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.center-right {
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.bottom-right {
+    background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.top-center {
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  .carousel-gradient.center-center {
+    background: radial-gradient(circle, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%);
+  }
+  
+  .carousel-gradient.bottom-center {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+  
+    .small-vh-100 {
+      height: 100vh;
+    }
+    .small-vh-95 {
+      height: 95vh;
+    }
+    .small-vh-85 {
+      height: 85vh;
+    }
+    .small-vh-75 {
+      height: 75vh;
+    }
+    .small-vh-65 {
+      height: 65vh;
+    }
+    .small-vh-55 {
+      height: 55vh;
+    }
+    .small-vh-50 {
+      height: 50vh;
+    }
+    .small-vh-45 {
+      height: 45vh;
+    }
+    .small-vh-40 {
+      height: 40vh;
+    }
+    
+    .small-px-1000 {
+      height: 1000px;
+    }
+    .small-px-950 {
+      height: 950px;
+    }
+    .small-px-850 {
+      height: 850px;
+    }
+    .small-px-750 {
+      height: 750px;
+    }
+    .small-px-650 {
+      height: 650px;
+    }
+    .small-px-550 {
+      height: 550px;
+    }
+    .small-px-500 {
+      height: 500px;
+    }
+    .small-px-450 {
+      height: 450px;
+    }
+    .small-px-400 {
+      height: 400px;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    
+    .medium-vh-100 {
+      height: 100vh;
+    }
+    .medium-vh-95 {
+      height: 95vh;
+    }
+    .medium-vh-85 {
+      height: 85vh;
+    }
+    .medium-vh-75 {
+      height: 75vh;
+    }
+    .medium-vh-65 {
+      height: 65vh;
+    }
+    .medium-vh-55 {
+      height: 55vh;
+    }
+    .medium-vh-50 {
+      height: 50vh;
+    }
+    .medium-vh-45 {
+      height: 45vh;
+    }
+    .medium-vh-40 {
+      height: 40vh;
+    }
+    
+    .medium-px-1000 {
+      height: 1000px;
+    }
+    .medium-px-950 {
+      height: 950px;
+    }
+    .medium-px-850 {
+      height: 850px;
+    }
+    .medium-px-750 {
+      height: 750px;
+    }
+    .medium-px-650 {
+      height: 650px;
+    }
+    .medium-px-550 {
+      height: 550px;
+    }
+    .medium-px-500 {
+      height: 500px;
+    }
+    .medium-px-450 {
+      height: 450px;
+    }
+    .medium-px-400 {
+      height: 400px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    
+    .large-vh-100 {
+      /* height: 100vh; */
+      height: calc(100vh - var(--main-container-top-padding));
+    }
+    .large-vh-95 {
+      /* height: 95vh; */
+      height: calc(95vh - var(--main-container-top-padding));
+    }
+    .large-vh-85 {
+      height: 85vh;
+    }
+    .large-vh-75 {
+      height: 75vh;
+    }
+    .large-vh-65 {
+      height: 65vh;
+    }
+    .large-vh-55 {
+      height: 55vh;
+    }
+    .large-vh-50 {
+      height: 50vh;
+    }
+    .large-vh-45 {
+      height: 45vh;
+    }
+    .large-vh-40 {
+      height: 40vh;
+    }
+    
+    .large-px-1000 {
+      height: 1000px;
+    }
+    .large-px-950 {
+      height: 950px;
+    }
+    .large-px-850 {
+      height: 850px;
+    }
+    .large-px-750 {
+      height: 750px;
+    }
+    .large-px-650 {
+      height: 650px;
+    }
+    .large-px-550 {
+      height: 550px;
+    }
+    .large-px-500 {
+      height: 500px;
+    }
+    .large-px-450 {
+      height: 450px;
+    }
+    .large-px-400 {
+      height: 400px;
+    }
+  }
+  
+}
+
+@include mixins.from(iv.$desktop) {
+
+  /* If this component is the very first one in the page (first section within main) then
+  add a bit of padding so that any text content added towards the top is not too close to
+  the bottom of the navbar. */
+  main .section.carousel-component:first-of-type .container {
+    padding-top: 50px;
+  }
+  
+}

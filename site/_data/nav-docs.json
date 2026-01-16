@@ -1,0 +1,96 @@
+{
+  "items": [
+    {
+      "text": "&#x21fd; MAIN SITE",
+      "link": "/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": null,
+      "sub_navigation": []
+    },
+    {
+      "text": "Image Credits",
+      "link": "/documentation/image-credits/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Documentation Overview",
+      "link": "/documentation/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Installation",
+      "link": "/documentation/installation/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Javascript",
+      "link": "/documentation/javascript/",
+      "enable_dropdown": true,
+      "sub_navigation_group_title": "javascript",
+      "sub_navigation": [
+        {
+          "text": "Fetch API",
+          "link": "/documentation/javascript/fetch-api/"
+        },
+        {
+          "text": "GSAP Animations",
+          "link": "/documentation/javascript/gsap-animations/"
+        },
+        {
+          "text": "GSAP Animations - Optimisation",
+          "link": "/documentation/javascript/gsap-animations-optimisation/"
+        }
+      ]
+    },
+    {
+      "text": "Style and Theme",
+      "link": "/documentation/style-and-theme/",
+      "enable_dropdown": true,
+      "sub_navigation_group_title": "style-and-theme",
+      "sub_navigation": [
+        {
+          "text": "CSS, Setting a Theme",
+          "link": "/documentation/style-and-theme/css-setting-a-theme/"
+        },
+        {
+          "text": "Icon Fonts",
+          "link": "/documentation/style-and-theme/icon-fonts/"
+        }
+      ]
+    },
+    {
+      "text": "Image Handling",
+      "link": "/documentation/image-handling/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Navigation",
+      "link": "/documentation/navigation/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Forms",
+      "link": "/documentation/forms/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    },
+    {
+      "text": "Events",
+      "link": "/documentation/events/",
+      "enable_dropdown": false,
+      "sub_navigation_group_title": "",
+      "sub_navigation": []
+    }
+  ]
+}

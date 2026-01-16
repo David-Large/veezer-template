@@ -1,0 +1,36 @@
+---
+title: Blog
+component_palette: lighter
+permalink: >-
+  /blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber | plus: 1 }}/{% endif %}
+# Need to add the URL below so that the cloudcannon editor doesn't add a weird URL
+# based on tags.
+url: /blog/
+pagination:
+  data: collections.blog
+  size: 12
+  alias: blog
+  reverse: true
+layout: layouts/blog.liquid
+seo:
+  meta_title:
+  meta_description:
+  canonical_url:
+  meta_image:
+  author_twitter_handle:
+  open_graph_type:
+  no_index: false
+_inputs:
+  component_palette:
+    hidden: true
+  tags:
+    hidden: true
+  permalink:
+    hidden: true
+  url:
+    hidden: true
+  pagination:
+    hidden: true
+  content_blocks:
+    hidden: true
+---

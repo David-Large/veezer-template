@@ -1,0 +1,35 @@
+{
+  "use_fetch": true,
+  "base_url": "https://brisk-bunny.cloudvent.net",
+  "site_title": "Veezer Static Site Template",
+  "site_description": "A work-in-progress static website template from Viv Barakat, Lumina Web Solutions Ltd. Built with Eleventy to run in the CloudCannon environment.",
+  "site_logo": "/uploads/theme/veezer-logo.png",
+  "site_image": "/uploads/defaults/veezer-social.jpg",
+  "twitter_image": null,
+  "twitter_site": null,
+  "image_optimisation": "ImageKit",
+  "imagekit_url": "https://ik.imagekit.io/cloudcannon",
+  "placeholder_image": "/uploads/defaults/placeholder.jpg",
+  "recaptcha_key": null,
+  "_inputs": {
+    "image_optimisation": {
+      "type": "select",
+      "comment": "Optimisation used on the Production site (when processEnv.environment == 'production' in liquid template).",
+      "options": {
+        "allow_empty": false,
+        "values": {
+          "ImageKit": "ImageKit",
+          "Wsrv": "Wsrv"
+        }
+      }
+    },
+    "imagekit_url": {
+      "comment": "Leave blank if using another option for image optimisation."
+    },
+    "recaptcha_key": {
+      "type": "text",
+      "label": "reCAPTCHA Site Key",
+      "comment": "Enter your Google reCAPTCHA Site Key to enable reCAPTCHA on your forms."
+    }
+  }
+}

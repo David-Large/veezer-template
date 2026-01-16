@@ -1,0 +1,22 @@
+<section class="section feature-image-component use-gsap section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} {% if component_palette %}vb-theme-{{ component_palette }}{% endif %}" data-block-index="{{ block_index }}">
+  
+    <div class="first-of-type-section-spacer"></div>
+
+    <div class="container">
+      
+        <div class="columns">
+          
+            <div class="column is-10-tablet is-8-desktop is-offset-1-tablet is-offset-2-desktop">
+                
+                <div class="content gsap-element-wrapper" data-gsap-animation-name="slide-down-from-top">
+                    {%- if feature_image %}{% assign current_image = feature_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                    {% bookshop_include "resize-image-srcset" rs_lazy: true rs_image: current_image rs_quality: "70" rs_title: feature_image_title rs_multi_column_max_image_width: "100vw" %}
+                </div>
+              
+            </div>
+        
+        </div>
+    
+    </div>
+  
+</section>

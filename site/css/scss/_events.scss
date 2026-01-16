@@ -1,0 +1,256 @@
+@use "../../../site/vendor/bulma/sass/utilities/mixins";
+@use "../../../site/vendor/bulma/sass/utilities/initial-variables" as iv;
+@use "../../../site/css/variables" as va;
+
+
+.events-summary {
+
+  &.vb-theme-lightest {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--lightest-theme-background-color) 100%, black 4%);
+    }
+  }
+
+  &.vb-theme-lighter {
+    article
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--lighter-theme-background-color) 100%, black 4%);
+    }
+  }
+
+  &.vb-theme-light {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--light-theme-background-color) 100%, black 4%);
+    }
+  }
+
+  &.vb-theme-dark {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--dark-theme-background-color) 100%, white 7%);
+    }
+  }
+  &.vb-theme-darker {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--darker-theme-background-color) 100%, white 7%);
+    }
+  }
+  &.vb-theme-darkest {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--darkest-theme-background-color) 100%, white 7%);
+    }
+  }
+
+  &.vb-theme-alternate-1 {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--alternate-1-theme-background-color) 100%, white 4%);
+    }
+  }
+  &.vb-theme-alternate-2 {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--alternate-2-theme-background-color) 100%, white 4%);
+    }
+  }
+  &.vb-theme-alternate-3 {
+    article,
+    .calendar-month span {
+      background-color: color-mix(in srgb, var(--alternate-3-theme-background-color) 100%, white 4%);
+    }
+  }
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  .calendar-month {
+    text-align: center;
+  }
+  .calendar-month span { 
+    display: inline-block;
+    padding: 30px;
+    margin-bottom: 10px;
+  }
+  .calendar-year {
+    text-align: center;
+  }
+  
+  .date {
+    margin-bottom: 1rem;
+  }
+  .date i {
+    margin-right: 10px;
+  }
+  .date span {
+    font-weight: 600;
+  }
+
+  .event-item-thumb a {
+    line-height: 0;
+    display: block;
+    text-align: center;
+  }
+
+
+
+  /* Toggles for displaying events summaries on main Events page. Set via JS.
+  The default view is UPCOMING events. */
+ 
+  #events-summary-upcoming,
+  #events-summary-previous {
+     transition: opacity 0.3s;
+  }
+  #events-summary-upcoming.hide {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  #events-summary-previous {
+    position: static;
+    opacity: 1;
+  }
+  #events-summary-previous.hide {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  
+  @include mixins.mobile {
+    // Styles applied below $tablet
+    article {
+      padding: 20px;
+    }
+    .image-square img {
+      width: 80%;
+    }
+    .image-portrait img {
+      width: 70%;
+    }
+  }
+  
+  @include mixins.tablet-only {
+    // Styles applied between $tablet and $desktop
+    article {
+      padding: 30px;
+    }
+    .image-square img {
+      width: 75%;
+    }
+    .image-portrait img {
+      width: 70%;
+    }
+  }
+  
+  @include mixins.desktop {
+    // Styles applied above $desktop
+    article {
+      padding: 40px;
+    }
+    .image-square img {
+      width: 75%;
+    }
+    .image-portrait img {
+      width: 60%;
+    }
+  }
+  
+}
+
+.event-header-links-wrapper {
+  
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 3rem;
+
+  .content {
+
+    button {
+      margin: 0 5px;
+    }
+    // Font icon spacing
+    i, span {
+      margin-right: 8px;
+    }
+    
+  }
+
+}
+
+.event-detail-wrapper {
+
+  .event-main-title h2 {
+    margin-bottom: 0.4rem;
+  }
+  .event-main-title h3 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .event-spec-list {
+    font-weight: 200;
+  }
+    
+}
+
+.gallery-event {
+
+  a {
+    position: relative;
+    display: block;
+    line-height: 0;
+    text-align: center;
+    /* Adding a background colour here allow for a slighly different background colour
+    when the backdrop-filter is applied. Only shows if the iamge is too small horizontally
+    to fill 100% of the horizontal space (letter-box effect). Just makes the outside edges of the main image
+    and any other content line up vertically. */
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: brightness(0.9); /* Darkens the underlying color by 10% */
+  }
+  i,
+  [class*="material-symbols"] {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #fff;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 5px;
+  }
+    
+}
+
+
+.status-message {
+  
+  position: relative;
+  background-color: #FFE5B4;
+  padding: 20px 20px 20px 80px;
+  margin-bottom: 1rem;
+  
+  h4 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: #444 !important; 
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  i,
+  [class*="material-symbols"] {
+    position: absolute;
+    top: 50%;
+    /* to center correctly, pull back by 50% of the item's height. */
+    /* See here: https://medium.com/front-end-weekly/absolute-centering-in-css-ea3a9d0ad72e */
+    transform: translateY(-50%);
+    left: 20px;
+    font-size: 2.25rem;
+    color: #FFA500 !important;
+  }
+  
+}

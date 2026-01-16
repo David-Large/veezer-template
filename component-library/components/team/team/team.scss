@@ -1,0 +1,24 @@
+@use "site/vendor/bulma/sass/utilities/mixins";
+@use "site/vendor/bulma/sass/utilities/initial-variables" as iv;
+
+.team-component {
+  
+  .team-title {
+    margin-top: -0.4rem !important;
+    margin-bottom: 3rem;
+    font-size: 130%;
+  }
+  .team-description {
+    margin-bottom: 2rem;
+  }
+  
+  .image-wrapper {
+    width: 100%;
+    max-width: 600px;
+    line-height: 0;
+  }
+  .image-wrapper img {
+    object-position: center center; /* The default */
+  }
+  
+}

@@ -1,0 +1,34 @@
+{%- comment %}
+Avoid native lazy loading the first image (using loading="lazy" attribute on the image tag)
+if this is the first or second component on the page as it is likely to be in the viewport
+(best practice is to avoid lazy loading images in the viewport).
+
+The 'block_index' value is set via the loop of adding components to the page content in the
+'page.eleventy.liquid' include (components section). This is derived from the data attribute
+'data-block-index' added to each component section.
+
+Base whether or not to add the lazy load attributes to a component template or the
+block_index number. In some components there will be multiple sub-blocks within a component
+(e.g. team member profiles) so the block_index may be in the format '2.1', '2.2' etc.
+
+This gives a rough approximation of which images are likely to be in the viewport or close
+to it on initial page load. Give these images a chance to load normally without lazy loading.
+
+So the logic is:
+
+- If the block_index is an integer and has a value of 3 or more this means the component is the third or
+later component down the page so set lazy load to 'true'.
+
+- If the block_index is a fractional number (e.g. '2.1','2.2','2.3' etc), this will be a multi-section 
+component that takes up more vertical space. In this case, its likely that anything apart from the first
+sub-section will be out of or a long way from the viewport on initial page load.
+So set lazy load to true for images in 2.2 and later sub-sections.
+
+Note: 'plus: 0' forces conversion to a number.
+{% endcomment %}
+{%- assign flag = false %}
+{%- assign block_index_number = block_index | plus: 0 %}
+{%- if block_index_number > 2.1 %}
+    {%- assign flag = true %}
+{%- endif %}
+{{ flag }}

@@ -1,0 +1,26 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: FAQ
+  description: Accordion-style content blocks with toggle.
+  icon: checklist
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  FAQ:
+    - title: Title
+      main_column: "Content..."
+  border_color: "#888888"
+  content_padding_top: 5
+  content_padding_bottom: 5
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  main_column:
+    label: "Content"

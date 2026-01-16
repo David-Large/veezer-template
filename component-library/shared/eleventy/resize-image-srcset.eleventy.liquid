@@ -1,0 +1,87 @@
+{%- comment %}
+    This component is used to resize images and create srcsets for responsive images.
+    It currently supports IMAGEKIT, but can easily be converted to use IMGIX, etc.
+
+    The 'aspect_rotio' variable is a integer or decimal (single) value of width relative to height (required - set to 'auto' if not specified).
+    The 'image' variable is the path to the image starting with a leading slash. e.g. /uploads/2024/01/image.jpg
+    The 'title' variable is used to set the alt and title attributes of the image. If not provided it defaults to the page title.
+    The 'focal_point' variable is optional and is used to set the object-position CSS property of the image. It should be in the format "x% y%". e.g. "50% 50%" for center, "0% 0%" for top left, "100% 100%" for bottom right etc.
+    The 'class' variable is optional and is used to add additional classes to the image tag.
+    The 'custom_attribute_text' variable is optional and is used to add any custom attributes to the image tag. e.g. 'data-src="example"'.
+    The 'quality' variable is optional and is used to set the quality of the image (if supported by the image service). e.g. "70" for 70% quality.
+    The 'lazy' variable is optional and defaults to true. If set to false, it will not add loading="lazy" attribute to the image tag.
+    The 'multi_column_max_image_width' variable is optional and is used to set the max width of the image in multi-column layouts (e.g. "50vw" for half viewport width). Defaults to "100vw".
+{% endcomment %}
+
+{%- comment %}
+    To prevent issues with variables from the parent include being availble in this template (since this is an 'include' rather than a 'render'), make sure to use unique variables.
+    Prefix all variables in this include with 'rs' (for 'resize').
+{% endcomment %}
+
+{%- comment %} ++++++ The 'image-width' and 'image-height' variables are filters created in eleventy.js {% endcomment %}
+{%- assign rs_width = rs_image | prepend: "site" | image-width %}
+{%- assign rs_height = rs_image | prepend: "site" | image-height %}
+
+{%- comment %} ++++++ Get the aspect ratio of the image. {% endcomment %}
+{%- comment %} ++++++ Check if an aspect ratio is specified (sent from the calling template). {% endcomment %}
+{%- if rs_aspect_ratio != "auto" %}
+    {%- comment %} ++++++ Need the 'times: 1.0' to make liquid know its a number not a string. {% endcomment %}
+    {%- assign final_aspect_ratio = rs_aspect_ratio | times: 1 %}
+    {%- comment %} ++++++ Need to have the values used in the 'src' and the height/width attributes set correctly.  {% endcomment %}
+    {%- assign rs_height = rs_width | divided_by: final_aspect_ratio | times: 1 | round %}
+{% else %}
+    {%- comment %} ++++++ No aspect ratio so use original image ratio. {% endcomment %}
+    {%- assign final_aspect_ratio = rs_width | divided_by: rs_height | times: 1 %}
+{%- endif %}
+
+{%- if processEnv.environment == 'production' %}
+  
+    {%- comment %} ++++++ set default sizes for the resized images {% endcomment %}
+    {%- assign rs_very_small_width = 500 %}
+    {%- assign rs_small_width = 768 %}
+    {%- assign rs_medium_width = 1023 %}
+    {%- assign rs_large_width = 1407 %}
+
+    {%- comment %} ++++++ calculate height for the resized images. {% endcomment %}
+    {%- assign rs_very_small_height = rs_very_small_width | divided_by: final_aspect_ratio | round %}
+    {%- assign rs_small_height = rs_small_width | divided_by: final_aspect_ratio | round %}
+    {%- assign rs_medium_height = rs_medium_width | divided_by: final_aspect_ratio | round %}
+    {%- assign rs_large_height = rs_large_width | divided_by: final_aspect_ratio | round %}
+
+    {%- if site.image_optimisation == "ImageKit" %}
+        {%- if site.imagekit_url %}
+          {%- bookshop_include "imagekit-srcset" %}
+        {%- else %}
+           <p style="background: cornsilk; padding: 5px;">Please set up an ImageKit endpoint and add to site.imagekit_url</p>
+        {%- endif %}
+      {%- endif %}
+
+    {%- if site.image_optimisation == "Wsrv" %}
+        {%- bookshop_include "wsrv-srcset" %}
+    {%- endif %}
+
+{%- else %}
+  
+    {%- comment %}
+        Note that can't seem to reassign a parameter value sent through from the parent template.
+        There is a strange quirk in the editor. When you set a feature or a team image to 'original', unless it is the first component of that grouping on the page, the 
+        aspect ratio will default to the setting of the one before it. No problem on the live draft site though. Seems to be related to how variables are set between this template
+        and the component parent template. Overcame this by directly calling on 'img.crop' value from the parent component template (applies to the 'feature' component).
+        See notes below about variable scope.
+    {% endcomment %}
+    
+    <img {% if rs_lazy != false %}loading="lazy"{% endif %} style="aspect-ratio: {% unless img.crop == "auto" %}{{ final_aspect_ratio }}{% else %}auto{% endunless %}; object-fit: cover; {% if rs_focal_point %}object-position: {{ rs_focal_point }};{% endif %}" src="{{ rs_image }}" alt="{{ rs_title }}" title="{{ rs_title }}" class="{% if rs_class %}{{ rs_class }}{% endif %}" {% if rs_custom_attribute_text %}{{ rs_custom_attribute_text }}{% endif %} width="{{ rs_width }}" height="{{ rs_height }}" onerror="this.onerror=null;this.src='{{ site.placeholder_image }}'" />
+      
+{%- endif %}
+
+{%- comment %}
+    Key Concepts in Liquid Variable Scoping (AI generated):
+    - Shared Scope with include: When you use the {% include %} tag, the included file runs within the same scope as the parent file. Any variables set in the parent are available in the child, and vice versa.
+    - Variable Shadowing: When a variable in an inner scope has the same name as a variable in an outer scope, the inner variable "shadows" the outer one. References to that name within the inner scope will access the local variable's value.
+    - No Overwriting of Parent Scope: An assignment within a nested include does not change the variable's value in the original parent template after the include finishes executing. 
+    Note on the render tag:
+    - The more modern {% render %} tag behaves differently, forcing a separate, local scope unless variables are explicitly passed in as parameters. This helps prevent naming conflicts and promotes cleaner code.
+{% endcomment %}
+
+
+

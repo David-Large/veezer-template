@@ -1,0 +1,127 @@
+{%- if constrain_to_container == false %}
+
+    <section class="section hero-component use-gsap hero-wrapper" data-block-index="{{ block_index }}">
+      
+        <div class="overflow-mask {{ container_height_small }} {{ container_height_medium }} {{ container_height_large }}">
+               
+            <div class="hero-image gsap-element-wrapper" data-gsap-animation-name="{% if use_parallax %}simple-fade-in{% else %}slide-up-from-bottom{% endif %}" data-gsap-duration="0.75">
+                
+                {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index %}{% endcapture %}
+                {%- if set_flag contains "true" %}
+                    {%- assign lazy_load_flag = true %}
+                {%- else %}
+                    {%- assign lazy_load_flag = false %}
+                {%- endif %}
+                
+                {%- if hero_image %}{% assign current_image = hero_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                
+                {%- if use_parallax %}
+                    <div class="gsap-parallax-element" data-speed="0.8">
+                        {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: image_quality rs_title: title rs_focal_point: focal_point rs_aspect_ratio: "auto" %}
+                    </div>
+                {%- else %}
+                    {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: image_quality rs_title: title rs_focal_point: focal_point rs_aspect_ratio: "auto" %}
+                {%- endif %}
+
+            </div>
+        
+        </div>
+        
+        {%- if overlay_gradient == true %}
+            <div class="hero-gradient {{ text_alignment }} gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+            </div>
+        {%- endif %}
+        
+        {%- if overlay_grid == true %}
+            <div class="hero-grid gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+            </div>
+        {%- endif %}
+                  
+        <div class="container">
+                                      
+            <div class="columns">
+                                            
+                <div class="column">
+                  
+                    <div class="content {{ text_alignment }}">
+                      
+                        <div class="hero-title gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1" data-gsap-duration="0.8" style="color: {{ title_color }}">{{ title }}</div>
+                        <div class="hero-sub-title gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1.5" data-gsap-duration="1" style="color: {{ sub_title_color }}">{{ sub_title }}</div>
+                      
+                    </div>
+                        
+                </div>
+              
+            </div>
+                  
+        </div>
+                    
+    </section>
+
+{%- else %}
+
+    <section class="section hero-component-constrained use-gsap hero-wrapper section-padding-top-{{ content_padding_top }} section-padding-bottom-{{ content_padding_bottom }} vb-theme-{{ component_palette }}" data-block-index="{{ block_index }}">
+      
+        <div class="first-of-type-section-spacer"></div>
+          
+        <div class="container hero-image-wrapper">
+        
+            <div class="columns">
+              
+                <div class="column">
+                    
+                    <div class="overflow-mask" style="{% if constrained_image_aspect_ratio %}aspect-ratio: {{ constrained_image_aspect_ratio }};{% endif %}">
+                    
+                        <div class="hero-image gsap-element-wrapper feature-image-wrapper" data-gsap-animation-name="{% if use_parallax %}simple-fade-in{% else %}slide-up-from-bottom{% endif %}" data-gsap-duration="0.75">
+                      
+                            {%- capture set_flag %}{% include "./layouts/set-lazy-load-flag" block_index: block_index %}{% endcapture %}
+                            {%- if set_flag contains "true" %}
+                                {%- assign lazy_load_flag = true %}
+                            {%- else %}
+                                {%- assign lazy_load_flag = false %}
+                            {%- endif %}
+                            
+                            {%- if hero_image %}{% assign current_image = hero_image %}{% else %}{% assign current_image = site.placeholder_image %}{% endif %}
+                            
+                             {%- if use_parallax %}
+                                <div class="gsap-parallax-element" data-speed="0.8">    
+                                    {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: image_quality rs_title: title rs_class: p_class rs_focal_point: focal_point rs_aspect_ratio: constrained_image_aspect_ratio %}
+                                </div>
+                            {%- else %}
+                                {% bookshop_include "resize-image-srcset" rs_lazy: lazy_load_flag rs_image: current_image rs_quality: image_quality rs_title: title rs_class: p_class rs_focal_point: focal_point rs_aspect_ratio: constrained_image_aspect_ratio %}
+                            {%- endif %}
+
+                        </div>
+                    
+                    </div>
+                    
+                    {%- if overlay_gradient == true %}
+                        <div class="hero-gradient {{ text_alignment }} gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+                        </div>
+                    {%- endif %}
+                            
+                    {%- if overlay_grid == true %}
+                        <div class="hero-grid gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1">
+                        </div>
+                    {%- endif %}
+                          
+                </div>
+            
+            </div>
+            
+            <div class="text-wrapper">
+          
+                <div class="content {{ text_alignment }}">
+                                    
+                    <div class="hero-title gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1" data-gsap-duration="0.8" style="color: {{ title_color }}">{{ title }}</div>
+                    <div class="hero-sub-title gsap-element-wrapper" data-gsap-animation-name="slide-up-from-bottom" data-gsap-delay="1.5" data-gsap-duration="1" style="color: {{ sub_title_color }}">{{ sub_title }}</div>
+                                    
+                </div>
+                  
+            </div>
+          
+        </div>
+      
+    </section>
+
+{%- endif %}

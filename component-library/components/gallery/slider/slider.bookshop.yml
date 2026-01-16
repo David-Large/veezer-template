@@ -1,0 +1,81 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - content_blocks
+  label: Slider
+  description: Useful to display testimonials.
+  icon: dynamic_feed
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  component_palette: lightest
+  slides:
+  transition: "fade"
+  auto_change_speed: "0"
+  navigation:
+    hide_prev_next_buttons: false
+    hide_page_indicator: false
+  content_padding_top: 5
+  content_padding_bottom: 5
+    
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  slider_image:
+    type: image
+    options:
+      width: 800
+      height: 800
+      resize_style: contain
+      expandable: false
+      paths:
+        uploads: uploads/slider
+    label: Slider Image
+  auto_change_speed:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        "0": "None"
+        "4000": "4 seconds"
+        "8000": "8 Seconds"
+  transition:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        "fade": "Fade"
+        "slide": "Slide"
+
+_structures:
+  slides:
+    values:
+      - label: Slide
+        text_key: title
+        subtext_key: sub_title
+        image_key: slider_image
+        icon: image
+        value:
+          slider_image:
+          title: Title...
+          sub_title: Subtitle...
+          description: Description...
+          clip_path_style: none
+        _inputs:
+          clip_path_style:
+            type: select
+            comment: "CSS clipping path (shape mask) to apply to image."
+            options:
+              allow_empty: false
+              values:
+                "none": "None (rectangle/square)"
+                "circle": "Circle"
+                "triangle": "Triangle"
+                "rhombus": "Rhombus"
+                "pentagon": "Pentagon"
+                "hexagon": "Hexagon"
+                "octagon": "Octagon"
+                "trapezoid": "Trapezoid"

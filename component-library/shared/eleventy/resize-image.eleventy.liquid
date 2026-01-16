@@ -1,0 +1,38 @@
+{%- comment %}
+A much simpler resizer that the one creating srcset. Good use is for thumbnails.
+Parameters:
+
+Lazy (as 'rs_lazy') - required
+Width (as 'rs_width') - required
+Height (as 'rs_height') - optional.
+Quality (as 'rs_quality') - optional.
+{% endcomment %}
+
+{%- comment %} ------ No height(optional) sent as a parameter so work out width, height and aspect ratios. {% endcomment %}
+{%- unless rs_height %}
+    {%- assign image_x = rs_image | prepend: "site" | image-width %}
+    {%- assign image_y = rs_image | prepend: "site" | image-height %}
+    {%- assign final_aspect_ratio = image_x | divided_by: image_y | times: 1 %}
+    {%- assign final_height = rs_width | divided_by: final_aspect_ratio | times: 1 | round  %}
+{%- endunless %}
+
+{%- if processEnv.environment == 'production' %}
+
+    {%- if site.image_optimisation == "ImageKit" %}
+        {%- if site.imagekit_url %}
+            <img {% if rs_lazy != false %}loading="lazy"{% endif %} alt="{{ rs_title }}" title="{{ rs_title }}" width="{{ rs_width }}" height="{% if rs_height %}{{ rs_height }}{% else %}{{ final_height }}{% endif %}" src="{{ site.imagekit_url }}{{ rs_image }}?tr=h-{% if rs_height %}{{ rs_height }}{% else %}{{ final_height }}{% endif %},w-{{ rs_width }}{% if rs_quality %},q-{{ rs_quality }}{% endif %}" />
+        {%- else %}
+            <p style="background: cornsilk; padding: 5px;">Please set up an ImageKit endpoint and add to site.imagekit_url</p>    
+        {%- endif %}
+    {%- endif %}
+
+    {%- if site.image_optimisation == "Wsrv" %}
+        {% assign this_base_url = site.base_url | remove: "https://" |  remove_last: "/" %}
+        <img {% if rs_lazy != false %}loading="lazy"{% endif %} alt="{{ rs_title }}" title="{{ rs_title }}" width="{{ rs_width }}" height="{% if rs_height %}{{ rs_height }}{% else %}{{ final_height }}{% endif %}" src="//wsrv.nl/?url={{ this_base_url }}{{ rs_image }}&w={{ rs_width }}{% if rs_height %}&h={{ rs_height }}{% endif %}{% if rs_quality %}&q={{ rs_quality }}{% endif %}&fit=cover" />
+    {%- endif %}
+
+{%- else %}
+
+    <img {% if rs_lazy != false %}loading="lazy"{% endif %} src="{{ rs_image }}" alt="{{ rs_title }}" title="{{ rs_title }}" width="{{ rs_width }}" style="object-fit: cover; object-position: center center; aspect-ratio: {% if rs_height %}{{ rs_width }} / {{ rs_height }}{% else %}{{ final_aspect_ratio }}{% endif %};" onerror="this.onerror=null;this.src='{{ site.placeholder_image }}'" />
+
+{%- endif %}
