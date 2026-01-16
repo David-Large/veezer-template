@@ -41,7 +41,7 @@ Currently, the templates on the production site use image transformations from o
 
 I've used <a href="https://www.imgix.com/" target="_blank" rel="noopener">Imgix</a> before as well. It's straight-forward enough to just adjust the parameters in the template to use the Imgix service instead.
 
-*Because this is an Eleventy site, the Eleventy Image plugin could be used. I've just kept with the CDN trnasformation service option that I was fmiliar with from using Jekyll.*
+*Because this is an Eleventy site, the Eleventy Image plugin could be used. I've just kept with the CDN transformation service option that I was familiar with from using Jekyll. You might want to aslo look at Digital Asset Management (DAM) Integration.*
 
 ### Broken Images
 
